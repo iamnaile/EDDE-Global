@@ -43,25 +43,8 @@ $svc_stages = [
   <div class="page-bg" style="background-image:url('<?php echo get_stylesheet_directory_uri(); ?>/assets/bg-ielts.jpg');"></div>
 <div class="page-bg-overlay"></div>
 <div class="page-content">
-<!-- ============ HEADER ============ -->
-<header class="site-header" id="siteHeader">
-  <div class="container header__inner">
-    <a href="<?php echo home_url('/edde-home/'); ?>" class="logo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/logo.png" alt="EDDE Global" class="logo-img"></a>
-    <nav class="main-nav" id="mainNav">
-      <ul>
-        <li><a href="<?php echo home_url('/edde-home/'); ?>#programs">Təhsil</a></li>
-        <li><a href="<?php echo home_url('/edde-xidmetler/'); ?>">EDDE Academy</a></li>
-        <li><a href="<?php echo home_url('/edde-home/'); ?>#why">Niyə biz?</a></li>
-        <li><a href="<?php echo home_url('/edde-home/'); ?>#reviews">Tələbə hekayələri</a></li>
-        <li><a href="<?php echo home_url('/edde-home/'); ?>#faq">FAQ</a></li>
-      </ul>
-    </nav>
-    <div class="header__right">
-      <button class="btn btn--primary" id="openConsult">Zəng istə</button>
-    </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Menyu"><span></span><span></span><span></span></button>
-  </div>
-</header>
+<!-- ============ HEADER (vahid naviqasiya: inc/edde-nav.php) ============ -->
+<?php $edde_current = 'ielts'; include get_stylesheet_directory() . '/parts/edde-header.php'; ?>
 
 <!-- ============ BREADCRUMB ============ -->
 <div class="svc-breadcrumb">
@@ -182,22 +165,22 @@ $svc_stages = [
     </div>
     <div class="footer__col footer__col--links">
       <h4>EDDE Academy</h4>
-      <a href="<?php echo home_url('/edde-ielts/'); ?>">IELTS</a>
-      <a href="<?php echo home_url('/edde-toefl/'); ?>">TOEFL</a>
-      <a href="<?php echo home_url('/edde-pte/'); ?>">PTE Academic</a>
-      <a href="<?php echo home_url('/edde-sat/'); ?>">SAT</a>
+      <a href="<?php echo home_url('/ielts/'); ?>">IELTS</a>
+      <a href="<?php echo home_url('/toefl/'); ?>">TOEFL</a>
+      <a href="<?php echo home_url('/pte-academic/'); ?>">PTE Academic</a>
+      <a href="<?php echo home_url('/sat/'); ?>">SAT</a>
     </div>
     <div class="footer__col footer__col--links">
       <h4>Əlaqə</h4>
       <a href="tel:+994702141033">070 214 10 33</a>
       <a href="tel:+994124096789">012 409 67 89</a>
       <a href="mailto:info@eddeglobal.az">info@eddeglobal.az</a>
-      <span>Əliyar Əliyev 63, Nəriman Nərimanov</span>
+      <span>Əliyar Əliyev 159, N.Nərimanov, Bakı</span>
     </div>
   </div>
   <div class="container footer__bottom">
     <span>© 2018–2026 EDDE Global.<br>Site by: Naila.</span>
-    <a href="#top">Məxfilik siyasəti</a>
+    <a href="<?php echo home_url('/mexfilik-siyaseti/'); ?>">Məxfilik siyasəti</a>
   </div>
 </footer>
 
