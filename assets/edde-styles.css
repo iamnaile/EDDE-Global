@@ -730,3 +730,5 @@ ul { list-style: none; margin: 0; padding: 0; }
   .logo-strip__track { animation: none; flex-wrap: wrap; justify-content: center; width: auto; row-gap: 24px; }
   .logo-strip__item[aria-hidden="true"] { display: none; }
 }
+/* Mega-menyudakı düymənin mətni oxunaqlı olsun */
+.main-nav .mega-menu .btn--primary { color: #fff; }

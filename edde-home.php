@@ -50,169 +50,8 @@
   </div>
 </div>
 
-<?php
-// ===== NAVİQASİYA: bütün bölmə və səhifələr buradan idarə olunur =====
-// '#...', 'tel:', 'mailto:', 'https://' ilə başlayan ünvanlar olduğu kimi qalır,
-// '/...' ilə başlayan ünvan isə sayt səhifəsinə aparır.
-$edde_href = function ($u) {
-  return preg_match('~^(#|tel:|mailto:|https?://)~', $u) ? esc_url($u) : esc_url(home_url($u));
-};
-
-$edde_nav = [
-  [
-    'title' => 'Haqqımızda',
-    'url'   => '/shirket-haqqinda/',
-    'mega'  => [
-      'heading' => 'Haqqımızda',
-      'text'    => 'EDDE Global — 2018-ci ildən xaricdə təhsil və dil təhsili sahəsində etibarlı tərəfdaşınız.',
-      'cta'     => 'Şirkət haqqında',
-      'visual'  => ['🏛️', '2018', 'Fəaliyyətə başladıq'],
-      'links'   => [
-        ['Şirkət haqqında',          '/shirket-haqqinda/'],
-        ['EDDE Global Missiyası',    '/missiya/'],
-        ['Xidmətlər paketi',         '/xidmetler-paketi/'],
-        ['Akkreditasiyalarımız',     '/akkreditasiya/'],
-        ['Hüquqi Məsuliyyətlər',     '/qanunvericilik/'],
-        ['Beynəlxalq Əməkdaşlıqlar', '/uzvlukler/'],
-        ['Karyera',                  '/karyera/'],
-      ],
-    ],
-  ],
-  [
-    'title' => 'Xaricdə təhsil',
-    'url'   => '#programs',
-    'mega'  => [
-      'heading' => 'Xaricdə Təhsil',
-      'text'    => 'Foundation-dan doktoranturaya qədər — hər mərhələ üçün uyğun proqram və tam dəstək.',
-      'cta'     => 'Bütün proqramlara baxın',
-      'visual'  => ['🌍', '20+', 'Təhsil ölkəsi'],
-      'links'   => [
-        ['Foundation Təhsili',     '/foundation/'],
-        ['Bakalavr',               '/bakalavr/'],
-        ['Magistratura Təhsili',   '/magistratura/'],
-        ['Doktorantura Təhsili',   '/doktorantura/'],
-        ['Türkiyədə təhsil',       '/turkiyede-tehsil/'],
-        ['Transfer Proqramları',   '/transfer/'],
-        ['Təqaüd Proqramları',     '/teqaud/'],
-        ['Yay Məktəbləri',         '/yay-mektebleri/'],
-        ['Beynəlxalq Məktəblər',   '/beynelxalq-mektebler/'],
-        ['Xaricdə Yataqxana',      '/yataqxana/'],
-        ['İxtisas Seçimi Dəstəyi', '/ixtisas-secimi/'],
-      ],
-    ],
-  ],
-  [
-    'title' => 'EDDE Academy',
-    'url'   => '/edde-home/edde-academy/xidmetler/',
-    'mega'  => [
-      'heading' => 'EDDE Academy',
-      'text'    => 'Beynəlxalq imtahanlara hazırlıq və dil kursları ilə hədəflərinizə çatın.',
-      'cta'     => 'Bütün proqramlara baxın',
-      'visual'  => ['📖', '11', 'Kurs və imtahan hazırlığı'],
-      'links'   => [
-        ['SAT',                            '/sat/'],
-        ['General ENGLISH Kursları',       '/general-english/'],
-        ['IELTS',                          '/ielts/'],
-        ['TOEFL',                          '/toefl/'],
-        ['Duolingo English Test',          '/duolingo/'],
-        ['KIDS ENGLISH',                   '/kids-english/'],
-        ['Alman Dili Kursları',            '/alman-dili-kurslari/'],
-        ['PTE ACADEMIC',                   '/pte-academic/'],
-        ['ELLT Hazırlıq Kursları',         '/ellt-kursu/'],
-        ['LanguageCert Hazırlıq Kursları', '/languagecert-kursu/'],
-        ['Türk Dili Kursları',             '/turk-dili-kurslari/'],
-        ['Xüsusi Üstünlüklər',             '/ustunlukler/'],
-        ['Niyə biz?',                      '/niye-biz/'],
-      ],
-    ],
-  ],
-  ['title' => 'EDDE Corporate', 'url' => '/korporativ/'],
-  ['title' => 'EDDE Event',     'url' => '/tedbirler/'],
-  [
-    'title' => 'Yazılar',
-    'url'   => '/meqaleler/',
-    'mega'  => [
-      'heading' => 'Yazılar',
-      'text'    => 'Xaricdə təhsil, viza və təqaüd mövzularında məqalələr və mediada çıxışlarımız.',
-      'cta'     => 'Məqalələrə baxın',
-      'visual'  => ['📰', 'Yeni', 'Məqalələr və xəbərlər'],
-      'links'   => [
-        ['Məqalələr',   '/meqaleler/'],
-        ['Mediada biz', '/mediada-biz/'],
-      ],
-    ],
-  ],
-  ['title' => 'FAQ', 'url' => '/faq/'],
-  [
-    'title' => 'Əlaqə',
-    'url'   => '#contact',
-    'mega'  => [
-      'heading' => 'Bizimlə əlaqə',
-      'text'    => 'Suallarınız var? Məsləhətçilərimiz sizinlə əlaqə saxlamağa hazırdır.',
-      'cta'     => 'WhatsApp-da yazın',
-      'cta_url' => 'https://wa.me/994702141033',
-      'label'   => 'Əlaqə məlumatları',
-      'visual'  => ['📍', 'Bakı', 'Baş ofis'],
-      'links'   => [
-        ['070 214 10 33',                       'tel:+994702141033'],
-        ['012 409 67 89',                       'tel:+994124096789'],
-        ['info@eddeglobal.az',                  'mailto:info@eddeglobal.az'],
-        ['Əliyar Əliyev 63, Nəriman Nərimanov', '#contact'],
-      ],
-    ],
-  ],
-];
-?>
-<!-- ============ HEADER ============ -->
-<header class="site-header" id="siteHeader">
-  <div class="container header__inner">
-    <a href="#top" class="logo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/logo.png" alt="EDDE Global" class="logo-img"></a>
-
-    <nav class="main-nav" id="mainNav">
-      <ul>
-        <?php foreach ($edde_nav as $item) : ?>
-          <?php if (empty($item['mega'])) : ?>
-            <li><a href="<?php echo $edde_href($item['url']); ?>"><?php echo esc_html($item['title']); ?></a></li>
-          <?php else :
-            $m    = $item['mega'];
-            $wide = count($m['links']) > 8; ?>
-            <li class="has-mega">
-              <a href="<?php echo $edde_href($item['url']); ?>"><?php echo esc_html($item['title']); ?></a>
-              <div class="mega-menu">
-                <div class="mega-menu-grid<?php echo $wide ? ' mega-menu-grid--wide' : ''; ?>">
-                  <div class="mega-menu__col mega-menu__col--intro">
-                    <h3><?php echo esc_html($m['heading']); ?></h3>
-                    <p><?php echo esc_html($m['text']); ?></p>
-                    <a href="<?php echo $edde_href(isset($m['cta_url']) ? $m['cta_url'] : $item['url']); ?>" class="btn btn--primary btn--sm"><?php echo esc_html($m['cta']); ?></a>
-                  </div>
-                  <div class="mega-menu__col mega-menu__col--links<?php echo $wide ? ' is-long' : ''; ?>">
-                    <span class="mega-menu__label"><?php echo esc_html(isset($m['label']) ? $m['label'] : 'Bu bölmədə'); ?></span>
-                    <?php foreach ($m['links'] as $link) : ?>
-                      <a href="<?php echo $edde_href($link[1]); ?>"><?php echo esc_html($link[0]); ?> <span>→</span></a>
-                    <?php endforeach; ?>
-                  </div>
-                  <div class="mega-menu__col mega-menu__col--visual">
-                    <div class="mega-menu__visual-box">
-                      <span><?php echo esc_html($m['visual'][0]); ?></span>
-                      <strong><?php echo esc_html($m['visual'][1]); ?></strong>
-                      <em><?php echo esc_html($m['visual'][2]); ?></em>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          <?php endif; ?>
-        <?php endforeach; ?>
-      </ul>
-    </nav>
-
-    <div class="header__right">
-      <button class="btn btn--primary" id="openConsult">Zəng istə</button>
-    </div>
-
-    <button class="nav-toggle" id="navToggle" aria-label="Menyu"><span></span><span></span><span></span></button>
-  </div>
-</header>
+<!-- ============ HEADER (vahid naviqasiya: inc/edde-nav.php) ============ -->
+<?php include get_stylesheet_directory() . '/parts/edde-header.php'; ?>
 
 <!-- ============ HERO ============ -->
 <section class="hero-slider" id="top">
@@ -246,7 +85,7 @@ $edde_nav = [
           <p>IELTS, TOEFL, Duolingo, PTE, SAT, General English, Business English, Kids English, Türk və Alman dili kursları — sertifikatlı müəllimlər və fərdi inkişaf planı ilə.</p>
           <div class="hero-slide__actions">
             <button class="btn btn--primary" data-open-modal="modalAcademy">Müraciət et</button>
-            <a href="<?php echo home_url('/edde-home/edde-academy/xidmetler/'); ?>" class="btn btn--outline">Ətraflı məlumat</a>
+            <a href="<?php echo home_url('/edde-xidmetler/'); ?>" class="btn btn--outline">Ətraflı məlumat</a>
           </div>
         </div>
         <div class="hero-slide__visual">
@@ -778,14 +617,14 @@ while ($logo_set && count($logo_set) < 12) {
       <a href="tel:+994702141033">070 214 10 33</a>
       <a href="tel:+994124096789">012 409 67 89</a>
       <a href="mailto:info@eddeglobal.az">info@eddeglobal.az</a>
-      <span>Əliyar Əliyev 63, Nəriman Nərimanov</span>
+      <span>Əliyar Əliyev 159, N.Nərimanov, Bakı</span>
     </div>
 
   </div>
 
   <div class="container footer__bottom"> <span>© 2018–2026 EDDE Global.<br>Site by: Naila.</span>
    <div class="footer__bottom-right"> <div class="footer__icef"> <span id='iasBadge' data-account-id='5105'></span><script async defer crossorigin="anonymous" src="https://www-cdn.icef.com/scripts/iasbadgeid.js"></script></div> 
-   <a href="#top">Məxfilik siyasəti</a> </div> </div>
+   <a href="<?php echo home_url('/mexfilik-siyaseti/'); ?>">Məxfilik siyasəti</a> </div> </div>
 </footer>
 
 <a href="https://wa.me/994702141033" class="floating-btn whatsapp" aria-label="WhatsApp ilə yazın">💬</a>

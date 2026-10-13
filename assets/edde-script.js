@@ -90,7 +90,7 @@ if (academyCarousel && academyPrev && academyNext) {
 // ===== Mega menu on mobile (tap to open instead of hover) =====
 document.querySelectorAll('.has-mega > a').forEach(link => {
   link.addEventListener('click', (e) => {
-    if (window.innerWidth <= 960) {
+    if (window.innerWidth <= 1100) {
       e.preventDefault();
       link.parentElement.classList.toggle('mega-open');
     }
