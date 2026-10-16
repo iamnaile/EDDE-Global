@@ -68,6 +68,7 @@ if (!function_exists('edde_nav_items')) {
           'heading' => 'EDDE Academy',
           'text'    => 'Beynəlxalq imtahanlara hazırlıq və dil kursları ilə hədəflərinizə çatın.',
           'cta'     => 'Bütün proqramlara baxın',
+          'cta_url' => '/edde-xidmetler/',
           'visual'  => ['📖', '13', 'Kurs və imtahan hazırlığı'],
           'links'   => [
             ['SAT',                            '/sat/'],
