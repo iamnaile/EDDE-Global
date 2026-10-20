@@ -32,6 +32,15 @@ add_filter('template_include', function ($template) {
     return get_stylesheet_directory() . '/edde-page.php';
 }, 99);
 
+/* Ana səhifə (eddeglobal.az) — edde-home.php şablonu avtomatik göstərilir.
+   WordPress-də "Parametrlər → Oxu" bölməsi nəyə qurulubsa (son yazılar və ya statik səhifə) fərq etmir. */
+add_filter('template_include', function ($template) {
+    if (is_admin() || is_embed() || !is_front_page()) {
+        return $template;
+    }
+    return get_stylesheet_directory() . '/edde-home.php';
+}, 98);
+
 // WordPress "oxşar ünvana" yönləndirməsin (məs. /olkeler/ → başqa yazı)
 add_filter('pre_redirect_guess_404_permalink', function ($pre) {
     return edde_route_page(edde_request_route()) ? '' : $pre;
