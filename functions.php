@@ -50,12 +50,12 @@ add_filter('edde_test_url', function ($url) {
    WhatsApp nömrəsi — WordPress-də Görünüş → Fərdiləşdir → "EDDE Əlaqə" bölməsindən idarə olunur.
    Üzən WhatsApp düyməsi, "WhatsApp-da yazın" linkləri və formaların göndərildiyi nömrə buradan gəlir.
    ========================================================================== */
-const EDDE_WA_DEFAULT = '994702141033';
+const EDDE_WA_DEFAULT = '994772555658';
 
-/** Yalnız rəqəmlər, beynəlxalq formatda (məs. 994702141033). */
+/** Yalnız rəqəmlər, beynəlxalq formatda (məs. 994772555658). */
 function edde_wa_sanitize($value) {
     $digits = preg_replace('/\D+/', '', (string) $value);
-    // 0702141033 → 994702141033
+    // 0772555658 → 994772555658
     if (strlen($digits) === 10 && $digits[0] === '0') {
         $digits = '994' . substr($digits, 1);
     }
@@ -86,7 +86,7 @@ add_action('customize_register', function ($wp_customize) {
     $wp_customize->add_control('edde_whatsapp_number', [
         'section'     => 'edde_contact',
         'label'       => 'WhatsApp nömrəsi',
-        'description' => 'Beynəlxalq formatda, + və boşluqsuz yazın. Məs: 994702141033',
+        'description' => 'Beynəlxalq formatda, + və boşluqsuz yazın. Məs: 994772555658',
         'type'        => 'text',
     ]);
 });

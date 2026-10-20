@@ -75,7 +75,7 @@ consultForm.addEventListener('submit', (e) => {
   const phone = inputs[1].value.trim();
   const program = inputs[2].value;
   const text = encodeURIComponent(`Salam, mənim adım ${name}. ${program} ilə maraqlanıram. Əlaqə nömrəm: ${phone}`);
-  window.open(`https://wa.me/${window.EDDE_WA || "994702141033"}?text=${text}`, '_blank');
+  window.open(`https://wa.me/${window.EDDE_WA || "994772555658"}?text=${text}`, '_blank');
   modal.classList.remove('open');
 });
 // ===== Academy carousel arrows =====

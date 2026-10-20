@@ -195,7 +195,7 @@ document.getElementById('svcForm').addEventListener('submit', function(e){
   var name = inputs[0] ? inputs[0].value.trim() : '';
   var phone = inputs[2] ? inputs[2].value.trim() : '';
   var text = encodeURIComponent('Salam, mənim adım ' + name + '. ' + course + ' proqramı ilə maraqlanıram. Əlaqə nömrəm: ' + phone);
-  window.open('https://wa.me/' + (window.EDDE_WA || '994702141033') + '?text=' + text, '_blank');
+  window.open('https://wa.me/' + (window.EDDE_WA || '994772555658') + '?text=' + text, '_blank');
 });
 </script>
 <?php wp_footer(); ?>
