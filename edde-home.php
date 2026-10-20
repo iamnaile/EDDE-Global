@@ -50,6 +50,7 @@
   </div>
 </div>
 
+<<<<<<< HEAD
 <?php
 // ===== NAVİQASİYA: bütün bölmə və səhifələr buradan idarə olunur =====
 // '#...', 'tel:', 'mailto:', 'https://' ilə başlayan ünvanlar olduğu kimi qalır,
@@ -203,6 +204,10 @@ $edde_nav = [
     <button class="nav-toggle" id="navToggle" aria-label="Menyu"><span></span><span></span><span></span></button>
   </div>
 </header>
+=======
+<!-- ============ HEADER (vahid naviqasiya: inc/edde-nav.php) ============ -->
+<?php include get_stylesheet_directory() . '/parts/edde-header.php'; ?>
+>>>>>>> 8a0721660017a0a5f8b12dd3d8c875f300f5e95d
 
 <?php
 // ===== HERO FON ŞƏKİLLƏRİ: hər slaydın arxa planı buradan idarə olunur =====
@@ -249,7 +254,7 @@ $edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
           <p>IELTS, TOEFL, Duolingo, PTE, SAT, General English, Business English, Kids English, Türk və Alman dili kursları — sertifikatlı müəllimlər və fərdi inkişaf planı ilə.</p>
           <div class="hero-slide__actions">
             <button class="btn btn--primary" data-open-modal="modalAcademy">Müraciət et</button>
-            <a href="<?php echo home_url('/edde-home/edde-academy/xidmetler/'); ?>" class="btn btn--outline">Ətraflı məlumat</a>
+            <a href="<?php echo home_url('/edde-xidmetler/'); ?>" class="btn btn--outline">Ətraflı məlumat</a>
           </div>
         </div>
       </div>
@@ -773,14 +778,18 @@ while ($logo_set && count($logo_set) < 12) {
       <h4>Əlaqə</h4>
       <a href="tel:+994772555658">077 255 56 58</a>
       <a href="mailto:info@eddeglobal.az">info@eddeglobal.az</a>
+<<<<<<< HEAD
       <span>Əliyar Əliyev 61, Nəriman Nərimanov</span>
+=======
+      <span>Əliyar Əliyev 159, N.Nərimanov, Bakı</span>
+>>>>>>> 8a0721660017a0a5f8b12dd3d8c875f300f5e95d
     </div>
 
   </div>
 
   <div class="container footer__bottom"> <span>© 2018–2026 EDDE Global.<br>Site by: Naila.</span>
    <div class="footer__bottom-right"> <div class="footer__icef"> <span id='iasBadge' data-account-id='5105'></span><script async defer crossorigin="anonymous" src="https://www-cdn.icef.com/scripts/iasbadgeid.js"></script></div> 
-   <a href="#top">Məxfilik siyasəti</a> </div> </div>
+   <a href="<?php echo home_url('/mexfilik-siyaseti/'); ?>">Məxfilik siyasəti</a> </div> </div>
 </footer>
 
 <a href="https://wa.me/994772555658" class="floating-btn whatsapp" aria-label="WhatsApp ilə yazın">💬</a>

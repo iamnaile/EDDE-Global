@@ -16,29 +16,11 @@
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/edde-styles.css">
 </head>
 <body <?php body_class('edde-page'); ?>>
-  <div class="page-bg" style="background-image:url('<?php echo get_stylesheet_directory_uri(); ?>/assets/bg-xidmetler.jpg');"></div>
+  <div class="page-bg" style="background-image:url('<?php echo get_stylesheet_directory_uri(); ?>/assets/bg-xidmetler.webp');"></div>
 <div class="page-bg-overlay"></div>
 <div class="page-content">
-<!-- ============ HEADER ============ -->
-<header class="site-header" id="siteHeader">
-  <div class="container header__inner">
-    <a href="<?php echo home_url('/edde-home/'); ?>" class="logo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/logo.png" alt="EDDE Global" class="logo-img"></a>
-    <nav class="main-nav" id="mainNav">
-      <ul>
-        <li><a href="<?php echo home_url('/edde-home/'); ?>#programs">Təhsil</a></li>
-        <li><a href="<?php echo home_url('/edde-xidmetler/'); ?>" class="is-active">EDDE Academy</a></li>
-        <li><a href="<?php echo home_url('/edde-home/'); ?>#why">Niyə biz?</a></li>
-        <li><a href="<?php echo home_url('/edde-home/'); ?>#reviews">Tələbə hekayələri</a></li>
-        <li><a href="<?php echo home_url('/edde-home/'); ?>#faq">FAQ</a></li>
-        <li><a href="<?php echo home_url('/edde-home/'); ?>#contact">Əlaqə</a></li>
-      </ul>
-    </nav>
-    <div class="header__right">
-      <button class="btn btn--primary" id="openConsult">Zəng istə</button>
-    </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Menyu"><span></span><span></span><span></span></button>
-  </div>
-</header>
+<!-- ============ HEADER (vahid naviqasiya: inc/edde-nav.php) ============ -->
+<?php $edde_current = 'edde-xidmetler'; include get_stylesheet_directory() . '/parts/edde-header.php'; ?>
 
 <!-- ============ PAGE HERO ============ -->
 <section class="svc-hero">
@@ -62,42 +44,42 @@
         <div class="svc-card__icon">📖</div>
         <h3>IELTS hazırlığı</h3>
         <p>Mütəxəssis rəhbərliyi altında hazırlıqla Band 7–8+ hədəfinə çatın.</p>
-        <a href="<?php echo home_url('/edde-ielts/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
+        <a href="<?php echo home_url('/ielts/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
       </div>
 
       <div class="svc-card">
         <div class="svc-card__icon">🌍</div>
         <h3>TOEFL hazırlığı</h3>
         <p>Akademik İngilis dili imtahanlarına effektiv şəkildə hazırlaşın.</p>
-        <a href="<?php echo home_url('/edde-toefl/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
+        <a href="<?php echo home_url('/toefl/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
       </div>
 
       <div class="svc-card">
         <div class="svc-card__icon">💻</div>
         <h3>PTE Academic</h3>
         <p>Kompüter-əsaslı qiymətləndirmə formatına tam hazırlıq.</p>
-        <a href="<?php echo home_url('/edde-pte/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
+        <a href="<?php echo home_url('/pte-academic/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
       </div>
 
       <div class="svc-card">
         <div class="svc-card__icon">🎓</div>
         <h3>SAT hazırlığı</h3>
         <p>Ən yüksək nəticələr üçün strukturlaşdırılmış Math və Verbal təlimi.</p>
-        <a href="<?php echo home_url('/edde-sat/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
+        <a href="<?php echo home_url('/sat/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
       </div>
 
       <div class="svc-card">
         <div class="svc-card__icon">🦉</div>
         <h3>Duolingo English Test</h3>
         <p>Sürətli, uyğun qiymətli beynəlxalq dil sertifikatına hazırlıq.</p>
-        <a href="<?php echo home_url('/edde-duolingo/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
+        <a href="<?php echo home_url('/duolingo/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
       </div>
 
       <div class="svc-card">
         <div class="svc-card__icon">🗣️</div>
         <h3>General English</h3>
         <p>İngilis dilini gündəlik və akademik istifadə üçün inamla öyrənin.</p>
-        <a href="<?php echo home_url('/edde-general-english/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
+        <a href="<?php echo home_url('/general-english/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
       </div>
 
     </div>
@@ -116,7 +98,7 @@
         <div class="svc-card__icon">🧒</div>
         <h3>Kids English</h3>
         <p>Uşaqlar üçün əsas dil bacarıqlarını inkişaf etdirən interaktiv proqram.</p>
-        <a href="<?php echo home_url('/edde-kids/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
+        <a href="<?php echo home_url('/kids-english/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
       </div>
     </div>
   </div>
@@ -135,21 +117,21 @@
         <div class="svc-card__icon">🇩🇪</div>
         <h3>Alman Dili Kursları</h3>
         <p>Almaniyada təhsil üçün başlanğıcdan irəliləmiş səviyyəyə qədər.</p>
-        <a href="<?php echo home_url('/edde-alman-dili/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
+        <a href="<?php echo home_url('/alman-dili-kurslari/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
       </div>
 
       <div class="svc-card">
         <div class="svc-card__icon">🇹🇷</div>
         <h3>Türk Dili Kursları</h3>
         <p>Türkiyədə təhsil üçün lazım olan dil bacarıqlarını qazanın.</p>
-        <a href="<?php echo home_url('/edde-turk-dili/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
+        <a href="<?php echo home_url('/turk-dili-kurslari/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
       </div>
 
       <div class="svc-card">
         <div class="svc-card__icon">📜</div>
         <h3>LanguageCert</h3>
         <p>Beynəlxalq səviyyədə tanınan alternativ dil sertifikatına hazırlıq.</p>
-        <a href="<?php echo home_url('/edde-languagecert/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
+        <a href="<?php echo home_url('/languagecert-kursu/'); ?>" class="svc-card__link">Proqramla yaxından tanış olun →</a>
       </div>
 
     </div>
@@ -187,21 +169,25 @@
     </div>
     <div class="footer__col footer__col--links">
       <h4>EDDE Academy</h4>
-      <a href="<?php echo home_url('/edde-ielts/'); ?>">IELTS</a>
-      <a href="<?php echo home_url('/edde-toefl/'); ?>">TOEFL</a>
-      <a href="<?php echo home_url('/edde-pte/'); ?>">PTE Academic</a>
-      <a href="<?php echo home_url('/edde-sat/'); ?>">SAT</a>
+      <a href="<?php echo home_url('/ielts/'); ?>">IELTS</a>
+      <a href="<?php echo home_url('/toefl/'); ?>">TOEFL</a>
+      <a href="<?php echo home_url('/pte-academic/'); ?>">PTE Academic</a>
+      <a href="<?php echo home_url('/sat/'); ?>">SAT</a>
     </div>
     <div class="footer__col footer__col--links">
       <h4>Əlaqə</h4>
       <a href="tel:+994772555658">+994 77 255 56 58</a>
       <a href="mailto:info@eddeglobal.az">info@eddeglobal.az</a>
+<<<<<<< HEAD
       <span>Əliyar Əliyev 61, Nəriman Nərimanov</span>
+=======
+      <span>Əliyar Əliyev 159, N.Nərimanov, Bakı</span>
+>>>>>>> 8a0721660017a0a5f8b12dd3d8c875f300f5e95d
     </div>
   </div>
   <div class="container footer__bottom">
     <span>© 2018–2026 EDDE Global.<br>Site by: Naila.</span>
-    <a href="#top">Məxfilik siyasəti</a>
+    <a href="<?php echo home_url('/mexfilik-siyaseti/'); ?>">Məxfilik siyasəti</a>
   </div>
 </footer>
 

@@ -1,0 +1,205 @@
+/* ==========================================================================
+   EDDE məzmun səhifələri (edde-page.php) — edde-styles.css-in dəyişənlərindən istifadə edir
+   ========================================================================== */
+
+.epage-eyebrow {
+  font-family: var(--font-display); font-size: 14px; font-weight: 700; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--brand-500); margin: 0 0 12px;
+}
+
+/* ---------- Hero ---------- */
+.epage-hero { padding: 64px 0 40px; position: relative; overflow: hidden; }
+.epage-hero::before {
+  content: ""; position: absolute; top: -200px; right: -140px; width: 520px; height: 520px;
+  background: radial-gradient(circle, var(--brand-glow), transparent 70%); filter: blur(40px); pointer-events: none;
+}
+.epage-hero__inner { position: relative; }
+.epage-hero__inner > * { max-width: 900px; }
+.epage-hero .btn--outline { color: var(--brand-600); border: 2px solid var(--brand-500); background: transparent; }
+.epage-hero .btn--outline:hover { background: var(--brand-500); color: #fff; }
+.epage-hero h1 { font-size: clamp(30px, 4.4vw, 46px); max-width: 24ch; margin-bottom: 16px; }
+.epage-lead { font-size: 17px; line-height: 1.7; max-width: 70ch; color: var(--text); opacity: .82; margin-bottom: 26px; }
+.epage-meta { font-size: 14px; color: var(--text-muted); margin-bottom: 8px; }
+.epage-meta a { color: var(--brand-500); font-weight: 600; }
+.epage-hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.epage-crumb-group { color: var(--text-muted) !important; }
+
+/* ---------- Əsas düzən ---------- */
+.epage-main { padding: 20px 0 80px; }
+.epage-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 40px; align-items: start; }
+.epage-content {
+  background: var(--surface); border: 1px solid var(--border); border-radius: calc(var(--radius) + 4px);
+  padding: 40px 44px; box-shadow: 0 8px 30px rgba(100, 39, 143, .06);
+}
+.epage-content > *:first-child { margin-top: 0; }
+.epage-content p { font-size: 15.5px; line-height: 1.8; color: var(--text); opacity: .86; }
+.epage-h2 { font-size: 24px; margin: 38px 0 16px; padding-bottom: 10px; border-bottom: 2px solid var(--bg-alt); position: relative; }
+.epage-h2::after { content: ""; position: absolute; left: 0; bottom: -2px; width: 56px; height: 2px; background: var(--brand-500); }
+.epage-h3 { font-size: 18px; margin: 26px 0 10px; color: var(--brand-600); }
+
+/* Siyahı */
+.epage-list { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 10px; }
+.epage-list li {
+  position: relative; padding: 12px 16px 12px 44px; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 12px; font-size: 15px; line-height: 1.65; color: var(--text);
+}
+.epage-list li::before {
+  content: "✓"; position: absolute; left: 14px; top: 12px; width: 22px; height: 22px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand-500), var(--brand-600)); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.epage-list li strong { color: var(--brand-700); }
+
+/* Kartlar */
+.epage-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 0 0 18px; }
+.epage-card {
+  background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 22px 20px;
+  transition: .2s;
+}
+.epage-card:hover { border-color: var(--brand-500); box-shadow: 0 10px 24px rgba(100, 39, 143, .1); transform: translateY(-2px); }
+.epage-card h3 { font-size: 16.5px; margin-bottom: 8px; color: var(--brand-700); }
+.epage-card p { font-size: 14px !important; line-height: 1.7 !important; margin: 0; }
+
+/* Addımlar */
+.epage-steps { max-width: none; margin-bottom: 18px; }
+.epage-steps .svc-stages__item h3 { color: var(--text); }
+.epage-steps .svc-stages__item p { font-size: 14.5px !important; }
+
+/* Statistika */
+.epage-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin: 0 0 24px; }
+.epage-stat {
+  background: linear-gradient(135deg, var(--brand-600), var(--brand-500)); border-radius: var(--radius);
+  padding: 20px 18px; text-align: center; color: #fff;
+}
+.epage-stat strong { display: block; font-family: var(--font-display); font-size: 30px; line-height: 1.1; color: #fff; }
+.epage-stat span { font-size: 13px; color: rgba(255, 255, 255, .88); }
+
+/* Kurs faktları */
+.epage-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin: 0 0 24px; }
+.epage-fact { background: var(--bg-alt); border-radius: var(--radius); padding: 16px 18px; }
+.epage-fact span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-muted); margin-bottom: 4px; }
+.epage-fact strong { font-family: var(--font-display); font-size: 17px; color: var(--brand-700); }
+
+/* Qeyd */
+.epage-note {
+  margin: 22px 0; padding: 16px 20px; border-left: 4px solid var(--brand-500); background: var(--bg);
+  border-radius: 0 12px 12px 0; font-size: 14.5px; line-height: 1.7; color: var(--text);
+}
+
+/* Etiketlər */
+.epage-tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+.epage-tags span, .epage-tags a {
+  padding: 8px 16px; border-radius: 999px; background: var(--bg-alt); border: 1px solid var(--border);
+  font-size: 14px; font-weight: 600; color: var(--brand-700);
+}
+.epage-tags a:hover { background: var(--brand-500); color: #fff; border-color: var(--brand-500); }
+
+/* Rəylər */
+.epage-quotes { columns: 2; column-gap: 18px; margin-bottom: 18px; }
+.epage-quote {
+  break-inside: avoid; margin: 0 0 18px; padding: 22px; background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius); border-top: 4px solid var(--brand-500);
+}
+.epage-quote blockquote { margin: 0 0 14px; font-size: 14px; line-height: 1.75; color: var(--text); font-style: italic; }
+.epage-quote figcaption strong { display: block; font-size: 14px; color: var(--brand-700); }
+.epage-quote figcaption span { font-size: 12.5px; color: var(--text-muted); }
+
+/* Keçid kartları */
+.epage-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 0 0 18px; }
+.epage-link {
+  display: flex; flex-direction: column; gap: 6px; padding: 18px 20px; background: var(--bg);
+  border: 1px solid var(--border); border-radius: var(--radius); transition: .2s;
+}
+.epage-link:hover { border-color: var(--brand-500); box-shadow: 0 10px 24px rgba(100, 39, 143, .1); transform: translateY(-2px); }
+.epage-link strong { font-family: var(--font-display); font-size: 15.5px; color: var(--text); }
+.epage-link span { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; }
+.epage-link em { margin-top: auto; font-style: normal; font-weight: 700; font-size: 13.5px; color: var(--brand-500); }
+
+/* Məqalə siyahısı */
+.epage-articles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 18px; }
+.epage-article {
+  display: flex; flex-direction: column; gap: 8px; padding: 22px; background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius); transition: .2s;
+}
+.epage-article:hover { border-color: var(--brand-500); box-shadow: 0 10px 24px rgba(100, 39, 143, .1); transform: translateY(-2px); }
+.epage-article time { font-size: 12.5px; font-weight: 700; color: var(--brand-500); }
+.epage-article h3 { font-size: 16.5px; line-height: 1.35; margin: 0; }
+.epage-article p { font-size: 13.5px !important; line-height: 1.65 !important; margin: 0 !important; }
+.epage-article em { margin-top: auto; font-style: normal; font-weight: 700; font-size: 13.5px; color: var(--brand-500); }
+
+/* Əlaqə */
+.epage-contact { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 20px; }
+.epage-contact__card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; }
+.epage-contact__card > span { display: block; font-family: var(--font-display); font-weight: 700; margin-bottom: 8px; color: var(--text); }
+.epage-contact__card a { display: block; font-size: 15px; font-weight: 600; color: var(--brand-600); margin-bottom: 4px; }
+.epage-contact__card a:hover { color: var(--brand-500); }
+.epage-contact__card p { margin: 0 0 8px; font-size: 14.5px !important; }
+.epage-map { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); margin-bottom: 8px; }
+.epage-map iframe { display: block; width: 100%; height: 340px; border: 0; }
+
+/* FAQ */
+.epage-faqsearch { margin-bottom: 18px; }
+.epage-faqsearch input {
+  width: 100%; padding: 14px 18px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg);
+  font-family: var(--font-body); font-size: 15px; color: var(--text);
+}
+.epage-faqsearch input:focus { outline: 2px solid var(--brand-500); outline-offset: 1px; }
+.epage-faq .accordion-item[hidden] { display: none; }
+.epage-faqempty { text-align: center; padding: 20px; }
+
+/* Ölkələr və universitetlər */
+.epage-ctabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.epage-ctab {
+  display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; cursor: pointer;
+  background: var(--bg); border: 1px solid var(--border); font: 600 14px var(--font-body); color: var(--text); transition: .15s;
+}
+.epage-ctab img { border-radius: 3px; box-shadow: 0 0 0 1px rgba(0, 0, 0, .08); }
+.epage-ctab:hover { border-color: var(--brand-500); }
+.epage-ctab.is-on { background: var(--brand-500); border-color: var(--brand-500); color: #fff; }
+.epage-cpanel[hidden] { display: none; }
+.epage-cpanel + .epage-cpanel { margin-top: 36px; }
+.epage-cpanel > .epage-h2 { margin-top: 0; }
+.epage-unis { display: grid; gap: 16px; }
+.epage-uni { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 24px; transition: .2s; }
+.epage-uni:hover { border-color: var(--brand-500); box-shadow: 0 10px 24px rgba(100, 39, 143, .1); }
+.epage-uni header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+.epage-uni h3 { font-size: 18px; margin: 0; color: var(--brand-700); }
+.epage-uni header span { font-size: 12.5px; font-weight: 700; padding: 4px 12px; background: var(--bg-alt); border-radius: 999px; color: var(--brand-600); }
+.epage-uni p { font-size: 14.5px !important; line-height: 1.75 !important; margin-bottom: 10px; }
+.epage-uni__cta { font-weight: 700; font-size: 13.5px; color: var(--brand-500); }
+.epage-uni__cta:hover { color: var(--brand-600); }
+
+/* Test formu */
+.epage-testform { max-width: 520px; margin: 8px 0 24px; box-shadow: none; background: var(--bg); }
+.epage-testform input { background: var(--surface); }
+
+/* ---------- Yan panel ---------- */
+.epage-aside { position: sticky; top: 100px; display: grid; gap: 18px; }
+.epage-aside__card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px;
+  box-shadow: 0 6px 22px rgba(100, 39, 143, .06);
+}
+.epage-aside__card h4 { font-size: 15px; margin-bottom: 12px; }
+.epage-aside__card nav { display: grid; gap: 2px; }
+.epage-aside__card nav a { padding: 9px 12px; border-radius: 10px; font-size: 14px; color: var(--text-muted); transition: .15s; }
+.epage-aside__card nav a:hover { background: var(--bg); color: var(--brand-600); }
+.epage-aside__card nav a.is-current { background: var(--bg-alt); color: var(--brand-700); font-weight: 700; }
+.epage-aside__card--cta { background: linear-gradient(135deg, var(--brand-600), var(--brand-500)); border: none; }
+.epage-aside__card--cta h4, .epage-aside__card--cta p { color: #fff; }
+.epage-aside__card--cta p { font-size: 13.5px; opacity: .9; }
+.epage-aside__phone { display: block; text-align: center; margin-top: 12px; font-weight: 700; color: #fff; font-size: 15px; }
+
+/* ---------- Responsiv ---------- */
+@media (max-width: 1000px) {
+  .epage-layout { grid-template-columns: 1fr; }
+  .epage-aside { position: static; grid-template-columns: 1fr 1fr; }
+  .epage-content { padding: 30px 26px; }
+}
+@media (max-width: 700px) {
+  .epage-hero { padding: 40px 0 24px; }
+  .epage-content { padding: 24px 18px; border-radius: var(--radius); }
+  .epage-cards, .epage-links, .epage-articles, .epage-contact, .epage-aside { grid-template-columns: 1fr; }
+  .epage-quotes { columns: 1; }
+  .epage-h2 { font-size: 21px; }
+  .epage-map iframe { height: 260px; }
+}
