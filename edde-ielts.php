@@ -120,7 +120,7 @@ $svc_stages = [
       <h2>Fərdi <?php echo esc_html($svc_title); ?> təlimatı alın</h2>
       <p>Məqsədləriniz barədə bizə məlumat verin, mütəxəssislərimiz sizə düzgün hazırlıq planını seçməyə kömək etsin.</p>
       <div class="svc-form__contact">
-        <div>📞 <a href="tel:+994702141033">070 214 10 33</a></div>
+        <div>📞 <a href="tel:+994772555658">077 255 56 58</a></div>
         <div>✉️ <a href="mailto:info@eddeglobal.az">info@eddeglobal.az</a></div>
       </div>
     </div>

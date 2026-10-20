@@ -114,7 +114,7 @@ if (!function_exists('edde_nav_items')) {
           'label'   => 'Əlaqə məlumatları',
           'visual'  => ['📍', 'Bakı', 'Baş ofis'],
           'links'   => [
-            ['070 214 10 33',                        'tel:+994702141033'],
+            ['077 255 56 58',                        'tel:+994772555658'],
             ['012 409 67 89',                        'tel:+994124096789'],
             ['info@eddeglobal.az',                   'mailto:info@eddeglobal.az'],
             ['Əliyar Əliyev 159, N.Nərimanov, Bakı', '/elaqe/'],
