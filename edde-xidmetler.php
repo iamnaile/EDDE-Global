@@ -194,10 +194,9 @@
     </div>
     <div class="footer__col footer__col--links">
       <h4>Əlaqə</h4>
-      <a href="tel:+994702141033">070 214 10 33</a>
-      <a href="tel:+994124096789">012 409 67 89</a>
+      <a href="tel:+994772555658">+994 77 255 56 58</a>
       <a href="mailto:info@eddeglobal.az">info@eddeglobal.az</a>
-      <span>Əliyar Əliyev 63, Nəriman Nərimanov</span>
+      <span>Əliyar Əliyev 61, Nəriman Nərimanov</span>
     </div>
   </div>
   <div class="container footer__bottom">
@@ -206,7 +205,7 @@
   </div>
 </footer>
 
-<a href="https://wa.me/994702141033" class="floating-btn whatsapp" aria-label="WhatsApp ilə yazın">💬</a>
+<a href="https://wa.me/994772555658" class="floating-btn whatsapp" aria-label="WhatsApp ilə yazın">💬</a>
 
 <!-- ============ CONSULT MODAL ============ -->
 <div class="modal-overlay" id="consultModal">

@@ -69,7 +69,6 @@ $edde_nav = [
       'visual'  => ['🏛️', '2018', 'Fəaliyyətə başladıq'],
       'links'   => [
         ['Şirkət haqqında',          '/shirket-haqqinda/'],
-        ['EDDE Global Missiyası',    '/missiya/'],
         ['Xidmətlər paketi',         '/xidmetler-paketi/'],
         ['Akkreditasiyalarımız',     '/akkreditasiya/'],
         ['Hüquqi Məsuliyyətlər',     '/qanunvericilik/'],
@@ -91,7 +90,6 @@ $edde_nav = [
         ['Bakalavr',               '/bakalavr/'],
         ['Magistratura Təhsili',   '/magistratura/'],
         ['Doktorantura Təhsili',   '/doktorantura/'],
-        ['Türkiyədə təhsil',       '/turkiyede-tehsil/'],
         ['Transfer Proqramları',   '/transfer/'],
         ['Təqaüd Proqramları',     '/teqaud/'],
         ['Yay Məktəbləri',         '/yay-mektebleri/'],
@@ -110,17 +108,9 @@ $edde_nav = [
       'cta'     => 'Bütün proqramlara baxın',
       'visual'  => ['📖', '11', 'Kurs və imtahan hazırlığı'],
       'links'   => [
-        ['SAT',                            '/sat/'],
-        ['General ENGLISH Kursları',       '/general-english/'],
-        ['IELTS',                          '/ielts/'],
-        ['TOEFL',                          '/toefl/'],
-        ['Duolingo English Test',          '/duolingo/'],
+        ['Dil Kursları',                   '/dil-kurslari/'],
+        ['İmtahana Hazırlıq kursları',     '/imtahana-hazirlik-kurslari/'],
         ['KIDS ENGLISH',                   '/kids-english/'],
-        ['Alman Dili Kursları',            '/alman-dili-kurslari/'],
-        ['PTE ACADEMIC',                   '/pte-academic/'],
-        ['ELLT Hazırlıq Kursları',         '/ellt-kursu/'],
-        ['LanguageCert Hazırlıq Kursları', '/languagecert-kursu/'],
-        ['Türk Dili Kursları',             '/turk-dili-kurslari/'],
         ['Xüsusi Üstünlüklər',             '/ustunlukler/'],
         ['Niyə biz?',                      '/niye-biz/'],
       ],
@@ -150,14 +140,14 @@ $edde_nav = [
       'heading' => 'Bizimlə əlaqə',
       'text'    => 'Suallarınız var? Məsləhətçilərimiz sizinlə əlaqə saxlamağa hazırdır.',
       'cta'     => 'WhatsApp-da yazın',
-      'cta_url' => 'https://wa.me/994702141033',
+      'cta_url' => 'https://wa.me/994772555658 ',
       'label'   => 'Əlaqə məlumatları',
       'visual'  => ['📍', 'Bakı', 'Baş ofis'],
       'links'   => [
-        ['070 214 10 33',                       'tel:+994702141033'],
-        ['012 409 67 89',                       'tel:+994124096789'],
+        ['077 255 56 58',                       'tel:+994772555658'],
+        
         ['info@eddeglobal.az',                  'mailto:info@eddeglobal.az'],
-        ['Əliyar Əliyev 63, Nəriman Nərimanov', '#contact'],
+        ['Əliyar Əliyev 61, Nəriman Nərimanov', '#contact'],
       ],
     ],
   ],
@@ -214,11 +204,29 @@ $edde_nav = [
   </div>
 </header>
 
+<?php
+// ===== HERO FON ŞƏKİLLƏRİ: hər slaydın arxa planı buradan idarə olunur =====
+// Şəkli assets/ qovluğuna atın və faylın adını müvafiq slaydın qarşısına yazın (məs. 'hero-academy.jpg').
+// Boş ('') qalan slayd öz rəngli gradient fonunda qalır.
+$edde_hero_bg = [
+  's1' => 'hero-xaricde-tehsil.jpg', // Xaricdə təhsil
+  's2' => 'hero-edde-academy.jpg',   // EDDE Academy
+  's4' => 'hero-edde-corporate.jpg', // EDDE Corporate
+  's3' => 'hero-edde-event.jpg',     // EDDE Event
+];
+$edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
+  if (empty($edde_hero_bg[$slide]) || !is_readable(get_stylesheet_directory() . '/assets/' . $edde_hero_bg[$slide])) return '';
+  $url = get_stylesheet_directory_uri() . '/assets/' . rawurlencode($edde_hero_bg[$slide]);
+  return '<div class="hero-slide__bg" style="--hero-bg: url(\'' . esc_url($url) . '\');" aria-hidden="true"></div>';
+};
+?>
+
 <!-- ============ HERO ============ -->
 <section class="hero-slider" id="top">
   <div class="hero-slider__track" id="heroTrack">
 
     <div class="hero-slide hero-slide--s1">
+      <?php echo $edde_hero_bg_layer('s1'); ?>
       <div class="container hero-slide__inner">
         <div class="hero-slide__text">
           <p class="eyebrow">Xaricdə Təhsil</p>
@@ -229,16 +237,11 @@ $edde_nav = [
             <a href="<?php echo home_url('/xaricde-tehsil/'); ?>" class="btn btn--outline">Ətraflı məlumat</a>
           </div>
         </div>
-        <div class="hero-slide__visual">
-          <div class="hero-visual-card">
-            <span class="hero-visual-card__emoji">🌐</span>
-            <div class="hero-visual-card__badge"><strong>400+</strong><span>Universitet</span></div>
-          </div>
-        </div>
       </div>
     </div>
 
     <div class="hero-slide hero-slide--s2">
+      <?php echo $edde_hero_bg_layer('s2'); ?>
       <div class="container hero-slide__inner">
         <div class="hero-slide__text">
           <p class="eyebrow">EDDE Academy</p>
@@ -249,15 +252,10 @@ $edde_nav = [
             <a href="<?php echo home_url('/edde-home/edde-academy/xidmetler/'); ?>" class="btn btn--outline">Ətraflı məlumat</a>
           </div>
         </div>
-        <div class="hero-slide__visual">
-          <div class="hero-visual-card">
-            <span class="hero-visual-card__emoji">📖</span>
-            <div class="hero-visual-card__badge"><strong>IELTS 5.5→7.5</strong><span>Bal artımı</span></div>
-          </div>
-        </div>
       </div>
     </div>
 <div class="hero-slide hero-slide--s4">
+      <?php echo $edde_hero_bg_layer('s4'); ?>
       <div class="container hero-slide__inner">
         <div class="hero-slide__text">
           <p class="eyebrow">EDDE Corporate</p>
@@ -268,15 +266,10 @@ $edde_nav = [
             <a href="<?php echo home_url('/korporativ/'); ?>" class="btn btn--outline">Ətraflı məlumat</a>
           </div>
         </div>
-        <div class="hero-slide__visual">
-          <div class="hero-visual-card">
-            <span class="hero-visual-card__emoji">🏢</span>
-            <div class="hero-visual-card__badge"><strong>5 addım</strong><span>İş modeli</span></div>
-          </div>
-        </div>
       </div>
     </div>
     <div class="hero-slide hero-slide--s3">
+      <?php echo $edde_hero_bg_layer('s3'); ?>
       <div class="container hero-slide__inner">
         <div class="hero-slide__text">
           <p class="eyebrow">EDDE Event</p>
@@ -284,12 +277,6 @@ $edde_nav = [
           <p>Universitet nümayəndələri ilə birbaşa görüşlər, təqaüd və viza mövzusunda seminarlar, xaricdə təhsil almış məzunların təcrübə paylaşımları. İştirak pulsuzdur, sertifikat təqdim olunur.</p>
           <div class="hero-slide__actions">
             <a href="<?php echo home_url('/tedbirler/'); ?>" class="btn btn--primary">Ətraflı</a>
-          </div>
-        </div>
-        <div class="hero-slide__visual">
-          <div class="hero-visual-card">
-            <span class="hero-visual-card__emoji">📅</span>
-            <div class="hero-visual-card__badge"><strong>Pulsuz</strong><span>Sertifikatlı iştirak</span></div>
           </div>
         </div>
       </div>
@@ -613,36 +600,45 @@ $edde_nav = [
 </section>
 
 <!-- ============ STUDENT STORIES ============ -->
+<?php
+// Rəy əlavə etmək üçün bu siyahıya yeni sətir əlavə edin: [ad, vəzifə/təşkilat, mətn]
+$edde_reviews = array(
+  array('Hümmət Əliyev', 'Quba 1 saylı Mediasiya Təşkilatının Direktoru', 'EDDE Global peşəkar yanaşması ilə övladımın xaricdə təhsil prosesini rahat və vaxtında tamamladı. Komandaya minnətdarıq.'),
+  array('Dr. Nəcəf Allahverdiyev', 'KarnegiKlub Treninq Mərkəzinin rəhbəri', 'Edde Global dünyanın aparıcı universitetlərində geniş imkanlar təqdim edən peşəkar bir şirkətdir. Üç övladım onların dəstəyi ilə xaricdə oxuyur.'),
+  array('Aqşin Rəhmanov', 'BankRespublika filial direktoru', 'Sənədləşmə və universitet seçimində göstərdikləri diqqət sayəsində bütün prosesi problemsiz tamamladıq. Hər kəsə tövsiyə edirəm.'),
+  array('Nuket Tanol', 'BAU Cyprus, Beynəlxalq Əlaqələr Direktoru', 'EDDE Global sadəcə tərəfdaş deyil, etibarlı yol yoldaşımızdır. Uğurlu əməkdaşlığımız beynəlxalq təhsil sahəsində nümunədir.'),
+  array('Orhan Gültekin', 'Rabitabank İH sədrinin 1-ci müavini', 'Qızımızın xaricdə təhsil alması üçün gerekli proses və prosedürlərlə bağlı yaşadığımız stresi EDDE Global ekibi üstlendi və bizə çok yardım etdiler. Bu sayədə evladımız İtalya’da təhsil almaya başladı. Başta Miryusif bəy olmaqla bütün EDDE Global ekibinə təşəkkür edirik.'),
+  array('Danış Tuğrul Gözcü', 'Özyeğin Universitetinin Ulus ofis direktoru', 'Edde Global, öğrencileri kabiliyetlerine göre en doğru program ve en doğru üniversiteye yönlendiren, hem öğrencilerin istek ve ihtiyaçlarını hem de üniversitelerin beklentilerini en iyi şekilde karşılayan örnek bir danışmanlık firmasıdır.'),
+);
+$edde_cols = array(array(), array());
+foreach ($edde_reviews as $i => $r) { $edde_cols[$i % 2][] = $r; }
+?>
 <section class="reviews" id="reviews">
   <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">Tələbə hekayələri</p>
-      <h2>Məzunlarımızın uğur hekayələri</h2>
-    </div>
-    <div class="reviews__grid reveal-group">
-      <div class="story-card reveal">
-        <div class="story-card__stars">★★★★★</div>
-        <p>"EDDE Global peşəkar yanaşması ilə övladımın xaricdə təhsil prosesini rahat və vaxtında tamamladı. Komandaya minnətdarıq."</p>
-        <div class="story-card__meta"><strong>Hümmət Əliyev</strong><span>Quba 1 saylı Mediasiya Təşkilatının Direktoru</span></div>
+    <div class="reviews__wrap reveal">
+      <div class="reviews__cols">
+        <?php foreach ($edde_cols as $ci => $col) : ?>
+          <div class="reviews__col<?php echo $ci ? ' reviews__col--rev' : ''; ?>" aria-hidden="<?php echo $ci ? 'true' : 'false'; ?>">
+            <div class="reviews__track" style="animation-duration: <?php echo max(24, count($col) * 14); ?>s;">
+              <?php for ($rep = 0; $rep < 2; $rep++) : foreach ($col as $r) : ?>
+                <figure class="review-card"<?php echo $rep ? ' aria-hidden="true"' : ''; ?>>
+                  <blockquote><?php echo esc_html($r[2]); ?></blockquote>
+                  <figcaption><strong><?php echo esc_html($r[0]); ?></strong><span><?php echo esc_html($r[1]); ?></span></figcaption>
+                </figure>
+              <?php endforeach; endfor; ?>
+            </div>
+          </div>
+        <?php endforeach; ?>
       </div>
-      <div class="story-card reveal">
-        <div class="story-card__stars">★★★★★</div>
-        <p>"Edde Global dünyanın aparıcı universitetlərində geniş imkanlar təqdim edən peşəkar bir şirkətdir. Üç övladım onların dəstəyi ilə xaricdə oxuyur."</p>
-        <div class="story-card__meta"><strong>Dr. Nəcəf Allahverdiyev</strong><span>KarnegiKlub Treninq Mərkəzinin rəhbəri</span></div>
-      </div>
-      <div class="story-card reveal">
-        <div class="story-card__stars">★★★★★</div>
-        <p>"Sənədləşmə və universitet seçimində göstərdikləri diqqət sayəsində bütün prosesi problemsiz tamamladıq. Hər kəsə tövsiyə edirəm."</p>
-        <div class="story-card__meta"><strong>Aqşin Rəhmanov</strong><span>BankRespublika filial direktoru</span></div>
-      </div>
-      <div class="story-card reveal">
-        <div class="story-card__stars">★★★★★</div>
-        <p>"EDDE Global sadəcə tərəfdaş deyil, etibarlı yol yoldaşımızdır. Uğurlu əməkdaşlığımız beynəlxalq təhsil sahəsində nümunədir."</p>
-        <div class="story-card__meta"><strong>Nuket Tanol</strong><span>BAU Cyprus, Beynəlxalq Əlaqələr Direktoru</span></div>
+      <div class="reviews__info">
+        <span class="reviews__badge"><span class="reviews__stars">★★★★★</span> Onlar bizi məsləhət görür! </span>
+        <h2>Bizi tanıyanlar EDDE Global haqqında nə deyir?</h2>
+        <p>Tələbələrimizin, valideynlərimizin və tərəfdaş universitetlərin real fikirləri.</p>
       </div>
     </div>
   </div>
 </section>
+
 
 <!-- ============ TƏRƏFDAŞ LOQOLARI ============ -->
 <?php
@@ -775,10 +771,9 @@ while ($logo_set && count($logo_set) < 12) {
 
     <div class="footer__col footer__col--links">
       <h4>Əlaqə</h4>
-      <a href="tel:+994702141033">070 214 10 33</a>
-      <a href="tel:+994124096789">012 409 67 89</a>
+      <a href="tel:+994772555658">077 255 56 58</a>
       <a href="mailto:info@eddeglobal.az">info@eddeglobal.az</a>
-      <span>Əliyar Əliyev 63, Nəriman Nərimanov</span>
+      <span>Əliyar Əliyev 61, Nəriman Nərimanov</span>
     </div>
 
   </div>
@@ -788,7 +783,7 @@ while ($logo_set && count($logo_set) < 12) {
    <a href="#top">Məxfilik siyasəti</a> </div> </div>
 </footer>
 
-<a href="https://wa.me/994702141033" class="floating-btn whatsapp" aria-label="WhatsApp ilə yazın">💬</a>
+<a href="https://wa.me/994772555658" class="floating-btn whatsapp" aria-label="WhatsApp ilə yazın">💬</a>
 
 <!-- ============ CONSULT MODAL ============ -->
 <div class="modal-overlay" id="consultModal">
