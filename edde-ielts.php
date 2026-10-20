@@ -184,7 +184,7 @@ $svc_stages = [
   </div>
 </footer>
 
-<a href="https://wa.me/994702141033" class="floating-btn whatsapp" aria-label="WhatsApp ilə yazın">💬</a>
+<a href="<?php echo esc_url(edde_wa_url()); ?>" class="floating-btn whatsapp" aria-label="WhatsApp ilə yazın">💬</a>
 
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/edde-script.js"></script>
 <script>
@@ -195,7 +195,7 @@ document.getElementById('svcForm').addEventListener('submit', function(e){
   var name = inputs[0] ? inputs[0].value.trim() : '';
   var phone = inputs[2] ? inputs[2].value.trim() : '';
   var text = encodeURIComponent('Salam, mənim adım ' + name + '. ' + course + ' proqramı ilə maraqlanıram. Əlaqə nömrəm: ' + phone);
-  window.open('https://wa.me/994702141033?text=' + text, '_blank');
+  window.open('https://wa.me/' + (window.EDDE_WA || '994702141033') + '?text=' + text, '_blank');
 });
 </script>
 <?php wp_footer(); ?>

@@ -1,6 +1,6 @@
 /* EDDE məzmun səhifələri (edde-page.php) üçün skriptlər */
 (function () {
-  var WA = '994702141033';
+  var WA = window.EDDE_WA || '994702141033';
 
   // ===== Müraciət formaları → WhatsApp (mövcud formalarla eyni qayda) =====
   document.querySelectorAll('.epage-form').forEach(function (form) {

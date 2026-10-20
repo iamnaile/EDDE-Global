@@ -45,3 +45,53 @@ add_filter('pre_redirect_guess_404_permalink', function ($pre) {
 add_filter('edde_test_url', function ($url) {
     return $url ?: '';
 });
+
+/* ==========================================================================
+   WhatsApp nömrəsi — WordPress-də Görünüş → Fərdiləşdir → "EDDE Əlaqə" bölməsindən idarə olunur.
+   Üzən WhatsApp düyməsi, "WhatsApp-da yazın" linkləri və formaların göndərildiyi nömrə buradan gəlir.
+   ========================================================================== */
+const EDDE_WA_DEFAULT = '994702141033';
+
+/** Yalnız rəqəmlər, beynəlxalq formatda (məs. 994702141033). */
+function edde_wa_sanitize($value) {
+    $digits = preg_replace('/\D+/', '', (string) $value);
+    // 0702141033 → 994702141033
+    if (strlen($digits) === 10 && $digits[0] === '0') {
+        $digits = '994' . substr($digits, 1);
+    }
+    return $digits;
+}
+
+function edde_wa_number() {
+    $n = edde_wa_sanitize(get_theme_mod('edde_whatsapp_number', EDDE_WA_DEFAULT));
+    return $n !== '' ? $n : EDDE_WA_DEFAULT;
+}
+
+/** https://wa.me/<nömrə> (istəyə görə ?text=...) */
+function edde_wa_url($text = '') {
+    $url = 'https://wa.me/' . edde_wa_number();
+    return $text !== '' ? $url . '?text=' . rawurlencode($text) : $url;
+}
+
+add_action('customize_register', function ($wp_customize) {
+    $wp_customize->add_section('edde_contact', [
+        'title'    => 'EDDE Əlaqə',
+        'priority' => 30,
+    ]);
+    $wp_customize->add_setting('edde_whatsapp_number', [
+        'default'           => EDDE_WA_DEFAULT,
+        'sanitize_callback' => 'edde_wa_sanitize',
+        'transport'         => 'refresh',
+    ]);
+    $wp_customize->add_control('edde_whatsapp_number', [
+        'section'     => 'edde_contact',
+        'label'       => 'WhatsApp nömrəsi',
+        'description' => 'Beynəlxalq formatda, + və boşluqsuz yazın. Məs: 994702141033',
+        'type'        => 'text',
+    ]);
+});
+
+// Skriptlər üçün nömrəni səhifəyə ötür (edde-script.js, edde-pages.js, edde-ielts.php)
+add_action('wp_head', function () {
+    echo '<script>window.EDDE_WA=' . wp_json_encode(edde_wa_number()) . ';</script>' . "\n";
+}, 1);

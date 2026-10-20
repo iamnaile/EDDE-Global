@@ -110,7 +110,7 @@ if (!function_exists('edde_nav_items')) {
           'heading' => 'Bizimlə əlaqə',
           'text'    => 'Suallarınız var? Məsləhətçilərimiz sizinlə əlaqə saxlamağa hazırdır.',
           'cta'     => 'WhatsApp-da yazın',
-          'cta_url' => 'https://wa.me/994702141033',
+          'cta_url' => edde_wa_url(),
           'label'   => 'Əlaqə məlumatları',
           'visual'  => ['📍', 'Bakı', 'Baş ofis'],
           'links'   => [

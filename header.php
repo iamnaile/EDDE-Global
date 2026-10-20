@@ -362,7 +362,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			     amma bu düymələrin özü HTML-də heç yerdə yox idi — indi əlavə olunur.
 			     Nömrəni/ünvanı öz real məlumatınızla WordPress Customizer-dən idarə etmək
 			     istəsəniz, bu iki sətri yprm_get_theme_setting() ilə əvəz edə bilərsiniz. -->
-			<a href="https://wa.me/994702141033" class="floating-btn whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp ilə yazın">
+			<a href="<?php echo esc_url(edde_wa_url()); ?>" class="floating-btn whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp ilə yazın">
 				<i class="fa fa-whatsapp" aria-hidden="true"></i>
 			</a>
 			<a href="https://g.page/edde-global?share" class="floating-btn location" target="_blank" rel="noopener" aria-label="Ofisin ünvanı">

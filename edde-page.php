@@ -31,7 +31,7 @@ $is_article = $page['kind'] === 'article';
 $article    = $is_article ? $page['article'] : null;
 $cta_title  = isset($page['cta']) ? $page['cta'] : 'Pulsuz konsultasiya';
 $cta_course = isset($page['cta_course']) ? $page['cta_course'] : $page['title'];
-$wa_number  = '994702141033';
+$wa_number  = edde_wa_number();
 
 /* ------------------------------ köməkçi çıxış funksiyaları ------------------------------ */
 $e = function ($t) { echo esc_html($t); };

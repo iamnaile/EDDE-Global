@@ -627,7 +627,7 @@ while ($logo_set && count($logo_set) < 12) {
    <a href="<?php echo home_url('/mexfilik-siyaseti/'); ?>">Məxfilik siyasəti</a> </div> </div>
 </footer>
 
-<a href="https://wa.me/994702141033" class="floating-btn whatsapp" aria-label="WhatsApp ilə yazın">💬</a>
+<a href="<?php echo esc_url(edde_wa_url()); ?>" class="floating-btn whatsapp" aria-label="WhatsApp ilə yazın">💬</a>
 
 <!-- ============ CONSULT MODAL ============ -->
 <div class="modal-overlay" id="consultModal">
