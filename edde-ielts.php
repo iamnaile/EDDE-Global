@@ -172,7 +172,7 @@ $svc_stages = [
     </div>
     <div class="footer__col footer__col--links">
       <h4>Əlaqə</h4>
-      <a href="tel:+994702141033">070 214 10 33</a>
+      <a href="tel:+994772555658">077 255 56 58</a>
       <a href="tel:+994124096789">012 409 67 89</a>
       <a href="mailto:info@eddeglobal.az">info@eddeglobal.az</a>
       <span>Əliyar Əliyev 159, N.Nərimanov, Bakı</span>
