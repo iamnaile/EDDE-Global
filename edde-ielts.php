@@ -147,7 +147,7 @@ $svc_stages = [
 <footer class="site-footer" id="contact">
   <div class="container footer__grid">
     <div class="footer__col footer__col--brand">
-      <a href="<?php echo home_url('/edde-home/'); ?>" class="logo logo--light"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/logo-footer.png" alt="EDDE Global" class="logo-img"></a>
+      <a href="<?php echo home_url('/edde-home/'); ?>" class="logo logo--light"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/logo.png" alt="EDDE Global" class="logo-img"></a>
       <p>2018-ci ildən bəri tələbələrin xaricdə təhsil arzularını gerçəkləşdirməsinə kömək edən etibarlı təhsil şirkəti.</p>
       <div class="footer__social">
         <a href="https://www.facebook.com/eddeglobalaz">Facebook</a>
