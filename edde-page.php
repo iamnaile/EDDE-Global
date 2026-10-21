@@ -8,11 +8,11 @@
  */
 
 $edde_route = edde_current_route();
-$page       = edde_route_page($edde_route);
+$edde_pg       = edde_route_page($edde_route);
 
-if (!$page) {
+if (!$edde_pg) {
   status_header(404);
-  $page = [
+  $edde_pg = [
     'route' => '', 'kind' => 'page', 'title' => 'Səhifə tapılmadı', 'group' => 'EDDE Global', 'icon' => '🔎',
     'meta'  => 'Axtardığınız səhifə tapılmadı.',
     'lead'  => 'Axtardığınız səhifə tapılmadı və ya köçürülüb. Aşağıdakı bölmələrdən birinə keçə bilərsiniz.',
@@ -27,10 +27,10 @@ if (!$page) {
 }
 
 $theme_uri = get_stylesheet_directory_uri();
-$is_article = $page['kind'] === 'article';
-$article    = $is_article ? $page['article'] : null;
-$cta_title  = isset($page['cta']) ? $page['cta'] : 'Pulsuz konsultasiya';
-$cta_course = isset($page['cta_course']) ? $page['cta_course'] : $page['title'];
+$is_article = $edde_pg['kind'] === 'article';
+$article    = $is_article ? $edde_pg['article'] : null;
+$cta_title  = isset($edde_pg['cta']) ? $edde_pg['cta'] : 'Pulsuz konsultasiya';
+$cta_course = isset($edde_pg['cta_course']) ? $edde_pg['cta_course'] : $edde_pg['title'];
 $wa_number  = '994702141033';
 
 /* ------------------------------ köməkçi çıxış funksiyaları ------------------------------ */
@@ -219,7 +219,7 @@ if ($is_article) {
 }
 
 $edde_current = $edde_route;
-$page_title   = $page['title'] . ' — EDDE Global';
+$page_title   = $edde_pg['title'] . ' — EDDE Global';
 $crumb_group  = $is_article
   ? [$article['type'] === 'media' ? 'Mediada biz' : 'Məqalələr', '/' . edde_article_base($article['type']) . '/']
   : null;
@@ -230,7 +230,7 @@ $crumb_group  = $is_article
 <meta charset="<?php bloginfo('charset'); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php echo esc_html($page_title); ?></title>
-<meta name="description" content="<?php echo esc_attr($page['meta']); ?>">
+<meta name="description" content="<?php echo esc_attr($edde_pg['meta']); ?>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <?php wp_head(); ?>
@@ -259,22 +259,22 @@ $crumb_group  = $is_article
     <a href="<?php echo esc_url(home_url('/edde-home/')); ?>">Ana səhifə</a> /
     <?php if ($crumb_group) : ?>
       <a href="<?php echo esc_url(home_url($crumb_group[1])); ?>"><?php $e($crumb_group[0]); ?></a> /
-    <?php elseif (!empty($page['group']) && $page['group'] !== $page['title']) : ?>
-      <span class="epage-crumb-group"><?php $e($page['group']); ?></span> /
+    <?php elseif (!empty($edde_pg['group']) && $edde_pg['group'] !== $edde_pg['title']) : ?>
+      <span class="epage-crumb-group"><?php $e($edde_pg['group']); ?></span> /
     <?php endif; ?>
-    <span><?php echo esc_html(mb_strlen($page['title']) > 60 ? mb_substr($page['title'], 0, 57) . '…' : $page['title']); ?></span>
+    <span><?php echo esc_html(mb_strlen($edde_pg['title']) > 60 ? mb_substr($edde_pg['title'], 0, 57) . '…' : $edde_pg['title']); ?></span>
   </div>
 </div>
 
 <!-- ============ HERO ============ -->
 <section class="epage-hero">
   <div class="container epage-hero__inner">
-    <p class="epage-eyebrow"><?php echo esc_html(($page['icon'] ?? '') . ' ' . ($is_article ? ($article['type'] === 'media' ? 'Mediada biz' : 'Məqalə') : $page['group'])); ?></p>
-    <h1><?php $e($page['title']); ?></h1>
+    <p class="epage-eyebrow"><?php echo esc_html(($edde_pg['icon'] ?? '') . ' ' . ($is_article ? ($article['type'] === 'media' ? 'Mediada biz' : 'Məqalə') : $edde_pg['group'])); ?></p>
+    <h1><?php $e($edde_pg['title']); ?></h1>
     <?php if ($is_article) : ?>
       <p class="epage-meta"><time><?php $e($article['date']); ?></time><?php if (!empty($article['source'])) : ?> · <a href="<?php echo esc_url($article['source']); ?>" target="_blank" rel="noopener nofollow">Mənbə</a><?php endif; ?></p>
-    <?php elseif (!empty($page['lead'])) : ?>
-      <p class="epage-lead"><?php $e($page['lead']); ?></p>
+    <?php elseif (!empty($edde_pg['lead'])) : ?>
+      <p class="epage-lead"><?php $e($edde_pg['lead']); ?></p>
     <?php endif; ?>
     <?php if (!$is_article) : ?>
     <div class="epage-hero__actions">
@@ -289,7 +289,7 @@ $crumb_group  = $is_article
 <section class="epage-main">
   <div class="container epage-layout">
     <article class="epage-content">
-      <?php $render_blocks($page['blocks']); ?>
+      <?php $render_blocks($edde_pg['blocks']); ?>
 
       <?php if ($is_article && $more) : ?>
         <h2 class="epage-h2">Digər yazılar</h2>
