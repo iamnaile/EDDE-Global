@@ -42,7 +42,21 @@ $edde_theme_uri = get_stylesheet_directory_uri();
   <div class="container footer__bottom">
     <span>© 2018–2026 EDDE Global.<br>Site by: Naila.</span>
     <div class="footer__bottom-right">
-      <div class="footer__icef"><span id="iasBadge" data-account-id="5105"></span><script async defer crossorigin="anonymous" src="https://www-cdn.icef.com/scripts/iasbadgeid.js"></script></div>
+      <div class="footer__icef">
+        <span id="iasBadge" data-account-id="5105"></span>
+        <script async defer crossorigin="anonymous" src="https://www-cdn.icef.com/scripts/iasbadgeid.js"></script>
+        <script>
+          /* ICEF skripti yüklənməsə (bloklanma, yavaş şəbəkə), eyni loqo yerli şəkillə göstərilir */
+          window.addEventListener('load', function () {
+            setTimeout(function () {
+              var b = document.getElementById('iasBadge');
+              if (b && !b.children.length && !b.textContent.trim()) {
+                b.innerHTML = '<img src="<?php echo esc_url($edde_theme_uri); ?>/assets/logos/06-icef.png" alt="ICEF" loading="lazy">';
+              }
+            }, 3000);
+          });
+        </script>
+      </div>
       <a href="<?php echo esc_url(home_url('/mexfilik-siyaseti/')); ?>">Məxfilik siyasəti</a>
     </div>
   </div>

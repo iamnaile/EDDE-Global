@@ -144,47 +144,8 @@ $svc_stages = [
 </section>
 
 <!-- ============ FOOTER ============ -->
-<footer class="site-footer" id="contact">
-  <div class="container footer__grid">
-    <div class="footer__col footer__col--brand">
-      <a href="<?php echo home_url('/edde-home/'); ?>" class="logo logo--light"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/logo.png" alt="EDDE Global" class="logo-img"></a>
-      <p>2018-ci ildən bəri tələbələrin xaricdə təhsil arzularını gerçəkləşdirməsinə kömək edən etibarlı təhsil şirkəti.</p>
-      <div class="footer__social">
-        <a href="https://www.facebook.com/eddeglobalaz">Facebook</a>
-        <a href="https://www.instagram.com/eddeglobal/">Instagram</a>
-        <a href="https://www.linkedin.com/company/edde-global/">LinkedIn</a>
-        <a href="https://www.youtube.com/@eddeglobal6894">YouTube</a>
-      </div>
-    </div>
-    <div class="footer__col footer__col--links">
-      <h4>Xaricdə təhsil</h4>
-      <a href="<?php echo home_url('/edde-home/'); ?>#programs">Foundation Təhsili</a>
-      <a href="<?php echo home_url('/edde-home/'); ?>#programs">Bakalavr</a>
-      <a href="<?php echo home_url('/edde-home/'); ?>#programs">Magistratura</a>
-      <a href="<?php echo home_url('/edde-home/'); ?>#programs">Doktorantura</a>
-    </div>
-    <div class="footer__col footer__col--links">
-      <h4>EDDE Academy</h4>
-      <a href="<?php echo home_url('/ielts/'); ?>">IELTS</a>
-      <a href="<?php echo home_url('/toefl/'); ?>">TOEFL</a>
-      <a href="<?php echo home_url('/pte-academic/'); ?>">PTE Academic</a>
-      <a href="<?php echo home_url('/sat/'); ?>">SAT</a>
-    </div>
-    <div class="footer__col footer__col--links">
-      <h4>Əlaqə</h4>
-      <a href="tel:+994702141033">070 214 10 33</a>
-      <a href="tel:+994124096789">012 409 67 89</a>
-      <a href="mailto:info@eddeglobal.az">info@eddeglobal.az</a>
-      <span>Əliyar Əliyev 159, N.Nərimanov, Bakı</span>
-    </div>
-  </div>
-  <div class="container footer__bottom">
-    <span>© 2018–2026 EDDE Global.<br>Site by: Naila.</span>
-    <a href="<?php echo home_url('/mexfilik-siyaseti/'); ?>">Məxfilik siyasəti</a>
-  </div>
-</footer>
-
-<a href="https://wa.me/994702141033" class="floating-btn whatsapp" aria-label="WhatsApp ilə yazın">💬</a>
+<!-- ============ FOOTER (vahid: parts/edde-footer.php) ============ -->
+<?php include get_stylesheet_directory() . '/parts/edde-footer.php'; ?>
 
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/edde-script.js"></script>
 <script>

@@ -585,76 +585,8 @@ while ($logo_set && count($logo_set) < 12) {
   </div>
 </section>
 
-<!-- ============ CONTACT / FOOTER ============ -->
-<footer class="site-footer" id="contact">
-  <div class="container footer__grid">
-
-    <div class="footer__col footer__col--brand">
-      <a href="#top" class="logo logo--light"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/logo.png" alt="EDDE Global" class="logo-img"></a>
-      <p>2018-ci ildən bəri tələbələrin xaricdə təhsil arzularını gerçəkləşdirməsinə kömək edən etibarlı təhsil şirkəti.</p>
-      <div class="footer__social">
-        <a href="https://www.facebook.com/eddeglobalaz">Facebook</a>
-        <a href="https://www.instagram.com/eddeglobal/">Instagram</a>
-        <a href="https://www.linkedin.com/company/edde-global/">LinkedIn</a>
-        <a href="https://www.youtube.com/@eddeglobal6894">YouTube</a>
-      </div>
-    </div>
-
-    <div class="footer__col footer__col--links">
-      <h4>Xaricdə təhsil</h4>
-      <a href="#programs">Foundation Təhsili</a>
-      <a href="#programs">Bakalavr</a>
-      <a href="#programs">Magistratura</a>
-      <a href="#programs">Doktorantura</a>
-      <a href="#programs">Təqaüd Proqramları</a>
-    </div>
-
-    <div class="footer__col footer__col--links">
-      <h4>EDDE Academy</h4>
-      <a href="#academy">IELTS</a>
-      <a href="#academy">TOEFL</a>
-      <a href="#academy">PTE Academic</a>
-      <a href="#academy">SAT</a>
-      <a href="#academy">Alman Dili Kursları</a>
-    </div>
-
-    <div class="footer__col footer__col--links">
-      <h4>Əlaqə</h4>
-      <a href="tel:+994772555658">077 255 56 58</a>
-      <a href="mailto:info@eddeglobal.az">info@eddeglobal.az</a>
-      <span>Əliyar Əliyev 61, Nəriman Nərimanov</span>
-    </div>
-
-  </div>
-
-  <div class="container footer__bottom"> <span>© 2018–2026 EDDE Global.<br>Site by: Naila.</span>
-   <div class="footer__bottom-right"> <div class="footer__icef"> <span id='iasBadge' data-account-id='5105'></span><script async defer crossorigin="anonymous" src="https://www-cdn.icef.com/scripts/iasbadgeid.js"></script></div> 
-   <a href="<?php echo home_url('/mexfilik-siyaseti/'); ?>">Məxfilik siyasəti</a> </div> </div>
-</footer>
-
-<a href="https://wa.me/994772555658" class="floating-btn whatsapp" aria-label="WhatsApp ilə yazın">💬</a>
-
-<!-- ============ CONSULT MODAL ============ -->
-<div class="modal-overlay" id="consultModal">
-  <div class="modal">
-    <button class="modal__close" id="closeConsult">✕</button>
-    <h3>Zəngə yazılın</h3>
-    <p>Nömrənizi buraxın, məsləhətçimiz Sizinlə əlaqə saxlasın.</p>
-    <form id="consultForm">
-      <input type="text" placeholder="Ad Soyad" required>
-      <input type="tel" placeholder="+994 XX XXX XX XX" required>
-      <select>
-        <option>Maraqlandığınız proqram</option>
-        <option>Bakalavr</option>
-        <option>Magistratura</option>
-        <option>Dil Kursu</option>
-        <option>Təqaüd Proqramı</option>
-      </select>
-      <button type="submit" class="btn btn--primary btn--block">Göndər</button>
-      <p class="modal__note">Formu göndərməklə razılıq verirsiniz ki, EDDE Global Sizinlə əlaqə saxlaya bilər.</p>
-    </form>
-  </div>
-</div>
+<!-- ============ FOOTER (vahid: parts/edde-footer.php) ============ -->
+<?php include get_stylesheet_directory() . '/parts/edde-footer.php'; ?>
 
 <!-- ============ HERO MODAL: XARİCDƏ TƏHSİL ============ -->
 <div class="modal-overlay" id="modalTehsil">
