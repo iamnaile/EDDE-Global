@@ -68,17 +68,71 @@ openButtons.forEach(btn => {
 closeBtn.addEventListener('click', () => modal.classList.remove('open'));
 modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
 
+// ===== Formaların göndərilməsi: admin-ajax → WordPress "Müraciətlər" + e-poçt =====
+function eddeCollect(form) {
+  const data = { name: '', phone: '', email: '', message: '', details: '', website: '' };
+  const details = [];
+  form.querySelectorAll('input, select, textarea').forEach(el => {
+    if (el.type === 'checkbox' || el.type === 'submit' || el.type === 'button') return;
+    const val = (el.value || '').trim();
+    if (el.name === 'website') { data.website = val; return; }
+    if (el.type === 'tel') { data.phone = val; return; }
+    if (el.type === 'email') { data.email = val; return; }
+    if (el.tagName === 'TEXTAREA') { data.message = val; return; }
+    if (el.tagName === 'SELECT') {
+      if (el.selectedIndex > 0 && val) details.push((el.options[0].text || 'Seçim') + ': ' + val);
+      return;
+    }
+    if (el.name === 'surname') { data.name = (data.name + ' ' + val).trim(); return; }
+    if (!data.name) { data.name = val; return; }
+    if (val) details.push((el.placeholder || el.name || 'Sahə') + ': ' + val);
+  });
+  data.details = details.join('\n');
+  data.course = form.dataset.course || '';
+  data.source = form.dataset.source || document.title + ' — ' + location.pathname;
+  if (form.dataset.interest) data.details += (data.details ? '\n' : '') + 'Maraqlandığı: ' + form.dataset.interest;
+  return data;
+}
+
+function eddeStatus(form, text, ok) {
+  let el = form.querySelector('.form-status');
+  if (!el) { el = document.createElement('p'); el.className = 'form-status'; form.appendChild(el); }
+  el.textContent = text;
+  el.classList.toggle('is-ok', !!ok);
+  el.classList.toggle('is-err', !ok);
+}
+
+// Uğurda true, xətada false qaytarır; xətada istifadəçi WhatsApp ilə yaza bilsin deyə mesaj göstərilir
+window.eddeSendLead = function (form) {
+  const data = eddeCollect(form);
+  const btn = form.querySelector('button[type="submit"]');
+  if (btn) { btn.disabled = true; btn.dataset.label = btn.dataset.label || btn.textContent; btn.textContent = 'Göndərilir…'; }
+  const fd = new FormData();
+  fd.append('action', 'edde_lead');
+  Object.keys(data).forEach(k => fd.append(k, data[k]));
+  return fetch(window.EDDE_AJAX || '/wp-admin/admin-ajax.php', { method: 'POST', body: fd, credentials: 'same-origin' })
+    .then(r => r.json())
+    .then(j => {
+      if (!j || !j.success) throw new Error((j && j.data && j.data.message) || 'xəta');
+      eddeStatus(form, 'Müraciətiniz qəbul edildi. Tezliklə sizinlə əlaqə saxlayacağıq.', true);
+      form.reset();
+      return true;
+    })
+    .catch(err => {
+      eddeStatus(form, 'Müraciət göndərilmədi. Zəhmət olmasa WhatsApp və ya telefonla əlaqə saxlayın: +' + (window.EDDE_WA || '994708332024'), false);
+      return false;
+    })
+    .finally(() => { if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label; } });
+};
+
 const consultForm = document.getElementById('consultForm');
-consultForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const inputs = consultForm.querySelectorAll('input, select');
-  const name = inputs[0].value.trim();
-  const phone = inputs[1].value.trim();
-  const program = inputs[2].value;
-  const text = encodeURIComponent(`Salam, mənim adım ${name}. ${program} ilə maraqlanıram. Əlaqə nömrəm: ${phone}`);
-  window.open(`https://wa.me/${window.EDDE_WA || '994708332024'}?text=${text}`, '_blank');
-  modal.classList.remove('open');
-});
+if (consultForm) {
+  consultForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    consultForm.dataset.source = 'Zəng istə (modal) — ' + location.pathname;
+    window.eddeSendLead(consultForm).then(ok => { if (ok) setTimeout(() => modal.classList.remove('open'), 1800); });
+  });
+}
 // ===== Academy carousel arrows =====
 const academyCarousel = document.getElementById('academyCarousel');
 const academyPrev = document.getElementById('academyPrev');
@@ -148,8 +202,7 @@ document.querySelectorAll('.modal-overlay').forEach(overlay => {
 document.querySelectorAll('.hero-form').forEach(form => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    // TODO: real email/database inteqrasiyası backend-dən qoşulmalıdır (bax qeyd aşağıda)
-    form.classList.add('is-sent');
+    window.eddeSendLead(form).then(ok => { if (ok) form.classList.add('is-sent'); });
   });
 });
 

@@ -2,19 +2,11 @@
 (function () {
   var WA = window.EDDE_WA || '994708332024';
 
-  // ===== Müraciət formaları → WhatsApp (mövcud formalarla eyni qayda) =====
+  // ===== Müraciət formaları → admin-ajax (WordPress "Müraciətlər" + e-poçt) =====
   document.querySelectorAll('.epage-form').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var course = form.dataset.course || '';
-      var interest = form.dataset.interest ? ' (' + form.dataset.interest + ')' : '';
-      var val = function (n) { var el = form.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
-      var name = (val('name') + ' ' + val('surname')).trim();
-      var msg = val('message');
-
-      var text = 'Salam, mənim adım ' + name + '. ' + course + interest + ' ilə maraqlanıram. ' +
-        'Əlaqə nömrəm: ' + val('phone') + (val('email') ? ', e-poçt: ' + val('email') : '') + '.' + (msg ? ' Mesaj: ' + msg : '');
-      window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(text), '_blank');
+      window.eddeSendLead(form);
     });
   });
 

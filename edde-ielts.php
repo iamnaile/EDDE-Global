@@ -153,12 +153,7 @@ $svc_stages = [
 <script>
 document.getElementById('svcForm').addEventListener('submit', function(e){
   e.preventDefault();
-  var course = this.dataset.course;
-  var inputs = this.querySelectorAll('input[type=text], input[type=tel]');
-  var name = inputs[0] ? inputs[0].value.trim() : '';
-  var phone = inputs[2] ? inputs[2].value.trim() : '';
-  var text = encodeURIComponent('Salam, mənim adım ' + name + '. ' + course + ' proqramı ilə maraqlanıram. Əlaqə nömrəm: ' + phone);
-  window.open('https://wa.me/' + (window.EDDE_WA || '994708332024') + '?text=' + text, '_blank');
+  window.eddeSendLead(this);
 });
 </script>
 <?php wp_footer(); ?>
