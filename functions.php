@@ -15,7 +15,6 @@ add_action('wp_enqueue_scripts', 'edde_child_enqueue_styles');
    ========================================================================== */
 require_once get_stylesheet_directory() . '/inc/edde-contact.php';
 require_once get_stylesheet_directory() . '/inc/edde-content.php';
-require_once get_stylesheet_directory() . '/inc/edde-leads.php';
 
 add_filter('template_include', function ($template) {
     if (is_admin() || is_embed()) {

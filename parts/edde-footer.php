@@ -4,7 +4,7 @@ require_once get_stylesheet_directory() . '/inc/edde-contact.php';
 $edde_theme_uri = get_stylesheet_directory_uri();
 $edde_c = edde_contact();
 ?>
-<script>window.EDDE_WA = <?php echo wp_json_encode($edde_c['whatsapp']); ?>; window.EDDE_AJAX = <?php echo wp_json_encode(admin_url('admin-ajax.php')); ?>;</script>
+<script>window.EDDE_WA = <?php echo wp_json_encode($edde_c['whatsapp']); ?>;</script>
 <footer class="site-footer" id="contact">
   <div class="container footer__grid">
     <div class="footer__col footer__col--brand">

@@ -557,9 +557,3 @@ ul { list-style: none; margin: 0; padding: 0; }
 
 .academy__cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; }
 
-/* Forma statusu (göndərildi / xəta) */
-.form-status { margin: 12px 0 0; font-size: 13.5px; line-height: 1.5; text-align: center; }
-.form-status.is-ok { color: #1B8A5A; }
-.form-status.is-err { color: #B3261E; }
-button[disabled] { opacity: .7; cursor: wait; }
-.hero-form.is-sent .form-status { display: none; }
