@@ -77,7 +77,7 @@ if (!function_exists('edde_nav_items')) {
         ],
       ],
       ['title' => 'EDDE Corporate', 'url' => '/korporativ/'],
-      ['title' => 'EDDE Event',     'url' => '/tedbirler/'],
+      ['title' => 'İxtisas seçimi testi', 'url' => edde_contact()['test_url']],
       [
         'title' => 'Yazılar',
         'url'   => '/meqaleler/',

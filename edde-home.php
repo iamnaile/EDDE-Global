@@ -61,7 +61,6 @@ $edde_hero_bg = [
   's1' => 'hero-xaricde-tehsil.jpg', // Xaricdə təhsil
   's2' => 'hero-edde-academy.jpg',   // EDDE Academy
   's4' => 'hero-edde-corporate.jpg', // EDDE Corporate
-  's3' => 'hero-edde-event.jpg',     // EDDE Event
 ];
 $edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
   if (empty($edde_hero_bg[$slide]) || !is_readable(get_stylesheet_directory() . '/assets/' . $edde_hero_bg[$slide])) return '';
@@ -117,21 +116,6 @@ $edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
         </div>
       </div>
     </div>
-    <div class="hero-slide hero-slide--s3">
-      <?php echo $edde_hero_bg_layer('s3'); ?>
-      <div class="container hero-slide__inner">
-        <div class="hero-slide__text">
-          <p class="eyebrow">EDDE Event</p>
-          <h1>Təhsil tədbirləri, seminarlar və universitet görüşləri</h1>
-          <p>Universitet nümayəndələri ilə birbaşa görüşlər, təqaüd və viza mövzusunda seminarlar, xaricdə təhsil almış məzunların təcrübə paylaşımları. İştirak pulsuzdur, sertifikat təqdim olunur.</p>
-          <div class="hero-slide__actions">
-            <a href="<?php echo home_url('/tedbirler/'); ?>" class="btn btn--primary">Ətraflı</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    
 
   </div>
 
@@ -142,7 +126,6 @@ $edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
     <button class="active" data-slide="0" aria-label="Slayd 1"></button>
     <button data-slide="1" aria-label="Slayd 2"></button>
     <button data-slide="2" aria-label="Slayd 3"></button>
-    <button data-slide="3" aria-label="Slayd 4"></button>
   </div>
 </section>
 

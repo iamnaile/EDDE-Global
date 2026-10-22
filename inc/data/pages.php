@@ -142,8 +142,8 @@ return [
     'title' => 'Tərəfdaşlarımız',
     'group' => 'Haqqımızda',
     'icon' => '🤝',
-    'meta' => 'EDDE Global tərəfdaşları və üzvlük etdiyi təşkilatlar: PIER, YEDAB, ASAC, ICEF Academy, StudyTravel, Università degli Studi LINK və digərləri.',
-    'lead' => 'EDDE Global beynəlxalq təhsil assosiasiyaları, təhsil agentlikləri və biznes tərəfdaşları ilə əməkdaşlıq edir. Bu əməkdaşlıqlar xidmətlərimizin keyfiyyətini və etibarlılığını möhkəmləndirir.',
+    'meta' => 'EDDE Global-ın tərəfdaşları: beynəlxalq təhsil təşkilatları və assosiasiyaları, universitetlər, Azərbaycan şirkətləri.',
+    'lead' => 'EDDE Global beynəlxalq təhsil təşkilatları, universitetlər və Azərbaycandakı şirkətlərlə əməkdaşlıq edir. Bu tərəfdaşlıqlar xidmətlərimizin keyfiyyətini və etibarlılığını möhkəmləndirir.',
     'blocks' => [
       ['partners'],
       ['note', 'Tərəfdaşlıq təklifləri üçün info@eddeglobal.az ünvanına yaza bilərsiniz.'],
@@ -720,68 +720,6 @@ return [
     ],
     'cta' => 'Korporativ təklif üçün müraciət edin',
     'cta_course' => 'EDDE Corporate',
-  ],
-  'tedbirler' => [
-    'title' => 'EDDE Event',
-    'group' => 'Digər',
-    'icon' => '📅',
-    'meta' => 'EDDE Event — təhsil tədbirləri, seminarlar və universitet görüşləri. Universitet nümayəndələri ilə birbaşa ünsiyyət, təqaüd və viza mövzularında seminarlar.',
-    'lead' => 'Universitet nümayəndələri ilə birbaşa görüşlər, təqaüd və viza mövzusunda seminarlar, xaricdə təhsil almış məzunların təcrübə paylaşımları. İştirak pulsuzdur, sertifikat təqdim olunur.',
-    'blocks' => [
-      [
-        'p',
-        'Şirkət direktoru Miryusif Cavadzadənin sözlərinə görə, Dekabr 2024 – May 2025 arası 7 beynəlxalq tədbir təşkil edilib. Əsas məqsəd tələbələr, valideynlər və universitetlər arasında birbaşa ünsiyyəti təşkil etmək, yerində qəbul həyata keçirmək və təqaüd imkanlarını artırmaqdır.',
-      ],
-      ['h', 'Tədbir formatlarımız'],
-      [
-        'cards',
-        [
-          [
-            'Universitet görüşləri',
-            'Universitet nümayəndələri ilə birbaşa ünsiyyət, yerində qəbul və təqaüd imkanları haqqında məlumat.',
-          ],
-          [
-            'Təqaüd və viza seminarları',
-            'Təqaüd proqramları, viza prosesi və sənədləşmə mövzularında seminarlar.',
-          ],
-          [
-            'Məzun təcrübə paylaşımları',
-            'Xaricdə təhsil almış məzunların öz təcrübələrini bölüşdüyü görüşlər.',
-          ],
-          [
-            'Sərgilər və B2B görüşlər',
-            'Bakıda keçirilən sərgilərdə iştirak, beynəlxalq konfranslar və B2B görüşlər.',
-          ],
-        ],
-      ],
-      ['h', 'Keçirilmiş tədbirlərdən nümunələr'],
-      [
-        'links',
-        [
-          [
-            'EDDE Global və İstinye Universiteti doktorantura təhsilini daha əlçatan etdi',
-            '/mediada-biz/edde-global-ve-istinye-universiteti-doktorantura/',
-            '13.05.2025 · Bakıda xaricdə təhsil şirkətlərinin iştirakı ilə genişmiqyaslı görüş.',
-          ],
-          [
-            'DAÜ və EDDE Global Bakıda təqdimat keçirdi',
-            '/mediada-biz/dau-ve-edde-global-bakida-teqdimat-kecirdi/',
-            '14.06.2025 · Azərbaycanlı gənclərə 80%-dək təqaüd imkanı.',
-          ],
-          [
-            'EDDE Globalın Beynəlxalq Təhsil Sektorundakı Fəaliyyəti və Nailiyyətləri',
-            '/mediada-biz/edde-globalin-beynelxalq-tehsil-sektorundaki-fealiyyeti/',
-            '12.04.2025 · Tədbirlər, sərgilər və akademiya fəaliyyəti.',
-          ],
-        ],
-      ],
-      [
-        'note',
-        'Tədbirlərdə iştirak pulsuzdur və iştirakçılara sertifikat təqdim olunur. Yaxınlaşan tədbirlər barədə məlumat almaq üçün bizimlə əlaqə saxlayın və ya sosial şəbəkələrimizi izləyin.',
-      ],
-    ],
-    'cta' => 'Tədbirlərə qeydiyyatdan keçin',
-    'cta_course' => 'EDDE Event',
   ],
   'xaricde-tehsil' => [
     'title' => 'Xaricdə təhsil',

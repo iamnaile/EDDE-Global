@@ -139,7 +139,6 @@ ul { list-style: none; margin: 0; padding: 0; }
 /* --tint-a (tünd) və --tint-b (açıq): şəklin üstündəki rəng pərdəsi, formatı R, G, B */
 .hero-slide--s1 { --tint-a: 62, 20, 124; --tint-b: 120, 23, 182; }  /* Xaricdə təhsil */
 .hero-slide--s2 { --tint-a: 22, 36, 82;  --tint-b: 46, 91, 255; }   /* Academy */
-.hero-slide--s3 { --tint-a: 98, 62, 6;   --tint-b: 224, 166, 46; }  /* Event */
 .hero-slide--s4 { --tint-a: 3, 58, 44;   --tint-b: 12, 166, 120; }  /* Corporate */
 
 /* fon şəkli (PHP-də $edde_hero_bg ilə qoşulur): bulanıq şəkil + rəngli pərdə */

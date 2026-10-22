@@ -212,6 +212,27 @@ document.querySelectorAll('.hero-form').forEach(form => {
   updatePlanePosition();
 })();
 
+// ===== Bütün səhifələrdə: scroll edəndə bölmələr ana səhifədəki kimi tədricən görünsün =====
+(function () {
+  const root = document.querySelector('.page-content');
+  if (!root) return;
+  const grids = '.svc-grid, .svc-why__grid, .svc-stats__grid, .svc-includes, .svc-stages, .svc-form__inner, .epage-cards, .epage-stats, .epage-facts, .epage-links, .epage-quotes, .epage-steps, .epage-contact, .atl-grid, .partners-grid';
+  const wrappers = '.epage-layout, .epage-content';
+  const tag = el => { if (!el.classList.contains('reveal') && !el.closest('.reveal')) el.classList.add('reveal'); };
+  const walk = parent => {
+    Array.from(parent.children).forEach(c => {
+      if (c.classList.contains('reveal') || c.classList.contains('reveal-group') || c.querySelector('.reveal')) return;
+      if (c.matches(wrappers)) { walk(c); return; }
+      if (c.matches(grids)) { c.classList.add('reveal-group'); Array.from(c.children).forEach(tag); return; }
+      tag(c);
+    });
+  };
+  root.querySelectorAll('section').forEach(sec => {
+    if (sec.matches('.hero-slider, [class*="hero"]')) return;
+    sec.querySelectorAll(':scope > .container, :scope > .container-fluid').forEach(walk);
+  });
+})();
+
 // ===== SCROLL REVEAL =====
 (function () {
   const items = document.querySelectorAll('.reveal');

@@ -105,7 +105,6 @@
         <li>Həftəsonu (şənbə günü) qrup formatında conversation klubları keçirilir.</li>
         <li>Qrup dərslərində 3–4 tələbə iştirak edir. Conversation qruplarında isə maksimum 6–8 tələbə iştirak edir.</li>
     </ul>
-    <p><a href="<?php echo home_url('/dil-kurslari/'); ?>" class="btn btn--primary">Dil kursları haqqında ətraflı</a></p>
   </div>
 </section>
 
