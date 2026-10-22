@@ -13,6 +13,7 @@ add_action('wp_enqueue_scripts', 'edde_child_enqueue_styles');
    /meqaleler/…) WordPress-də həmin səhifə olsa da, olmasa da, bu şablon göstərilir —
    ayrıca səhifə yaradıb şablon seçməyə ehtiyac yoxdur.
    ========================================================================== */
+require_once get_stylesheet_directory() . '/inc/edde-contact.php';
 require_once get_stylesheet_directory() . '/inc/edde-content.php';
 
 add_filter('template_include', function ($template) {
