@@ -182,7 +182,7 @@ $render_blocks = function ($blocks) use ($e, $render_list_item, $theme_uri, $wa_
         </div>
         <?php foreach ($countries as $i => $c) : ?>
           <section class="epage-cpanel" id="<?php echo esc_attr($c['slug']); ?>" data-panel>
-            <h2 class="epage-h2"><?php echo esc_html($c['emoji'] . ' ' . $c['name']); ?> — aparıcı universitetlər</h2>
+            <h2 class="epage-h2"><?php echo esc_html($c['emoji'] . ' ' . $c['name']); ?> — <?php echo edde_lang() === 'en' ? 'leading universities' : 'aparıcı universitetlər'; ?></h2>
             <div class="epage-unis">
               <?php foreach ($c['unis'] as $u) : ?>
                 <article class="epage-uni">
