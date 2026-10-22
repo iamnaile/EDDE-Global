@@ -53,6 +53,12 @@ $edde_is_here = function ($url) use ($edde_current) {
     </nav>
 
     <div class="header__right">
+      <?php if (function_exists('edde_lang_urls')) : $edde_lu = edde_lang_urls(); $edde_cl = edde_lang(); ?>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <a href="<?php echo esc_url($edde_lu['az']); ?>" data-lang="az" hreflang="az"<?php echo $edde_cl === 'az' ? ' class="is-current" aria-current="true"' : ''; ?>>AZ</a>
+        <a href="<?php echo esc_url($edde_lu['en']); ?>" data-lang="en" hreflang="en"<?php echo $edde_cl === 'en' ? ' class="is-current" aria-current="true"' : ''; ?>>EN</a>
+      </div>
+      <?php endif; ?>
       <button class="btn btn--primary" id="openConsult">Zəng istə</button>
     </div>
 

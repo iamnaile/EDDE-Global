@@ -9,17 +9,21 @@
  *   countries.php  — ölkələr və universitetlər
  */
 
+require_once __DIR__ . '/edde-lang.php';
 require_once __DIR__ . '/edde-nav.php';
 
 if (!function_exists('edde_data')) {
   /** inc/data/<ad>.php faylını bir dəfə oxuyub yadda saxlayır. */
   function edde_data($name) {
     static $cache = [];
-    if (!isset($cache[$name])) {
-      $file = __DIR__ . '/data/' . $name . '.php';
-      $cache[$name] = is_readable($file) ? include $file : [];
+    $lang = edde_lang();
+    $key  = $lang . ':' . $name;
+    if (!isset($cache[$key])) {
+      $file = __DIR__ . '/data/' . ($lang === 'en' ? 'en/' : '') . $name . '.php';
+      if (!is_readable($file)) { $file = __DIR__ . '/data/' . $name . '.php'; } // İngiliscə fayl yoxdursa Azərbaycanca
+      $cache[$key] = is_readable($file) ? include $file : [];
     }
-    return $cache[$name];
+    return $cache[$key];
   }
 }
 
@@ -101,7 +105,9 @@ if (!function_exists('edde_request_route')) {
     if ($base !== '' && $base !== '/' && strpos($path, $base) === 0) {
       $path = substr($path, strlen($base));
     }
-    return strtolower(trim(rawurldecode($path), '/'));
+    $route = strtolower(trim(rawurldecode($path), '/'));
+    if ($route === 'en' || strpos($route, 'en/') === 0) { $route = trim(substr($route, 2), '/'); } // /en/ prefiksi
+    return $route;
   }
 }
 

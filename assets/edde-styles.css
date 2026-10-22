@@ -556,3 +556,9 @@ ul { list-style: none; margin: 0; padding: 0; }
 
 .academy__cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; }
 
+
+/* Dil keçidi (AZ | EN) */
+.lang-switch { display: inline-flex; align-items: center; border: 1px solid var(--border); border-radius: 999px; padding: 3px; background: var(--surface); }
+.lang-switch a { font-family: var(--font-display); font-weight: 700; font-size: 12.5px; letter-spacing: .5px; color: var(--text-muted); padding: 6px 11px; border-radius: 999px; line-height: 1; }
+.lang-switch a:hover { color: var(--brand-600); }
+.lang-switch a.is-current { background: var(--brand-500); color: #fff; }

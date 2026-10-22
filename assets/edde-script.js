@@ -85,6 +85,10 @@ function eddeCollect(form) {
   });
   if (form.dataset.interest) parts.push(form.dataset.interest);
   const topic = [form.dataset.course].concat(parts).filter(Boolean).join(', ');
+  if (window.EDDE_LANG === 'en') {
+    return 'Hello, my name is ' + name + '.' + (topic ? ' I am interested in ' + topic + '.' : '') +
+      ' My phone: ' + phone + (email ? ', e-mail: ' + email : '') + '.' + (message ? ' Message: ' + message : '');
+  }
   return 'Salam, mənim adım ' + name + '.' + (topic ? ' ' + topic + ' ilə maraqlanıram.' : '') +
     ' Əlaqə nömrəm: ' + phone + (email ? ', e-poçt: ' + email : '') + '.' + (message ? ' Mesaj: ' + message : '');
 }
