@@ -46,11 +46,20 @@ add_filter('pre_redirect_guess_404_permalink', function ($pre) {
     return edde_route_page(edde_request_route()) ? '' : $pre;
 });
 
-/**
- * "İxtisas seçimi testi" formundan sonra yönləndiriləcək rəsmi test ünvanı.
- * TC Üsküdar Universitetinin test linkini bura yazın (və ya başqa yerdən 'edde_test_url' filtri ilə verin).
- * Boş qalarsa, forma məlumatları WhatsApp vasitəsilə komandaya göndərilir.
- */
-add_filter('edde_test_url', function ($url) {
-    return $url ?: '';
+/* Silinmiş səhifələrin köhnə ünvanları: ixtisas seçimi testi xarici test saytına, qalanları uyğun bölməyə yönləndirilir. */
+add_action('template_redirect', function () {
+    if (is_admin()) {
+        return;
+    }
+    $c = edde_contact();
+    $map = [
+        'ixtisas-secimi-testi' => $c['test_url'],
+        'turkiyede-tehsil'     => home_url('/xaricde-tehsil/'),
+        'alman-dili-kurslari'  => home_url('/dil-kurslari/'),
+    ];
+    $route = edde_request_route();
+    if (isset($map[$route])) {
+        wp_redirect($map[$route], 301);
+        exit;
+    }
 });

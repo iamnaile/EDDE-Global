@@ -1,6 +1,6 @@
 /* EDDE məzmun səhifələri (edde-page.php) üçün skriptlər */
 (function () {
-  var WA = '994702141033';
+  var WA = window.EDDE_WA || '994708332024';
 
   // ===== Müraciət formaları → WhatsApp (mövcud formalarla eyni qayda) =====
   document.querySelectorAll('.epage-form').forEach(function (form) {
@@ -12,11 +12,6 @@
       var name = (val('name') + ' ' + val('surname')).trim();
       var msg = val('message');
 
-      // İxtisas seçimi testi: rəsmi test ünvanı verilibsə, ora yönləndir
-      if (form.dataset.redirect) {
-        window.location.href = form.dataset.redirect;
-        return;
-      }
       var text = 'Salam, mənim adım ' + name + '. ' + course + interest + ' ilə maraqlanıram. ' +
         'Əlaqə nömrəm: ' + val('phone') + (val('email') ? ', e-poçt: ' + val('email') : '') + '.' + (msg ? ' Mesaj: ' + msg : '');
       window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(text), '_blank');

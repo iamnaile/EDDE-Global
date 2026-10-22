@@ -7,6 +7,8 @@
  * '/...' ilə başlayan ünvan isə sayt səhifəsinə aparır.
  */
 
+require_once __DIR__ . '/edde-contact.php';
+
 if (!function_exists('edde_href')) {
   function edde_href($u) {
     return preg_match('~^(#|tel:|mailto:|https?://)~', $u) ? esc_url($u) : esc_url(home_url($u));
@@ -26,6 +28,7 @@ if (!function_exists('edde_nav_items')) {
           'visual'  => ['🏛️', '2018', 'Fəaliyyətə başladıq'],
           'links'   => [
             ['Şirkət haqqında',          '/shirket-haqqinda/'],
+            ['Tərəfdaşlarımız',          '/terefdaslarimiz/'],
             ['Xidmətlər paketi',         '/xidmetler-paketi/'],
             ['Akkreditasiyalarımız',     '/akkreditasiya/'],
             ['Hüquqi Məsuliyyətlər',     '/qanunvericilik/'],
@@ -58,7 +61,7 @@ if (!function_exists('edde_nav_items')) {
       ],
       [
         'title' => 'EDDE Academy',
-        'url'   => '/edde-home/edde-academy/xidmetler/',
+        'url'   => '/edde-home/edde-xidmetler/',
         'mega'  => [
           'heading' => 'EDDE Academy',
           'text'    => 'Beynəlxalq imtahanlara hazırlıq və dil kursları ilə hədəflərinizə çatın.',
@@ -93,20 +96,27 @@ if (!function_exists('edde_nav_items')) {
       [
         'title' => 'Əlaqə',
         'url'   => '/edde-home/#contact',
-        'mega'  => [
-          'heading' => 'Bizimlə əlaqə',
-          'text'    => 'Suallarınız var? Məsləhətçilərimiz sizinlə əlaqə saxlamağa hazırdır.',
-          'cta'     => 'WhatsApp-da yazın',
-          'cta_url' => 'https://wa.me/994772555658',
-          'label'   => 'Əlaqə məlumatları',
-          'visual'  => ['📍', 'Bakı', 'Baş ofis'],
-          'links'   => [
-            ['077 255 56 58',                       'tel:+994772555658'],
-            ['info@eddeglobal.az',                  'mailto:info@eddeglobal.az'],
-            ['Əliyar Əliyev 61, Nəriman Nərimanov', '/edde-home/#contact'],
-          ],
-        ],
+        'mega'  => edde_nav_contact(),
       ],
+    ];
+  }
+}
+
+if (!function_exists('edde_nav_contact')) {
+  function edde_nav_contact() {
+    $c = edde_contact();
+    $links = [];
+    foreach ($c['phones'] as $p) { $links[] = [$p[0], 'tel:' . $p[1]]; }
+    $links[] = [$c['email'], 'mailto:' . $c['email']];
+    $links[] = [$c['address'], '/edde-home/#contact'];
+    return [
+      'heading' => 'Bizimlə əlaqə',
+      'text'    => 'Suallarınız var? Məsləhətçilərimiz sizinlə əlaqə saxlamağa hazırdır.',
+      'cta'     => 'WhatsApp-da yazın',
+      'cta_url' => edde_wa_url(),
+      'label'   => 'Əlaqə məlumatları',
+      'visual'  => ['📍', 'Bakı', 'Baş ofis'],
+      'links'   => $links,
     ];
   }
 }

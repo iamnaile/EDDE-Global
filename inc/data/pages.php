@@ -138,6 +138,103 @@ return [
     ],
     'cta' => 'Gələcəyinizi bizimlə planlaşdırın',
   ],
+  'terefdaslarimiz' => [
+    'title' => 'Tərəfdaşlarımız',
+    'group' => 'Haqqımızda',
+    'icon' => '🤝',
+    'meta' => 'EDDE Global tərəfdaşları və üzvlük etdiyi təşkilatlar: PIER, YEDAB, ASAC, ICEF Academy, StudyTravel, Università degli Studi LINK və digərləri.',
+    'lead' => 'EDDE Global beynəlxalq təhsil assosiasiyaları, təhsil agentlikləri və biznes tərəfdaşları ilə əməkdaşlıq edir. Bu əməkdaşlıqlar xidmətlərimizin keyfiyyətini və etibarlılığını möhkəmləndirir.',
+    'blocks' => [
+      ['partners'],
+      ['note', 'Tərəfdaşlıq təklifləri üçün info@eddeglobal.az ünvanına yaza bilərsiniz.'],
+    ],
+    'cta' => 'Bizimlə əməkdaşlıq edin',
+    'cta_course' => 'Tərəfdaşlıq',
+  ],
+  'dil-kurslari' => [
+    'title' => 'Dil kursları',
+    'group' => 'EDDE Academy',
+    'icon' => '🗣️',
+    'meta' => 'EDDE Academy dil kursları: İngilis, Çin, Koreya, İspan, Rus, Alman, Ərəb və Türk dilləri. Qrup dərsləri, speaking və practice məşğələləri, conversation klubları.',
+    'lead' => 'EDDE Academy-də 8 dil üzrə kurslar təşkil olunur. Dərslər qrup formatında, kiçik qruplarla və əlavə speaking praktikası ilə keçirilir.',
+    'blocks' => [
+      [
+        'facts',
+        [
+          ['Format', 'Qrup dərsləri'],
+          ['Əsas dərs', 'Həftədə 3 dəfə, 1 saat'],
+          ['Qrup ölçüsü', '3–4 tələbə'],
+          ['Qrup dərsinin qiyməti', '150 AZN'],
+        ],
+      ],
+      ['h', 'Kurslar'],
+      ['tags', ['İngilis dili', 'Çin dili', 'Koreya dili', 'İspan dili', 'Rus dili', 'Alman dili', 'Ərəb dili', 'Türk dili']],
+      [
+        'links',
+        [
+          ['İngilis dili — General English', '/general-english/', 'Oxuma, yazma, dinləmə və qrammatika bacarıqlarının hərtərəfli inkişafı.'],
+          ['Türk dili', '/turk-dili-kurslari/', 'Türkiyədə təhsil üçün lazım olan dil bacarıqları.'],
+        ],
+      ],
+      ['h', 'Dərslərin formatı'],
+      [
+        'ul',
+        [
+          'Hazırda dərslər qrup formatında, həftədə 3 dəfə əsas dərs olmaqla keçirilir.',
+          'Həftəiçi 3 dəfə 1 saatlıq əsas dərslər olur. (Tələbənin istəyinə uyğun olaraq dərsləri həftədə 2 dəfə, 90 dəqiqə olmaqla təyin etmək mümkündür.)',
+          'Qrup dərsləri üçün qiymət 150 AZN təşkil edir. Qiymət kursa davam edilən bütün aylar üçün keçərlidir.',
+          'Əsas dərslərdən əlavə olaraq, həftədə 3 dəfə dərslərdən sonra speaking və practice dərslərinə qatıla bilərsiniz.',
+          'Həftəsonu (şənbə günü) qrup formatında conversation klubları keçirilir.',
+          'Qrup dərslərində 3–4 tələbə iştirak edir. Conversation qruplarında isə maksimum 6–8 tələbə iştirak edir.',
+        ],
+      ],
+    ],
+    'cta' => 'Dil kursuna qeydiyyat',
+    'cta_course' => 'Dil kursları',
+  ],
+  'imtahana-hazirlik-kurslari' => [
+    'title' => 'İmtahana hazırlıq kursları',
+    'group' => 'EDDE Academy',
+    'icon' => '📖',
+    'meta' => 'Beynəlxalq imtahan hazırlıqları — EDDE Academy: IELTS, Duolingo, TOEFL, PET / PTE, CSCA, SAT, GRE / GMAT. Əyani və online dərslər, level check və sınaq dərsi.',
+    'lead' => 'EDDE Academy beynəlxalq imtahanlara qrup formatında hazırlıq təklif edir: IELTS, Duolingo, TOEFL, PET / PTE, CSCA, SAT və GRE / GMAT.',
+    'blocks' => [
+      [
+        'facts',
+        [
+          ['Format', 'Qrup dərsləri'],
+          ['Əsas dərs', 'Həftədə 3 dəfə, 1 saat'],
+          ['Dərslər', 'Əyani və online'],
+          ['Tövsiyə olunan səviyyə', 'B2'],
+        ],
+      ],
+      ['h', 'Proqramlar'],
+      ['tags', ['IELTS', 'Duolingo', 'TOEFL', 'PET / PTE', 'CSCA', 'SAT', 'GRE / GMAT']],
+      [
+        'links',
+        [
+          ['IELTS', '/ielts/', 'IELTS imtahanına hazırlıq kursu.'],
+          ['Duolingo English Test', '/duolingo/', 'Duolingo English Test imtahanına hazırlıq.'],
+          ['TOEFL', '/toefl/', 'TOEFL imtahanına hazırlıq kursu.'],
+          ['PTE Academic', '/pte-academic/', 'PTE Academic imtahanına hazırlıq.'],
+          ['SAT', '/sat/', 'SAT imtahanına hazırlıq kursu.'],
+        ],
+      ],
+      ['h', 'Dərslərin formatı'],
+      [
+        'ul',
+        [
+          'Proqram üzrə dərslər qrup formatında, həftədə 3 dəfə əsas dərs olmaqla keçirilir.',
+          'Həftəiçi 3 dəfə 1 saatlıq əsas dərsiniz olur, daha sonra isə speaking və practice dərsləri keçilir.',
+          'Dərslər həm əyani, həm də online formada keçirilir.',
+          'Dərslər və metodika ilə tanışlıq üçün ilkin olaraq level check və sınaq dərsi təyin olunur.',
+          'Proqrama B2 səviyyəsindən başlamanız tövsiyə olunur.',
+        ],
+      ],
+    ],
+    'cta' => 'İmtahana hazırlığa qeydiyyat',
+    'cta_course' => 'İmtahana hazırlıq',
+  ],
   'missiya' => [
     'title' => 'EDDE Global Missiyası',
     'group' => 'Haqqımızda',
@@ -498,7 +595,7 @@ return [
     'title' => 'Əlaqə',
     'group' => 'Əlaqə',
     'icon' => '📍',
-    'meta' => 'EDDE Global ilə əlaqə: telefon, WhatsApp, e-poçt, ofis ünvanı (Əliyar Əliyev 159, Nərimanov, Bakı) və sosial şəbəkələr.',
+    'meta' => 'EDDE Global ilə əlaqə: telefon, WhatsApp, e-poçt, ofis ünvanı (Əliyar Əliyev 61, Nərimanov, Bakı) və sosial şəbəkələr.',
     'lead' => 'Suallarınız var? Pulsuz konsultasiya üçün bizimlə əlaqə saxlayın — məsləhətçilərimiz ölkə, universitet və proqram seçimində sizə kömək etməyə hazırdır.',
     'blocks' => [
       ['contact'],
@@ -553,7 +650,7 @@ return [
       ['mail', 'info@eddeglobal.az', 'info@eddeglobal.az'],
       [
         'p',
-        'EDDE Global, Əliyar Əliyev 159, N.Nərimanov rayonu, Bakı, AZ1052 ünvanında fəaliyyət göstərən Məhdud Məsuliyyətli Cəmiyyətdir. Bu siyasət zaman-zaman yenilənə bilər; ən son versiya həmişə bu səhifədə yerləşdirilir.',
+        'EDDE Global, Əliyar Əliyev 61, N.Nərimanov rayonu, Bakı, AZ1052 ünvanında fəaliyyət göstərən Məhdud Məsuliyyətli Cəmiyyətdir. Bu siyasət zaman-zaman yenilənə bilər; ən son versiya həmişə bu səhifədə yerləşdirilir.',
       ],
     ],
     'cta' => 'Suallarınız varmı?',
@@ -729,11 +826,6 @@ return [
             'Doktorantura Təhsili',
             '/doktorantura/',
             'Hibrid və əyani formatda doktorantura proqramları.',
-          ],
-          [
-            'Türkiyədə təhsil',
-            '/turkiyede-tehsil/',
-            'Bakalavr, magistr və doktorantura — YÖS, SAT və ya attestat balı ilə.',
           ],
           [
             'Transfer Proqramları',
@@ -1100,76 +1192,6 @@ return [
     ],
     'cta' => 'Daha ətraflı məlumat və rezervasiya üçün bizimlə əlaqə saxlayın',
     'cta_course' => 'Doktorantura',
-  ],
-  'turkiyede-tehsil' => [
-    'title' => 'Türkiyədə təhsil',
-    'group' => 'Xaricdə təhsil',
-    'icon' => '🕌',
-    'meta' => 'Türkiyədə təhsil: ali təhsil sistemi, YÖS və SAT ilə qəbul, təhsil haqqı, yaşayış xərcləri və üstünlüklər.',
-    'lead' => 'Türkiyə son illərdə xaricdə təhsil almaq istəyən azərbaycanlı tələbələr üçün ən çox seçilən ölkələrdən biridir. Coğrafi yaxınlıq, dil və mədəni oxşarlıq, həmçinin diplomların beynəlxalq səviyyədə tanınması Türkiyəni cəlbedici edir.',
-    'blocks' => [
-      ['h', 'Ali Təhsil Sistemi'],
-      [
-        'p',
-        'Türkiyədə ali təhsil sistemi bakalavr (4 il), magistr (2 il) və doktorantura pillələrindən ibarətdir. Universitetlər dövlət və özəl (vəkf) olmaqla iki yerə bölünür.',
-      ],
-      ['p', 'Məşhur universitetlərdən bəziləri:'],
-      [
-        'tags',
-        ['Istanbul University', 'Boğaziçi University', 'Ankara University'],
-      ],
-      ['h', 'Qəbul Prosesi'],
-      ['p', 'Xarici tələbələr üçün qəbul əsasən aşağıdakı yollarla həyata keçirilir:'],
-      [
-        'ul',
-        [
-          'YÖS (Xarici Tələbə İmtahanı)',
-          'SAT nəticəsi',
-          'Bəzi universitetlərdə attestat balı ilə birbaşa müraciət',
-        ],
-      ],
-      [
-        'p',
-        'Hər universitetin qəbul şərtləri fərqli ola bilər və sənədləşmə prosesi diqqətlə aparılmalıdır.',
-      ],
-      ['h', 'Təhsil Haqqı'],
-      [
-        'p',
-        'Dövlət universitetlərində illik təhsil haqqı daha münasibdir. Özəl universitetlərdə isə qiymətlər daha yüksək olur. Təhsil haqqı seçilən ixtisasdan asılı olaraq dəyişir. Tibb, stomatologiya və mühəndislik kimi ixtisaslarda ödəniş daha yüksəkdir.',
-      ],
-      ['h', 'Yaşayış və Xərclər'],
-      [
-        'p',
-        'Tələbələr üçün dövlət və özəl yataqxanalar mövcuddur. Aylıq yaşayış xərcləri şəhərə görə dəyişir. İstanbul və Ankara kimi böyük şəhərlərdə xərclər daha yüksəkdir. Tələbələr ictimai nəqliyyatda güzəştli kartlardan istifadə edə bilirlər.',
-      ],
-      ['h', 'Üstünlüklər'],
-      [
-        'ul',
-        [
-          'Diplomların bir çox ölkədə tanınması',
-          'Erasmus və beynəlxalq mübadilə proqramları',
-          'Keyfiyyətli və inkişaf etmiş təhsil sistemi',
-          'Azərbaycanlı tələbələr üçün uyğun sosial mühit',
-        ],
-      ],
-      ['h', 'Türkiyədəki universitetlər'],
-      [
-        'p',
-        'Sabancı, Özyeğin, İstinye, İstanbul və Boğaziçi universitetləri haqqında ətraflı məlumatı “Ölkələr və universitetlər” səhifəsində tapa bilərsiniz.',
-      ],
-      [
-        'links',
-        [
-          [
-            'Ölkələr və universitetlər — Türkiyə',
-            '/olkeler/#turkiye',
-            'Türkiyənin 5 aparıcı universiteti haqqında ətraflı məlumat.',
-          ],
-        ],
-      ],
-    ],
-    'cta' => 'Türkiyədə təhsil üçün müraciət edin',
-    'cta_course' => 'Türkiyədə təhsil',
   ],
   'transfer' => [
     'title' => 'Transfer Proqramları',
@@ -1576,8 +1598,8 @@ return [
         [
           [
             'İxtisas seçimi testini keçin',
-            '/ixtisas-secimi-testi/',
-            'Formu doldurun və TC Üsküdar Universitetinin rəsmi ixtisas seçimi testinə yönləndirilin.',
+            'https://test.eddeglobal.az',
+            'Rəsmi ixtisas seçimi testi — test.eddeglobal.az ünvanında açılır.',
           ],
         ],
       ],
@@ -1589,46 +1611,6 @@ return [
     ],
     'cta' => 'Daha ətraflı məlumat və rezervasiya üçün bizimlə əlaqə saxlayın',
     'cta_course' => 'İxtisas seçimi',
-  ],
-  'ixtisas-secimi-testi' => [
-    'title' => 'İxtisas seçimi testi',
-    'group' => 'Xaricdə təhsil',
-    'icon' => '📝',
-    'meta' => 'İxtisas seçimi testi: formu doldurun və TC Üsküdar Universitetinin rəsmi ixtisas seçimi testinə yönləndirilin.',
-    'lead' => 'İxtisas seçimi prosesinə başlamazdan əvvəl müvafiq formanı doldurmağınız xahiş olunur. Formu tamamladıqdan sonra əməkdaşlıq etdiyimiz TC Üsküdar Universitetinin rəsmi ixtisas seçimi testinə yönləndiriləcəksiniz.',
-    'blocks' => [
-      ['h', 'Testə necə başlamaq olar?'],
-      [
-        'steps',
-        [
-          [
-            'Formu doldurun',
-            'Aşağıdakı formada adınızı, e-poçt ünvanınızı və telefon nömrənizi qeyd edin.',
-          ],
-          [
-            'Testə yönləndirilin',
-            'Formu göndərdikdən sonra TC Üsküdar Universitetinin rəsmi ixtisas seçimi testinə yönləndiriləcəksiniz.',
-          ],
-          [
-            'Nəticəni müzakirə edin',
-            'Test nəticələrini məsləhətçimizlə birlikdə təhlil edib sizə uyğun ixtisas, ölkə və universitet seçimini müəyyən edirik.',
-          ],
-        ],
-      ],
-      ['testform'],
-      [
-        'links',
-        [
-          [
-            'İxtisas Seçimi Dəstəyi haqqında',
-            '/ixtisas-secimi/',
-            'Holland Metod Testləri, müsahibə və fərdi plan.',
-          ],
-        ],
-      ],
-    ],
-    'cta' => 'Test barədə sualınız var?',
-    'cta_course' => 'İxtisas seçimi testi',
   ],
   'sat' => [
     'title' => 'SAT',
@@ -2017,88 +1999,6 @@ return [
     ],
     'cta' => 'Kids English kursuna qeydiyyat',
     'cta_course' => 'Kids English',
-  ],
-  'alman-dili-kurslari' => [
-    'title' => 'Alman Dili Kursları',
-    'group' => 'EDDE Academy',
-    'icon' => '🇩🇪',
-    'meta' => 'Alman dili kursları — EDDE Academy: başlanğıcdan irəli səviyyəyə, danışıq klubları, sertifikat, Almaniyada təhsil və Ausbildung məsləhətləri.',
-    'lead' => 'EDDE Academy olaraq, Alman dilini öyrənmək istəyənlər üçün hərtərəfli və effektiv kurslar təqdim edirik. Kurslarımız həm başlanğıc səviyyədə olanlar, həm də dil bacarıqlarını inkişaf etdirmək istəyənlər üçün nəzərdə tutulmuşdur.',
-    'blocks' => [
-      [
-        'p',
-        'Alman dili, Avropada geniş istifadə edilən və bir çox akademik və karyera imkanlarının açar dili olduğuna görə, kurslarımız tələbələrə yüksək səviyyəli dil bacarıqları qazandırmağı hədəfləyir.',
-      ],
-      ['h', 'Alman dili kurslarının üstünlükləri'],
-      [
-        'ul',
-        [
-          [
-            'Peşəkar Müəllimlər',
-            'Təcrübəli və sertifikatlı müəllimlərimiz tələbələrə qrammatika, danışıq, oxuma və dinləmə bacarıqlarını inkişaf etdirməkdə dəstək olurlar.',
-          ],
-          [
-            'Müasir Tədris Proqramı',
-            'Kurslarımız Almaniyanın mədəniyyətinə və gündəlik danışıq dilinə uyğun hazırlanmış, interaktiv dərs materialları ilə zəngindir.',
-          ],
-          [
-            'Kiçik Qruplar və Fərdi Dərslər',
-            'Fərdi yanaşma və tələbələrin ehtiyaclarına uyğun tədris proqramı ilə daha effektiv öyrənmə prosesi təmin edilir.',
-          ],
-          [
-            'Onlayn və Əyani Dərslər',
-            'Həm onlayn, həm də ofisdə keçirilən dərslər mövcuddur, bu da tələbələrə çevik seçimlər təqdim edir.',
-          ],
-          [
-            'Real Danışıq Təcrübəsi',
-            'Kurslar zamanı danışıq klubları və müntəzəm interaktiv məşğələlər təşkil edilir, bu da tələbələrin özlərini inamla ifadə etmələrinə kömək edir.',
-          ],
-        ],
-      ],
-      ['h', 'Əlavə üstünlüklər'],
-      [
-        'ul',
-        [
-          [
-            'Sınaq Testləri və Sertifikatlar',
-            'Kurslarımızı uğurla bitirən tələbələr üçün Alman dili səviyyəsini təsdiqləyən sertifikat təqdim edilir.',
-          ],
-          [
-            'Xüsusi Endirimlər',
-            'Yeni qeydiyyat zamanı endirim kampaniyaları və güzəştlərdən yararlana bilərsiniz.',
-          ],
-        ],
-      ],
-      ['h', 'EDDE Academy ilə Almaniyada karyera'],
-      ['p', 'Alman dili kurslarımızı bitirən tələbələr üçün xüsusi imkanlar təqdim edirik:'],
-      [
-        'ul',
-        [
-          [
-            'Ödənişsiz Təhsil Məsləhətləri',
-            'Almaniyada ödənişsiz universitet təhsili üçün geniş məlumat və məsləhətlər.',
-          ],
-          [
-            'Ausbildung Proqramları',
-            'Almaniyada ausbildung (təhsil və təcrübə) proqramlarına müraciət üçün konsultasiya.',
-          ],
-          [
-            'İş İmkanları',
-            'Həkimlər və tibb bacıları üçün Almaniyada iş tapma və işə qəbul prosesində peşəkar dəstək.',
-          ],
-        ],
-      ],
-      [
-        'p',
-        'Alman dili bacarıqlarınızı inkişaf etdirmək və karyera hədəflərinizə çatmaq üçün EDDE Academy-nin kurslarına qoşulun! Ətraflı məlumat və qeydiyyat üçün bizimlə əlaqə saxlayın.',
-      ],
-      [
-        'note',
-        'Qeyd: Mərkəzimizə yaxınlaşarkən şəxsiyyət vəsiqəsini özünüzlə gətirməyi unutmayın',
-      ],
-    ],
-    'cta' => 'Alman dili kursuna qeydiyyat',
-    'cta_course' => 'Alman dili',
   ],
   'pte-academic' => [
     'title' => 'PTE ACADEMIC',

@@ -23,33 +23,34 @@ document.querySelectorAll('.accordion-trigger').forEach(trigger => {
   });
 });
 
-// ===== Animated counters (triggered when visible) =====
-const counters = document.querySelectorAll('.counter-card strong');
-let countersStarted = false;
-
-function animateCounters() {
-  if (countersStarted) return;
-  countersStarted = true;
-  counters.forEach(el => {
-    const target = parseInt(el.dataset.count, 10);
-    const duration = 1400;
-    const start = performance.now();
-    function tick(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      el.textContent = Math.floor(progress * target);
-      if (progress < 1) requestAnimationFrame(tick);
-      else el.textContent = target + '+';
-    }
-    requestAnimationFrame(tick);
-  });
+// ===== Animated counters (hər sayğac öz görünəndə başlayır; data-count olan bütün elementlər) =====
+function animateCounter(el) {
+  if (el.dataset.counted) return;
+  el.dataset.counted = '1';
+  const target = parseInt(el.dataset.count, 10);
+  const duration = 1400;
+  const start = performance.now();
+  function tick(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    el.textContent = Math.floor(progress * target);
+    if (progress < 1) requestAnimationFrame(tick);
+    else el.textContent = target + '+';
+  }
+  requestAnimationFrame(tick);
 }
 
-const whySection = document.querySelector('.why');
-if (whySection) {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => { if (entry.isIntersecting) animateCounters(); });
-  }, { threshold: 0.4 });
-  observer.observe(whySection);
+const counterEls = document.querySelectorAll('[data-count]');
+if (counterEls.length) {
+  if ('IntersectionObserver' in window) {
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { animateCounter(entry.target); counterObserver.unobserve(entry.target); }
+      });
+    }, { threshold: 0.4 });
+    counterEls.forEach(el => counterObserver.observe(el));
+  } else {
+    counterEls.forEach(animateCounter);
+  }
 }
 
 // ===== Consult modal =====
@@ -75,7 +76,7 @@ consultForm.addEventListener('submit', (e) => {
   const phone = inputs[1].value.trim();
   const program = inputs[2].value;
   const text = encodeURIComponent(`Salam, mənim adım ${name}. ${program} ilə maraqlanıram. Əlaqə nömrəm: ${phone}`);
-  window.open(`https://wa.me/994702141033?text=${text}`, '_blank');
+  window.open(`https://wa.me/${window.EDDE_WA || '994708332024'}?text=${text}`, '_blank');
   modal.classList.remove('open');
 });
 // ===== Academy carousel arrows =====

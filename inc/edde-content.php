@@ -114,6 +114,45 @@ if (!function_exists('edde_current_route')) {
   }
 }
 
+if (!function_exists('edde_partner_name')) {
+  /** assets/logos/ faylının adına görə təşkilatın adı (alt mətn və başlıq üçün). */
+  function edde_partner_name($file) {
+    static $names = [
+      'pier'     => 'PIER — Professional International Education Resources',
+      'yedab'    => 'YEDAB — Association of Study Abroad Counselors (Yurtdışı Eğitim Danışmanları Derneği)',
+      'net'      => 'NET',
+      'alpha'    => 'Alpha Omega',
+      'asac'     => 'ASAC — Association of Study Abroad Companies',
+      'icef'     => 'ICEF Academy',
+      'sttravel' => 'StudyTravel (ST)',
+      'link'     => 'Università degli Studi LINK',
+      'marsol'   => 'Marsol Group',
+      'akiab'    => 'AKİAB',
+      'caspian'  => 'Caspian Energy Group',
+      '166'      => '166 Yükdaşıma və Logistika',
+    ];
+    $stem = pathinfo($file, PATHINFO_FILENAME);
+    $key  = strtolower(preg_replace('~^\d+-~', '', $stem));
+    return isset($names[$key]) ? $names[$key] : ucwords(str_replace(['-', '_'], ' ', $key));
+  }
+}
+
+if (!function_exists('edde_partner_logos')) {
+  /** assets/logos/ qovluğundakı bütün PNG/JPG/WEBP/SVG loqolar: [fayl, url, ad]. Yeni loqonu qovluğa atmaq kifayətdir. */
+  function edde_partner_logos() {
+    $dir   = get_stylesheet_directory() . '/assets/logos/';
+    $url   = get_stylesheet_directory_uri() . '/assets/logos/';
+    $files = glob($dir . '*.{png,jpg,jpeg,webp,svg,PNG,JPG,JPEG,WEBP,SVG}', GLOB_BRACE);
+    $files = $files ? array_map('basename', $files) : [];
+    sort($files, SORT_NATURAL | SORT_FLAG_CASE);
+    $out = [];
+    foreach ($files as $f) {
+      $out[] = ['file' => $f, 'url' => $url . rawurlencode($f), 'name' => edde_partner_name($f)];
+    }
+    return $out;
+  }
+}
+
 if (!function_exists('edde_aside_links')) {
   /** Yan panel üçün eyni bölmədəki səhifələr: [başlıq, url, aktivdir]. */
   function edde_aside_links($route) {
@@ -137,7 +176,7 @@ if (!function_exists('edde_aside_links')) {
     }
     return ['Faydalı keçidlər', [
       ['Xaricdə təhsil', '/xaricde-tehsil/', false],
-      ['EDDE Academy', '/edde-xidmetler/', false],
+      ['EDDE Academy', '/edde-home/edde-xidmetler/', false],
       ['Ölkələr və universitetlər', '/olkeler/', false],
       ['Məqalələr', '/meqaleler/', false],
       ['FAQ', '/faq/', false],

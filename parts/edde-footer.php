@@ -1,7 +1,10 @@
 <?php
 /** Vahid altlıq + üzən WhatsApp düyməsi + "Zəng istə" modalı. */
+require_once get_stylesheet_directory() . '/inc/edde-contact.php';
 $edde_theme_uri = get_stylesheet_directory_uri();
+$edde_c = edde_contact();
 ?>
+<script>window.EDDE_WA = <?php echo wp_json_encode($edde_c['whatsapp']); ?>;</script>
 <footer class="site-footer" id="contact">
   <div class="container footer__grid">
     <div class="footer__col footer__col--brand">
@@ -25,18 +28,20 @@ $edde_theme_uri = get_stylesheet_directory_uri();
     </div>
     <div class="footer__col footer__col--links">
       <h4>EDDE Academy</h4>
+      <a href="<?php echo esc_url(home_url('/dil-kurslari/')); ?>">Dil kursları</a>
+      <a href="<?php echo esc_url(home_url('/imtahana-hazirlik-kurslari/')); ?>">İmtahana hazırlıq kursları</a>
       <a href="<?php echo esc_url(home_url('/ielts/')); ?>">IELTS</a>
       <a href="<?php echo esc_url(home_url('/toefl/')); ?>">TOEFL</a>
-      <a href="<?php echo esc_url(home_url('/pte-academic/')); ?>">PTE Academic</a>
-      <a href="<?php echo esc_url(home_url('/sat/')); ?>">SAT</a>
-      <a href="<?php echo esc_url(home_url('/alman-dili-kurslari/')); ?>">Alman Dili Kursları</a>
       <a href="<?php echo esc_url(home_url('/faq/')); ?>">FAQ</a>
     </div>
     <div class="footer__col footer__col--links">
       <h4>Əlaqə</h4>
-      <a href="tel:+994772555658">077 255 56 58</a>
-      <a href="mailto:info@eddeglobal.az">info@eddeglobal.az</a>
-      <span>Əliyar Əliyev 61, Nəriman Nərimanov</span>
+      <?php foreach ($edde_c['phones'] as $p) : ?>
+        <a href="tel:<?php echo esc_attr($p[1]); ?>"><?php echo esc_html($p[0]); ?></a>
+      <?php endforeach; ?>
+      <a href="<?php echo esc_url(edde_wa_url()); ?>" target="_blank" rel="noopener">WhatsApp: <?php echo esc_html($edde_c['whatsapp_display']); ?></a>
+      <a href="mailto:<?php echo esc_attr($edde_c['email']); ?>"><?php echo esc_html($edde_c['email']); ?></a>
+      <span><?php echo esc_html($edde_c['address']); ?></span>
     </div>
   </div>
   <div class="container footer__bottom">
@@ -62,7 +67,7 @@ $edde_theme_uri = get_stylesheet_directory_uri();
   </div>
 </footer>
 
-<a href="https://wa.me/994772555658" class="floating-btn whatsapp" aria-label="WhatsApp ilə yazın">💬</a>
+<a href="<?php echo esc_url(edde_wa_url()); ?>" target="_blank" rel="noopener" class="floating-btn whatsapp" aria-label="WhatsApp ilə yazın">💬</a>
 
 <!-- ============ CONSULT MODAL ============ -->
 <div class="modal-overlay" id="consultModal">

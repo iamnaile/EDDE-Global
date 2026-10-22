@@ -95,10 +95,10 @@ $edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
         <div class="hero-slide__text">
           <p class="eyebrow">EDDE Academy</p>
           <h1>Dil və imtahan hazırlığı mərkəzi</h1>
-          <p>IELTS, TOEFL, Duolingo, PTE, SAT, General English, Business English, Kids English, Türk və Alman dili kursları — sertifikatlı müəllimlər və fərdi inkişaf planı ilə.</p>
+          <p>İngilis, Çin, Koreya, İspan, Rus, Alman, Ərəb və Türk dili kursları, habelə IELTS, Duolingo, TOEFL, PET / PTE, CSCA, SAT və GRE / GMAT hazırlığı — qrup dərsləri, speaking praktikası və conversation klubları ilə.</p>
           <div class="hero-slide__actions">
             <button class="btn btn--primary" data-open-modal="modalAcademy">Müraciət et</button>
-            <a href="<?php echo home_url('/edde-home/edde-academy/xidmetler/'); ?>" class="btn btn--outline">Ətraflı məlumat</a>
+            <a href="<?php echo home_url('/edde-home/edde-xidmetler/'); ?>" class="btn btn--outline">Ətraflı məlumat</a>
           </div>
         </div>
       </div>
@@ -185,70 +185,63 @@ $edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
     </div>
     <div class="academy-carousel-wrap">
   <div class="academy-carousel reveal-group" id="academyCarousel">
-    <a href="<?php echo home_url('/edde-ielts/'); ?>" class="academy-card academy-card--c1 reveal">
+    <a href="<?php echo home_url('/ielts/'); ?>" class="academy-card academy-card--c1 reveal">
       <h3>IELTS</h3>
       <div class="academy-card__overlay">
         <p>Band 7–8+ hədəfi üçün mütəxəssis rəhbərliyi altında hazırlıq.</p>
         <span>Proqramla yaxından tanış olun ↗</span>
       </div>
     </a>
-    <a href="#academy" class="academy-card academy-card--c2 reveal">
+    <a href="<?php echo home_url('/toefl/'); ?>" class="academy-card academy-card--c2 reveal">
       <h3>TOEFL</h3>
       <div class="academy-card__overlay">
         <p>Akademik İngilis dili imtahanlarına effektiv hazırlıq.</p>
         <span>Proqramla yaxından tanış olun ↗</span>
       </div>
     </a>
-    <a href="#academy" class="academy-card academy-card--c3 reveal">
+    <a href="<?php echo home_url('/pte-academic/'); ?>" class="academy-card academy-card--c3 reveal">
       <h3>PTE Academic</h3>
       <div class="academy-card__overlay">
         <p>Kompüter-əsaslı qiymətləndirmə formatına tam hazırlıq.</p>
         <span>Proqramla yaxından tanış olun ↗</span>
       </div>
     </a>
-    <a href="#academy" class="academy-card academy-card--c4 reveal">
+    <a href="<?php echo home_url('/sat/'); ?>" class="academy-card academy-card--c4 reveal">
       <h3>SAT</h3>
       <div class="academy-card__overlay">
         <p>Math və Verbal bölmələri üzrə strukturlaşdırılmış təlim.</p>
         <span>Proqramla yaxından tanış olun ↗</span>
       </div>
     </a>
-    <a href="#academy" class="academy-card academy-card--c5 reveal">
+    <a href="<?php echo home_url('/duolingo/'); ?>" class="academy-card academy-card--c5 reveal">
       <h3>Duolingo Test</h3>
       <div class="academy-card__overlay">
         <p>Sürətli, əlçatan beynəlxalq dil sertifikatına hazırlıq.</p>
         <span>Proqramla yaxından tanış olun ↗</span>
       </div>
     </a>
-    <a href="#academy" class="academy-card academy-card--c1 reveal">
+    <a href="<?php echo home_url('/general-english/'); ?>" class="academy-card academy-card--c1 reveal">
       <h3>General English</h3>
       <div class="academy-card__overlay">
         <p>Gündəlik və akademik istifadə üçün inamlı dil bacarığı.</p>
         <span>Proqramla yaxından tanış olun ↗</span>
       </div>
     </a>
-    <a href="#academy" class="academy-card academy-card--c2 reveal">
+    <a href="<?php echo home_url('/kids-english/'); ?>" class="academy-card academy-card--c2 reveal">
       <h3>Kids English</h3>
       <div class="academy-card__overlay">
         <p>Uşaqlar üçün interaktiv dil bacarığı proqramı.</p>
         <span>Proqramla yaxından tanış olun ↗</span>
       </div>
     </a>
-    <a href="#academy" class="academy-card academy-card--c3 reveal">
-      <h3>Alman Dili</h3>
-      <div class="academy-card__overlay">
-        <p>Almaniyada təhsil üçün başlanğıcdan irəliləmiş səviyyəyə qədər.</p>
-        <span>Proqramla yaxından tanış olun ↗</span>
-      </div>
-    </a>
-    <a href="#academy" class="academy-card academy-card--c4 reveal">
+    <a href="<?php echo home_url('/turk-dili-kurslari/'); ?>" class="academy-card academy-card--c4 reveal">
       <h3>Türk Dili</h3>
       <div class="academy-card__overlay">
         <p>Türkiyədə təhsil üçün lazım olan dil bacarıqları.</p>
         <span>Proqramla yaxından tanış olun ↗</span>
       </div>
     </a>
-    <a href="#academy" class="academy-card academy-card--c5 reveal">
+    <a href="<?php echo home_url('/languagecert-kursu/'); ?>" class="academy-card academy-card--c5 reveal">
       <h3>LanguageCert</h3>
       <div class="academy-card__overlay">
         <p>Beynəlxalq səviyyədə tanınan alternativ dil sertifikatı.</p>
@@ -262,6 +255,8 @@ $edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
   </div>
 </div>
     <div class="academy__cta">
+      <a href="<?php echo home_url('/dil-kurslari/'); ?>" class="pill-link">Dil kursları</a>
+      <a href="<?php echo home_url('/imtahana-hazirlik-kurslari/'); ?>" class="pill-link">İmtahana hazırlıq kursları</a>
       <button class="btn btn--primary" id="openConsult3">Kursa qeydiyyatdan keç</button>
     </div>
   </div>
@@ -420,18 +415,6 @@ $edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
         </div>
       </a>
 
-      <a href="<?php echo home_url('/turkiyede-tehsil/'); ?>" class="atl-card reveal">
-        <div class="atl-card__top">
-          <div class="atl-card__icon">🕌</div>
-          <span class="atl-card__badge">Ölkə proqramı</span>
-        </div>
-        <h3>Türkiyədə təhsil</h3>
-        <p>Bakalavr, magistr və doktorantura pillələri; YÖS, SAT və ya attestat balı ilə qəbul imkanı.</p>
-        <div class="atl-card__bottom atl-card__bottom--center">
-          <span class="atl-card__link">Ətraflı <span>→</span></span>
-        </div>
-      </a>
-
       <a href="<?php echo home_url('/teqaud/'); ?>" class="atl-card reveal">
         <div class="atl-card__top">
           <div class="atl-card__icon">💰</div>
@@ -539,7 +522,7 @@ while ($logo_set && count($logo_set) < 12) {
     <div class="logo-strip__track" style="animation-duration: <?php echo count($logo_set) * 5; ?>s;">
       <?php for ($pass = 0; $pass < 2; $pass++) :
         foreach ($logo_set as $item) :
-          $alt = ucwords(str_replace(['-', '_'], ' ', pathinfo($item['file'], PATHINFO_FILENAME))); ?>
+          $alt = function_exists('edde_partner_name') ? edde_partner_name($item['file']) : pathinfo($item['file'], PATHINFO_FILENAME); ?>
           <div class="logo-strip__item" style="width: <?php echo (int) $item['w']; ?>px; height: <?php echo (int) $item['h']; ?>px;"<?php echo $pass ? ' aria-hidden="true"' : ''; ?>>
             <img src="<?php echo esc_url($logo_url . rawurlencode($item['file'])); ?>" alt="<?php echo $pass ? '' : esc_attr($alt); ?>" loading="lazy">
           </div>
@@ -627,9 +610,9 @@ while ($logo_set && count($logo_set) < 12) {
       <input type="email" placeholder="E-mail" required>
       <select required>
         <option value="">Maraqlandığınız proqram</option>
-        <option>IELTS</option><option>TOEFL</option><option>Duolingo</option><option>PTE</option><option>SAT</option>
-        <option>General English</option><option>Business English</option><option>Kids English (6–12 yaş)</option>
-        <option>Türk dili</option><option>Alman dili</option><option>Danışıq klubu</option><option>Digər</option>
+        <option>IELTS</option><option>Duolingo</option><option>TOEFL</option><option>PET / PTE</option><option>CSCA</option><option>SAT</option><option>GRE / GMAT</option>
+        <option>İngilis dili</option><option>Çin dili</option><option>Koreya dili</option><option>İspan dili</option><option>Rus dili</option><option>Alman dili</option><option>Ərəb dili</option><option>Türk dili</option>
+        <option>Kids English (6–12 yaş)</option><option>Danışıq klubu</option><option>Digər</option>
       </select>
       <select>
         <option value="">Hazırkı dil səviyyəniz (istəyə bağlı)</option>

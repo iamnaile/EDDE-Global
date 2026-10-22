@@ -18,7 +18,7 @@ if (!$edde_pg) {
     'lead'  => 'Axtardığınız səhifə tapılmadı və ya köçürülüb. Aşağıdakı bölmələrdən birinə keçə bilərsiniz.',
     'blocks' => [['links', [
       ['Xaricdə təhsil', '/xaricde-tehsil/', 'Foundation-dan doktoranturaya qədər bütün proqramlar.'],
-      ['EDDE Academy', '/edde-xidmetler/', 'Dil kursları və beynəlxalq imtahan hazırlığı.'],
+      ['EDDE Academy', '/edde-home/edde-xidmetler/', 'Dil kursları və beynəlxalq imtahan hazırlığı.'],
       ['Əlaqə', '/elaqe/', 'Pulsuz konsultasiya üçün bizimlə əlaqə saxlayın.'],
     ]]],
     'cta' => 'Bizimlə əlaqə saxlayın', 'cta_course' => '404',
@@ -31,7 +31,8 @@ $is_article = $edde_pg['kind'] === 'article';
 $article    = $is_article ? $edde_pg['article'] : null;
 $cta_title  = isset($edde_pg['cta']) ? $edde_pg['cta'] : 'Pulsuz konsultasiya';
 $cta_course = isset($edde_pg['cta_course']) ? $edde_pg['cta_course'] : $edde_pg['title'];
-$wa_number  = '994702141033';
+$edde_c     = edde_contact();
+$wa_number  = $edde_c['whatsapp'];
 
 /* ------------------------------ köməkçi çıxış funksiyaları ------------------------------ */
 $e = function ($t) { echo esc_html($t); };
@@ -44,7 +45,7 @@ $render_list_item = function ($it) {
   }
 };
 
-$render_blocks = function ($blocks) use ($e, $render_list_item, $theme_uri, $wa_number) {
+$render_blocks = function ($blocks) use ($e, $render_list_item, $theme_uri, $wa_number, $edde_c) {
   foreach ($blocks as $b) {
     switch ($b[0]) {
       case 'h':
@@ -119,24 +120,25 @@ $render_blocks = function ($blocks) use ($e, $render_list_item, $theme_uri, $wa_
       case 'contact': ?>
         <div class="epage-contact">
           <div class="epage-contact__card"><span>📞 Telefon</span>
-            <a href="tel:+994702141033">+994 70 214 10 33</a>
-            <a href="tel:+994708332004">+994 70 833 20 04</a>
-            <a href="tel:+994124096789">+994 12 409 67 89</a>
+            <?php foreach ($edde_c['phones'] as $p) : ?>
+            <a href="tel:<?php echo esc_attr($p[1]); ?>"><?php echo esc_html($p[0]); ?></a>
+            <?php endforeach; ?>
           </div>
           <div class="epage-contact__card"><span>💬 WhatsApp</span>
-            <a href="https://wa.me/<?php echo esc_attr($wa_number); ?>" target="_blank" rel="noopener">WhatsApp-da yazın</a>
+            <a href="<?php echo esc_url(edde_wa_url()); ?>" target="_blank" rel="noopener">WhatsApp-da yazın</a>
+            <p><?php echo esc_html($edde_c['whatsapp_display']); ?></p>
           </div>
           <div class="epage-contact__card"><span>✉️ E-poçt</span>
-            <a href="mailto:info@eddeglobal.az">info@eddeglobal.az</a>
+            <a href="mailto:<?php echo esc_attr($edde_c['email']); ?>"><?php echo esc_html($edde_c['email']); ?></a>
           </div>
           <div class="epage-contact__card"><span>📍 Ünvan</span>
-            <p>Əliyar Əliyev 159, N.Nərimanov ray., Bakı, Azərbaycan, AZ1052</p>
+            <p><?php echo esc_html($edde_c['address']); ?></p>
             <a href="https://g.page/edde-global?share" target="_blank" rel="noopener">Xəritədə aç</a>
           </div>
         </div>
         <div class="epage-map">
           <iframe title="EDDE Global ofisi" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                  src="https://www.google.com/maps?q=<?php echo rawurlencode('Əliyar Əliyev 159, Nərimanov, Bakı'); ?>&amp;output=embed"></iframe>
+                  src="https://www.google.com/maps?q=<?php echo rawurlencode($edde_c['map_query']); ?>&amp;output=embed"></iframe>
         </div>
         <?php break;
       case 'social': ?>
@@ -194,15 +196,14 @@ $render_blocks = function ($blocks) use ($e, $render_list_item, $theme_uri, $wa_
           </section>
         <?php endforeach;
         break;
-      case 'testform':
-        $redirect = apply_filters('edde_test_url', ''); ?>
-        <form class="svc-form epage-form epage-testform" data-course="İxtisas seçimi testi" data-redirect="<?php echo esc_url($redirect); ?>">
-          <input type="text" name="name" placeholder="Adınız" required>
-          <input type="email" name="email" placeholder="E-poçt" required>
-          <input type="tel" name="phone" placeholder="Nömrə" required>
-          <button type="submit" class="btn btn--primary btn--block">Testə keçid</button>
-        </form>
-        <?php break;
+      case 'partners':
+        echo '<div class="epage-partners">';
+        foreach (edde_partner_logos() as $lg) {
+          echo '<figure class="epage-partner"><div class="epage-partner__logo"><img src="' . esc_url($lg['url']) . '" alt="' . esc_attr($lg['name']) . '" width="200" height="200" loading="lazy"></div><figcaption>';
+          $e($lg['name']); echo '</figcaption></figure>';
+        }
+        echo '</div>';
+        break;
     }
   }
 };
@@ -279,7 +280,7 @@ $crumb_group  = $is_article
     <?php if (!$is_article) : ?>
     <div class="epage-hero__actions">
       <a href="#epage-form" class="btn btn--primary">Pulsuz konsultasiya</a>
-      <a href="https://wa.me/<?php echo esc_attr($wa_number); ?>" class="btn btn--outline" target="_blank" rel="noopener">WhatsApp-da yazın</a>
+      <a href="<?php echo esc_url(edde_wa_url()); ?>" class="btn btn--outline" target="_blank" rel="noopener">WhatsApp-da yazın</a>
     </div>
     <?php endif; ?>
   </div>
@@ -316,7 +317,7 @@ $crumb_group  = $is_article
         <h4>Pulsuz konsultasiya</h4>
         <p>Məsləhətçilərimiz sizə uyğun ölkə, universitet və proqramı seçməkdə kömək edəcək.</p>
         <a href="#epage-form" class="btn btn--light btn--block">Müraciət et</a>
-        <a class="epage-aside__phone" href="tel:+994702141033">070 214 10 33</a>
+        <a class="epage-aside__phone" href="tel:<?php echo esc_attr($edde_c['phones'][0][1]); ?>"><?php echo esc_html($edde_c['phones'][0][0]); ?></a>
       </div>
     </aside>
   </div>
@@ -330,10 +331,12 @@ $crumb_group  = $is_article
       <h2><?php $e($cta_title); ?></h2>
       <p>Məlumatlarınızı qeyd edin — məsləhətçimiz sizinlə əlaqə saxlayıb bütün suallarınızı cavablandıracaq.</p>
       <div class="svc-form__contact">
-        <div>📞 <a href="tel:+994702141033">070 214 10 33</a></div>
-        <div>📞 <a href="tel:+994124096789">012 409 67 89</a></div>
-        <div>✉️ <a href="mailto:info@eddeglobal.az">info@eddeglobal.az</a></div>
-        <div>📍 Əliyar Əliyev 159, N.Nərimanov, Bakı</div>
+        <?php foreach ($edde_c['phones'] as $p) : ?>
+        <div>📞 <a href="tel:<?php echo esc_attr($p[1]); ?>"><?php echo esc_html($p[0]); ?></a></div>
+        <?php endforeach; ?>
+        <div>💬 <a href="<?php echo esc_url(edde_wa_url()); ?>" target="_blank" rel="noopener"><?php echo esc_html($edde_c['whatsapp_display']); ?></a></div>
+        <div>✉️ <a href="mailto:<?php echo esc_attr($edde_c['email']); ?>"><?php echo esc_html($edde_c['email']); ?></a></div>
+        <div>📍 <?php echo esc_html($edde_c['address']); ?></div>
       </div>
     </div>
     <form class="svc-form epage-form" data-course="<?php echo esc_attr($cta_course); ?>">

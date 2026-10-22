@@ -50,7 +50,7 @@ $svc_stages = [
 <div class="svc-breadcrumb">
   <div class="container">
     <a href="<?php echo home_url('/edde-home/'); ?>">Ana səhifə</a> /
-    <a href="<?php echo home_url('/edde-xidmetler/'); ?>">Xidmətlər</a> /
+    <a href="<?php echo home_url('/edde-home/edde-xidmetler/'); ?>">Xidmətlər</a> /
     <span><?php echo esc_html($svc_title); ?></span>
   </div>
 </div>
@@ -120,7 +120,9 @@ $svc_stages = [
       <h2>Fərdi <?php echo esc_html($svc_title); ?> təlimatı alın</h2>
       <p>Məqsədləriniz barədə bizə məlumat verin, mütəxəssislərimiz sizə düzgün hazırlıq planını seçməyə kömək etsin.</p>
       <div class="svc-form__contact">
-        <div>📞 <a href="tel:+994702141033">070 214 10 33</a></div>
+        <?php $edde_c = edde_contact(); foreach ($edde_c['phones'] as $p) : ?>
+        <div>📞 <a href="tel:<?php echo esc_attr($p[1]); ?>"><?php echo esc_html($p[0]); ?></a></div>
+        <?php endforeach; ?>
         <div>✉️ <a href="mailto:info@eddeglobal.az">info@eddeglobal.az</a></div>
       </div>
     </div>
@@ -156,7 +158,7 @@ document.getElementById('svcForm').addEventListener('submit', function(e){
   var name = inputs[0] ? inputs[0].value.trim() : '';
   var phone = inputs[2] ? inputs[2].value.trim() : '';
   var text = encodeURIComponent('Salam, mənim adım ' + name + '. ' + course + ' proqramı ilə maraqlanıram. Əlaqə nömrəm: ' + phone);
-  window.open('https://wa.me/994702141033?text=' + text, '_blank');
+  window.open('https://wa.me/' + (window.EDDE_WA || '994708332024') + '?text=' + text, '_blank');
 });
 </script>
 <?php wp_footer(); ?>
