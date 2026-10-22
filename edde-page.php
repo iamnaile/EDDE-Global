@@ -126,7 +126,6 @@ $render_blocks = function ($blocks) use ($e, $render_list_item, $theme_uri, $wa_
           </div>
           <div class="epage-contact__card"><span>💬 WhatsApp</span>
             <a href="<?php echo esc_url(edde_wa_url()); ?>" target="_blank" rel="noopener">WhatsApp-da yazın</a>
-            <p><?php echo esc_html($edde_c['whatsapp_display']); ?></p>
           </div>
           <div class="epage-contact__card"><span>✉️ E-poçt</span>
             <a href="mailto:<?php echo esc_attr($edde_c['email']); ?>"><?php echo esc_html($edde_c['email']); ?></a>
@@ -333,7 +332,6 @@ $crumb_group  = $is_article
         <?php foreach ($edde_c['phones'] as $p) : ?>
         <div>📞 <a href="tel:<?php echo esc_attr($p[1]); ?>"><?php echo esc_html($p[0]); ?></a></div>
         <?php endforeach; ?>
-        <div>💬 <a href="<?php echo esc_url(edde_wa_url()); ?>" target="_blank" rel="noopener"><?php echo esc_html($edde_c['whatsapp_display']); ?></a></div>
         <div>✉️ <a href="mailto:<?php echo esc_attr($edde_c['email']); ?>"><?php echo esc_html($edde_c['email']); ?></a></div>
         <div>📍 <?php echo esc_html($edde_c['address']); ?></div>
       </div>

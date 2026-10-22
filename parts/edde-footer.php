@@ -39,7 +39,6 @@ $edde_c = edde_contact();
       <?php foreach ($edde_c['phones'] as $p) : ?>
         <a href="tel:<?php echo esc_attr($p[1]); ?>"><?php echo esc_html($p[0]); ?></a>
       <?php endforeach; ?>
-      <a href="<?php echo esc_url(edde_wa_url()); ?>" target="_blank" rel="noopener">WhatsApp: <?php echo esc_html($edde_c['whatsapp_display']); ?></a>
       <a href="mailto:<?php echo esc_attr($edde_c['email']); ?>"><?php echo esc_html($edde_c['email']); ?></a>
       <span><?php echo esc_html($edde_c['address']); ?></span>
     </div>
