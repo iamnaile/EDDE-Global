@@ -1,6 +1,6 @@
 /* EDDE məzmun səhifələri (edde-page.php) üçün skriptlər */
 (function () {
-  var WA = window.EDDE_WA || '994708332024';
+  var WA = window.EDDE_WA || '994708332004';
 
   // ===== Müraciət formaları → admin-ajax (WordPress "Müraciətlər" + e-poçt) =====
   document.querySelectorAll('.epage-form').forEach(function (form) {

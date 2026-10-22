@@ -10,11 +10,11 @@ if (!function_exists('edde_contact')) {
       // [göstərilən mətn, tel: üçün nömrə]
       'phones' => [
         ['+994 77 255 56 58', '+994772555658'],
-        ['+994 70 833 20 24', '+994708332024'],
+        ['+994 70 833 20 04', '+994708332004'],
         ['+994 12 409 67 89', '+994124096789'],
       ],
-      'whatsapp'         => '994708332024',
-      'whatsapp_display' => '+994 70 833 20 24',
+      'whatsapp'         => '994708332004',
+      'whatsapp_display' => '+994 70 833 20 04',
       'email'            => 'info@eddeglobal.az',
       'address'          => 'Əliyar Əliyev 61, N.Nərimanov ray., Bakı, AZ1052',
       'map_query'        => 'Əliyar Əliyev 61, Nərimanov, Bakı',

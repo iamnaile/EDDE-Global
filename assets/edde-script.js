@@ -91,7 +91,7 @@ function eddeCollect(form) {
 
 window.eddeSendLead = function (form) {
   const text = eddeCollect(form);
-  window.open('https://wa.me/' + (window.EDDE_WA || '994708332024') + '?text=' + encodeURIComponent(text), '_blank');
+  window.open('https://wa.me/' + (window.EDDE_WA || '994708332004') + '?text=' + encodeURIComponent(text), '_blank');
   return true;
 };
 
