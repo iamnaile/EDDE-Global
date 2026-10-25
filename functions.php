@@ -80,14 +80,13 @@ add_filter('pre_redirect_guess_404_permalink', function ($pre) {
     return edde_template_for_route(edde_request_route()) ? '' : $pre;
 });
 
-/* Silinmiş səhifələrin köhnə ünvanları: ixtisas seçimi testi xarici test saytına, qalanları uyğun bölməyə yönləndirilir. */
+/* Silinmiş səhifələrin köhnə ünvanları uyğun bölməyə yönləndirilir. (İxtisas seçimi testinin canlı səhifəsinə/saytına toxunulmur.) */
 add_action('template_redirect', function () {
     if (is_admin()) {
         return;
     }
     $c = edde_contact();
     $map = [
-        'ixtisas-secimi-testi' => $c['test_url'],
         'turkiyede-tehsil'     => home_url('/xaricde-tehsil/'),
         'alman-dili-kurslari'  => home_url('/dil-kurslari/'),
     ];
