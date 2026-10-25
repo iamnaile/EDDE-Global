@@ -10,6 +10,26 @@
  * - Çıxış HTML-i edde_lang_filter() ilə işlənir: mətnlər tərcümə olunur, daxili keçidlərə /en/ əlavə olunur.
  */
 
+if (!function_exists('edde_home_base')) {
+  /**
+   * Saytın kök yolu (məs. '' və ya '/alt-qovluq'). get_option('home') istifadə olunur: dil plaginləri
+   * (Polylang və s.) home_url()-ə /en/ əlavə edə bildiyi üçün home_url() bu məqsədlə etibarlı deyil.
+   */
+  function edde_home_base() {
+    $home = function_exists('get_option') ? (string) get_option('home') : '';
+    $p    = $home !== '' ? (string) parse_url($home, PHP_URL_PATH) : '';
+    return rtrim($p, '/');
+  }
+}
+
+if (!function_exists('edde_home_root')) {
+  /** Saytın kök ünvanı, sonunda / olmadan (dil prefiksi olmadan). */
+  function edde_home_root() {
+    $home = function_exists('get_option') ? (string) get_option('home') : '';
+    return $home !== '' ? rtrim($home, '/') : rtrim(home_url('/'), '/');
+  }
+}
+
 if (!function_exists('edde_lang')) {
   /**
    * Cari dil: 'az' və ya 'en'.
@@ -22,10 +42,13 @@ if (!function_exists('edde_lang')) {
     }
     $uri  = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
     $path = (string) parse_url($uri, PHP_URL_PATH);
-    $base = function_exists('home_url') ? (string) parse_url(home_url('/'), PHP_URL_PATH) : '/';
-    if ($base !== '' && $base !== '/' && strpos($path, $base) === 0) { $path = substr($path, strlen($base) - 1); }
+    $base = edde_home_base();
+    if ($base !== '' && strpos($path, $base) === 0) { $path = substr($path, strlen($base)); }
     $path = '/' . ltrim(strtolower($path), '/');
-    return ($path === '/en' || strpos($path, '/en/') === 0) ? 'en' : 'az';
+    if ($path === '/en' || strpos($path, '/en/') === 0) { return 'en'; }
+    // Polylang və s. dili öz üsulu ilə təyin edibsə
+    if (function_exists('pll_current_language') && pll_current_language('slug') === 'en') { return 'en'; }
+    return 'az';
   }
 }
 
@@ -44,8 +67,8 @@ if (!function_exists('edde_lang_path')) {
   function edde_lang_path() {
     $uri  = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/';
     $path = (string) parse_url($uri, PHP_URL_PATH);
-    $base = (string) parse_url(home_url('/'), PHP_URL_PATH);
-    if ($base !== '' && $base !== '/' && strpos($path, $base) === 0) { $path = substr($path, strlen($base) - 1); }
+    $base = edde_home_base();
+    if ($base !== '' && strpos($path, $base) === 0) { $path = substr($path, strlen($base)); }
     $path = '/' . ltrim($path, '/');
     if (preg_match('~^/en(/|$)~i', $path)) { $path = substr($path, 3); }
     return '/' . ltrim($path, '/');
@@ -56,7 +79,8 @@ if (!function_exists('edde_lang_urls')) {
   /** Dil keçidi üçün: ['az' => ünvan, 'en' => ünvan] (hazırkı səhifənin qarşı dildəki ekvivalenti). */
   function edde_lang_urls() {
     $p = edde_lang_path();
-    return ['az' => home_url($p), 'en' => edde_lang_url(home_url($p))];
+    $root = edde_home_root();
+    return ['az' => $root . $p, 'en' => edde_lang_url($root . $p)];
   }
 }
 
@@ -111,8 +135,9 @@ if (!function_exists('edde_lang_filter')) {
     }, $html);
 
     // daxili səhifə keçidlərinə ?lang=en (dil keçidi data-lang ilə işarələnib, toxunulmur)
-    $home = rtrim(home_url('/'), '/');
-    $pat  = '~^' . preg_quote($home, '~') . '(/|$|\?|#)~';
+    $home = edde_home_root();
+    // artıq /en/ prefiksi olan keçidlərə (məs. dil plaginindən gələnlərə) toxunulmur
+    $pat  = '~^' . preg_quote($home, '~') . '(?!/en(?:/|$|\?|#))(/|$|\?|#)~';
     $skip = '~^' . preg_quote($home, '~') . '/(wp-|assets|theme|feed)~';
     $html = preg_replace_callback('~<a\s[^>]*>~i', function ($m) use ($pat, $skip) {
       if (stripos($m[0], 'data-lang') !== false) { return $m[0]; }

@@ -101,8 +101,8 @@ if (!function_exists('edde_request_route')) {
   function edde_request_route() {
     $uri  = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
     $path = (string) parse_url($uri, PHP_URL_PATH);
-    $base = (string) parse_url(home_url('/'), PHP_URL_PATH);
-    if ($base !== '' && $base !== '/' && strpos($path, $base) === 0) {
+    $base = edde_home_base();
+    if ($base !== '' && strpos($path, $base) === 0) {
       $path = substr($path, strlen($base));
     }
     $route = strtolower(trim(rawurldecode($path), '/'));
