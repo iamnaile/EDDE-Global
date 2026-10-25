@@ -410,6 +410,18 @@ $edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
         </div>
       </a>
 
+      <a href="<?php echo home_url('/edde-home/edde-xidmetler/'); ?>" class="atl-card reveal">
+        <div class="atl-card__top">
+          <div class="atl-card__icon">📖</div>
+          <span class="atl-card__badge">Dil və imtahan</span>
+        </div>
+        <h3>EDDE Academy</h3>
+        <p>Dil kursları və beynəlxalq imtahan hazırlığı: İngilis, Çin, Koreya, İspan, Rus, Alman, Ərəb, Türk dilləri; IELTS, TOEFL, SAT, GMAT və s.</p>
+        <div class="atl-card__bottom atl-card__bottom--center">
+          <span class="atl-card__link">Ətraflı <span>→</span></span>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>

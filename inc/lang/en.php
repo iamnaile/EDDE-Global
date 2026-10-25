@@ -490,6 +490,8 @@ return [
   'Dərslər həm əyani, həm də online formada keçirilir.' => 'Classes are held both in person and online.',
   'Dərslər və metodika ilə tanışlıq üçün ilkin olaraq level check və sınaq dərsi təyin olunur.' => 'To get acquainted with the classes and methodology, a level check and a trial lesson are scheduled first.',
   'Proqrama B2 səviyyəsindən başlamanız tövsiyə olunur.' => 'We recommend starting the program at B2 level.',
+  'Dil və imtahan' => 'Language & exams',
+  'Dil kursları və beynəlxalq imtahan hazırlığı: İngilis, Çin, Koreya, İspan, Rus, Alman, Ərəb, Türk dilləri; IELTS, TOEFL, SAT, GMAT və s.' => 'Language courses and international exam preparation: English, Chinese, Korean, Spanish, Russian, German, Arabic and Turkish; IELTS, TOEFL, SAT, GMAT and more.',
   // Kodda (PHP) yazılmış sabit mətnlər
   'Suallarınız var?' => 'Have questions?',
 ];

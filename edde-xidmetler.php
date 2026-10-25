@@ -149,7 +149,7 @@
         <div class="svc-card__icon">🈶</div>
         <h3>CSCA</h3>
         <p>Qrup formatında CSCA imtahanına hazırlıq.</p>
-        <a href="<?php echo home_url('/imtahana-hazirlik-kurslari/'); ?>" class="svc-card__link">Ətraflı məlumat →</a>
+        <a href="<?php echo home_url('/csca/'); ?>" class="svc-card__link">Ətraflı məlumat →</a>
       </div>
 
       <div class="svc-card">
@@ -163,7 +163,7 @@
         <div class="svc-card__icon">📊</div>
         <h3>GRE / GMAT</h3>
         <p>Magistratura və MBA qəbulu üçün GRE / GMAT hazırlığı.</p>
-        <a href="<?php echo home_url('/imtahana-hazirlik-kurslari/'); ?>" class="svc-card__link">Ətraflı məlumat →</a>
+        <a href="<?php echo home_url('/gmat/'); ?>" class="svc-card__link">Ətraflı məlumat →</a>
       </div>
 
     </div>

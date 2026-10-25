@@ -218,6 +218,8 @@ return [
           ['TOEFL', '/toefl/', 'TOEFL imtahanına hazırlıq kursu.'],
           ['PTE Academic', '/pte-academic/', 'PTE Academic imtahanına hazırlıq.'],
           ['SAT', '/sat/', 'SAT imtahanına hazırlıq kursu.'],
+          ['CSCA', '/csca/', 'Çin universitetlərinə bakalavr qəbulu üçün standartlaşdırılmış imtahan.'],
+          ['GMAT', '/gmat/', 'Biznes məktəbləri və MBA üçün imtahan.'],
         ],
       ],
       ['h', 'Dərslərin formatı'],
@@ -234,6 +236,76 @@ return [
     ],
     'cta' => 'İmtahana hazırlığa qeydiyyat',
     'cta_course' => 'İmtahana hazırlıq',
+  ],
+  'csca' => [
+    'title' => 'CSCA',
+    'group' => 'EDDE Academy',
+    'icon' => '🇨🇳',
+    'meta' => 'CSCA (China Scholastic Competency Assessment) hazırlığı — EDDE Academy: Çin universitetlərinin bakalavr pilləsinə və CSC təqaüdlərinə müraciət üçün standartlaşdırılmış imtahan.',
+    'lead' => 'CSCA (China Scholastic Competency Assessment — Çin Akademik Kompetensiya Qiymətləndirmə İmtahanı) — Çin universitetlərinin bakalavr pilləsinə müraciət edən xarici və beynəlxalq tələbələr üçün tətbiq olunan standartlaşdırılmış akademik qəbul imtahanıdır.',
+    'blocks' => [
+      [
+        'facts',
+        [
+          ['Dərslər', 'Həftədə 2 dəfə, 90 dəq.'],
+          ['Format', 'Fərdi və qrup'],
+          ['Proqram müddəti', '6–8 ay'],
+        ],
+      ],
+      ['h', 'Əsas xüsusiyyətləri'],
+      [
+        'ul',
+        [
+          ['Məqsədi', 'Xarici tələbələrin bilik səviyyəsini obyektiv qiymətləndirmək və xüsusilə China Scholarship Council (CSC) tərəfindən verilən dövlət təqaüdlü proqramlara qəbulu tənzimləməkdir.'],
+          ['İmtahan fənləri', 'Namizədin seçdiyi ixtisasdan asılı olaraq dəyişir.'],
+        ],
+      ],
+      [
+        'ul',
+        [
+          'Peşəkar Çin dili (çindilli proqramlar üçün)',
+          'Riyaziyyat (bütün namizədlər üçün əsas fənn)',
+          'Fizika və Kimya (dəqiq elmlər, mühəndislik və tibb ixtisasları üçün)',
+        ],
+      ],
+      ['h', 'EDDE Academy-də hazırlıq'],
+      [
+        'ul',
+        [
+          'Dərslər Academy-də 1 bölmə üzrə həftədə 2 dəfə, 90 dəqiqə olmaqla tədris edilir.',
+          'Dərslər ümumi Math və ümumi Physics yoxlanışından sonra tədris edilir.',
+          'Dərslər fərdi və qrup şəklində keçirilir.',
+          'Proqram müddəti 6–8 ay arası hazırlıq müddəti olmaqla dəyişir.',
+        ],
+      ],
+    ],
+    'cta' => 'CSCA hazırlığına qeydiyyat',
+    'cta_course' => 'CSCA',
+  ],
+  'gmat' => [
+    'title' => 'GMAT',
+    'group' => 'EDDE Academy',
+    'icon' => '📊',
+    'meta' => 'GMAT hazırlığı — EDDE Academy: biznes məktəbləri, MBA, menecment və maliyyə magistraturası üçün GMAT Focus Edition imtahanının strukturu və hazırlıq.',
+    'lead' => 'GMAT (Graduate Management Admission Test), xüsusi olaraq biznes məktəbləri, MBA (Master of Business Administration), menecment və maliyyə magistraturası proqramları üçün nəzərdə tutulmuş ixtisaslaşdırılmış imtahandır. Bu imtahan namizədin biznes mühitində qərarvermə və analiz bacarıqlarını ölçür.',
+    'blocks' => [
+      ['h', 'İmtahanın strukturu (GMAT Focus Edition)'],
+      ['p', 'İmtahan 3 bərabər bölmədən ibarətdir (esse/inşalar bu formatdan çıxarılıb):'],
+      [
+        'ul',
+        [
+          ['Quantitative Reasoning (Riyazi məntiq)', 'Data analizi deyil, sırf riyazi problemləri həll etmə bacarığını yoxlayır. Bu bölmədə kalkulyatordan istifadə etmək qadağandır.'],
+          ['Verbal Reasoning (Sözlü məntiq)', 'Tənqidi düşüncə və oxuduğunu anlama bacarığını ölçür. GRE-dən fərqli olaraq, burada çətin sözləri əzbərləmək yox, məntiqi arqumentləri tapmaq vacibdir.'],
+          ['Data Insights (Məlumat analizi)', 'Qrafiklər, cədvəllər və fərqli mənbələrdən gələn biznes məlumatlarını analiz etmək bacarığını yoxlayır. Yalnız bu bölmədə ekrandakı kalkulyatordan istifadə etmək olar.'],
+        ],
+      ],
+      ['h', 'Balların hesablanması'],
+      ['p', 'Hər üç bölmə eyni dərəcədə ümumi bala təsir edir. Toplam bal 205 ilə 805 arasında dəyişir.'],
+      ['h', 'Kimlər üçün uyğundur?'],
+      ['p', 'Gələcəkdə idarəçi, biznes meneceri, maliyyəçi olmaq istəyən və top biznes məktəblərində (məsələn, Harvard, INSEAD, LBS) MBA oxumağı hədəfləyənlər üçün.'],
+    ],
+    'cta' => 'GMAT hazırlığına qeydiyyat',
+    'cta_course' => 'GMAT',
   ],
   'missiya' => [
     'title' => 'EDDE Global Missiyası',

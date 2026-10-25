@@ -218,6 +218,8 @@ return [
           ['TOEFL', '/toefl/', 'TOEFL exam preparation course.'],
           ['PTE Academic', '/pte-academic/', 'Preparation for the PTE Academic exam.'],
           ['SAT', '/sat/', 'SAT exam preparation course.'],
+          ['CSCA', '/csca/', 'Standardized exam for Bachelor\'s admission to Chinese universities.'],
+          ['GMAT', '/gmat/', 'The exam for business schools and MBA programs.'],
         ],
       ],
       ['h', 'Class format'],
@@ -234,6 +236,76 @@ return [
     ],
     'cta' => 'Register for exam preparation',
     'cta_course' => 'Exam preparation',
+  ],
+  'csca' => [
+    'title' => 'CSCA',
+    'group' => 'EDDE Academy',
+    'icon' => '🇨🇳',
+    'meta' => 'CSCA (China Scholastic Competency Assessment) preparation at EDDE Academy: the standardized exam for applying to Chinese universities at Bachelor\'s level and for CSC scholarships.',
+    'lead' => 'The CSCA (China Scholastic Competency Assessment) is a standardized academic admission exam for foreign and international students applying to Bachelor\'s programs at Chinese universities.',
+    'blocks' => [
+      [
+        'facts',
+        [
+          ['Lessons', 'Twice a week, 90 min.'],
+          ['Format', 'Individual and group'],
+          ['Program length', '6–8 months'],
+        ],
+      ],
+      ['h', 'Key features'],
+      [
+        'ul',
+        [
+          ['Purpose', 'To objectively assess the knowledge level of foreign students and, in particular, to regulate admission to state-funded programs awarded by the China Scholarship Council (CSC).'],
+          ['Exam subjects', 'These vary depending on the major the candidate chooses.'],
+        ],
+      ],
+      [
+        'ul',
+        [
+          'Professional Chinese (for Chinese-taught programs)',
+          'Mathematics (the core subject for all candidates)',
+          'Physics and Chemistry (for natural science, engineering and medical majors)',
+        ],
+      ],
+      ['h', 'Preparation at EDDE Academy'],
+      [
+        'ul',
+        [
+          'Lessons at the Academy are taught twice a week for 90 minutes, one section at a time.',
+          'Lessons begin after a general Math and general Physics assessment.',
+          'Lessons are held individually and in groups.',
+          'The program length varies, with a preparation period of 6 to 8 months.',
+        ],
+      ],
+    ],
+    'cta' => 'Register for CSCA preparation',
+    'cta_course' => 'CSCA',
+  ],
+  'gmat' => [
+    'title' => 'GMAT',
+    'group' => 'EDDE Academy',
+    'icon' => '📊',
+    'meta' => 'GMAT preparation at EDDE Academy: the structure of the GMAT Focus Edition for business schools, MBA, management and finance Master\'s programs.',
+    'lead' => 'The GMAT (Graduate Management Admission Test) is a specialized exam designed for business schools and for MBA (Master of Business Administration), management and finance Master\'s programs. It measures a candidate\'s decision-making and analytical skills in a business environment.',
+    'blocks' => [
+      ['h', 'Exam structure (GMAT Focus Edition)'],
+      ['p', 'The exam consists of 3 equal sections (the essays have been removed from this format):'],
+      [
+        'ul',
+        [
+          ['Quantitative Reasoning', 'Tests the ability to solve purely mathematical problems rather than analyze data. Calculators are not allowed in this section.'],
+          ['Verbal Reasoning', 'Measures critical thinking and reading comprehension. Unlike the GRE, it is not about memorizing difficult words but about identifying logical arguments.'],
+          ['Data Insights', 'Tests the ability to analyze graphs, tables and business data from different sources. The on-screen calculator may be used in this section only.'],
+        ],
+      ],
+      ['h', 'Scoring'],
+      ['p', 'All three sections contribute equally to the total score. The total score ranges from 205 to 805.'],
+      ['h', 'Who is it for?'],
+      ['p', 'For those who want to become managers, business managers or finance professionals in the future, and who aim to study an MBA at top business schools (for example, Harvard, INSEAD, LBS).'],
+    ],
+    'cta' => 'Register for GMAT preparation',
+    'cta_course' => 'GMAT',
   ],
   'missiya' => [
     'title' => 'EDDE Global Mission',
