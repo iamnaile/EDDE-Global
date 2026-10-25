@@ -250,3 +250,14 @@ if (!function_exists('edde_docx_parse')) {
     return ['title' => $title, 'html' => trim($out), 'excerpt' => $excerpt, 'date' => $date, 'images' => $images];
   }
 }
+
+if (!function_exists('edde_docx_detect_lang')) {
+  /** Mətnin dilini təxmin edir: 'az' (ə, ı, ş, ç, ğ, ö, ü hərflərinin payı) və ya 'en'. */
+  function edde_docx_detect_lang($text) {
+    $text = trim(preg_replace('~\s+~u', ' ', strip_tags($text)));
+    $letters = preg_match_all('~\p{L}~u', $text);
+    if ($letters < 20) { return 'az'; }
+    $special = preg_match_all('~[əƏıİşŞğĞçÇöÖüÜ]~u', $text);
+    return ($special / $letters) > 0.012 ? 'az' : 'en';
+  }
+}

@@ -27,12 +27,15 @@ add_action('add_meta_boxes', function () {
         $src  = get_post_meta($post->ID, '_edde_source', true);
         wp_nonce_field('edde_news_meta', 'edde_news_nonce');
         echo '<p><label><strong>Bölmə</strong><br><select name="edde_type"><option value="meqale"' . selected($type, 'meqale', false) . '>Məqalə</option><option value="media"' . selected($type, 'media', false) . '>Mediada biz</option></select></label></p>';
+        $lang = get_post_meta($post->ID, '_edde_lang', true) === 'en' ? 'en' : 'az';
+        echo '<p><label><strong>Yazının dili</strong><br><select name="edde_lang"><option value="az"' . selected($lang, 'az', false) . '>Azərbaycan</option><option value="en"' . selected($lang, 'en', false) . '>İngilis (yalnız /en/ saytında görünür)</option></select></label></p>';
         echo '<p><label><strong>Mənbə keçidi</strong> (yalnız "Mediada biz" üçün)<br><input type="url" name="edde_source" value="' . esc_attr($src) . '" style="width:100%" placeholder="https://..."></label></p>';
     }, 'edde_news', 'side');
 });
 add_action('save_post_edde_news', function ($id) {
     if (!isset($_POST['edde_news_nonce']) || !wp_verify_nonce($_POST['edde_news_nonce'], 'edde_news_meta') || !current_user_can('edit_post', $id)) { return; }
     update_post_meta($id, '_edde_type', (isset($_POST['edde_type']) && $_POST['edde_type'] === 'media') ? 'media' : 'meqale');
+    update_post_meta($id, '_edde_lang', (isset($_POST['edde_lang']) && $_POST['edde_lang'] === 'en') ? 'en' : 'az');
     update_post_meta($id, '_edde_source', isset($_POST['edde_source']) ? esc_url_raw(wp_unslash($_POST['edde_source'])) : '');
 });
 
@@ -50,6 +53,8 @@ function edde_import_page() {
       <p>Bir neçə <strong>.docx</strong> faylı seçin (Ctrl+A ilə qovluqdakı hamısını seçə bilərsiniz). Hər fayl ayrıca məqalə olur: <em>başlıq</em> sənədin ilk sətri, qalan mətn, başlıqlar, siyahılar, cədvəllər və şəkillər qorunur. Sənədin ilk şəkli məqalənin üz qabığı olur.</p>
       <table class="form-table" role="presentation">
         <tr><th>Bölmə</th><td><select id="edType"><option value="meqale">Məqalələr</option><option value="media">Mediada biz</option></select></td></tr>
+        <tr><th>Fayllar hansı dildədir?</th><td><select id="edLang"><option value="auto">Avtomatik təyin et (hər fayl üçün ayrıca)</option><option value="az">Hamısı Azərbaycanca</option><option value="en">Hamısı İngiliscə</option></select>
+          <p class="description">İngilis dilindəki məqalələr yalnız saytın ingilis versiyasında (EN), Azərbaycanca olanlar isə yalnız AZ versiyasında göstərilir.</p></td></tr>
         <tr><th>Seçimlər</th><td>
           <label><input type="checkbox" id="edDraft"> Dərhal dərc etmə, <strong>qaralama</strong> kimi saxla (əvvəlcə yoxlamaq üçün)</label><br>
           <label><input type="checkbox" id="edToday"> Sənədin tarixini yox, <strong>bugünkü tarixi</strong> yaz</label>
@@ -73,6 +78,7 @@ function edde_import_page() {
           var fd = new FormData();
           fd.append('action', 'edde_import_docx'); fd.append('nonce', '<?php echo esc_js($nonce); ?>');
           fd.append('type', document.getElementById('edType').value);
+          fd.append('lang', document.getElementById('edLang').value);
           if (document.getElementById('edDraft').checked) fd.append('draft', '1');
           if (document.getElementById('edToday').checked) fd.append('today', '1');
           fd.append('file', f);
@@ -139,12 +145,15 @@ add_action('wp_ajax_edde_import_docx', function () {
             'post_date' => $date, 'post_date_gmt' => get_gmt_from_date($date),
         ], true);
         if (is_wp_error($id)) { wp_send_json_error(['message' => $id->get_error_message()]); }
+        $want = isset($_POST['lang']) ? $_POST['lang'] : 'auto';
+        $lang = in_array($want, ['az', 'en'], true) ? $want : edde_docx_detect_lang($title . ' ' . $doc['html']);
+        update_post_meta($id, '_edde_lang', $lang);
         update_post_meta($id, '_edde_type', (isset($_POST['type']) && $_POST['type'] === 'media') ? 'media' : 'meqale');
         foreach ($attach as $i => $aid) {
             wp_update_post(['ID' => $aid, 'post_parent' => $id]);
             if ($i === 0) { set_post_thumbnail($id, $aid); }
         }
-        wp_send_json_success(['status' => 'created', 'title' => $title, 'id' => $id, 'images' => count($attach)]);
+        wp_send_json_success(['status' => 'created', 'title' => $title, 'id' => $id, 'images' => count($attach), 'lang' => $lang]);
     } catch (Throwable $e) {
         wp_send_json_error(['message' => $e->getMessage()]);
     }

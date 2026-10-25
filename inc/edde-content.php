@@ -31,7 +31,7 @@ if (!function_exists('edde_news_all')) {
   /**
    * Bütün yazılar (yeni → köhnə): inc/data/articles.php-dəki hazır yazılar + WordPress admin-də "Məqalələr (EDDE)" bölməsindən
    * (məs. Word-dən import olunanlar) gələnlər. Hər yazı: slug, title, date (d.m.Y), ts, type (meqale|media), blocks, image, excerpt, source, words.
-   * İngilis versiyada yalnız inc/data/en/articles.php-dəki tərcümə olunmuş yazılar göstərilir.
+   * Admin-dəki yazılar öz dilinə uyğun saytda görünür (AZ yazılar AZ-də, İngilis yazılar /en/-də); hazır yazılar isə inc/data/(en/)articles.php-dən.
    */
   function edde_news_all() {
     static $cache = [];
@@ -48,8 +48,10 @@ if (!function_exists('edde_news_all')) {
       $a['words']   = $words;
       $out[$slug] = $a;
     }
-    if ($lang !== 'en' && function_exists('get_posts')) {
+    if (function_exists('get_posts')) {
       foreach (get_posts(['post_type' => 'edde_news', 'post_status' => 'publish', 'numberposts' => -1, 'orderby' => 'date', 'order' => 'DESC']) as $p) {
+        $plang = get_post_meta($p->ID, '_edde_lang', true) === 'en' ? 'en' : 'az';
+        if ($plang !== $lang) { continue; } // hər yazı yalnız öz dilindəki saytda görünür
         $type = get_post_meta($p->ID, '_edde_type', true) === 'media' ? 'media' : 'meqale';
         $img  = get_the_post_thumbnail_url($p->ID, 'large');
         $html = $p->post_content;
