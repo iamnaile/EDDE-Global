@@ -16,19 +16,16 @@ if (!function_exists('edde_lang')) {
    * İngilis dili iki üsulla tanınır: ?lang=en parametri (əsas, hər yerdə işləyir) və ya /en/ ünvan prefiksi.
    */
   function edde_lang() {
-    static $lang = null;
-    if ($lang !== null) { return $lang; }
     if (isset($_GET['lang'])) {
       $q = strtolower((string) $_GET['lang']);
-      if ($q === 'en' || $q === 'az') { return $lang = $q; }
+      if ($q === 'en' || $q === 'az') { return $q; }
     }
     $uri  = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
     $path = (string) parse_url($uri, PHP_URL_PATH);
     $base = function_exists('home_url') ? (string) parse_url(home_url('/'), PHP_URL_PATH) : '/';
     if ($base !== '' && $base !== '/' && strpos($path, $base) === 0) { $path = substr($path, strlen($base) - 1); }
     $path = '/' . ltrim(strtolower($path), '/');
-    $lang = ($path === '/en' || strpos($path, '/en/') === 0) ? 'en' : 'az';
-    return $lang;
+    return ($path === '/en' || strpos($path, '/en/') === 0) ? 'en' : 'az';
   }
 }
 

@@ -108,6 +108,11 @@ add_action('template_redirect', function () {
     echo 'Tema qovluğu: ' . $dir . "\n";
     echo 'REQUEST_URI: ' . (isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '-') . "\n";
     echo '$_GET: ' . json_encode($_GET) . "\n";
+    if (function_exists('edde_lang')) {
+        $rf = new ReflectionFunction('edde_lang');
+        echo 'edde_lang tərifi: ' . $rf->getFileName() . ':' . $rf->getStartLine() . "\n";
+    }
+    echo 'home_url(/): ' . home_url('/') . ' | edde_lang_path(): ' . (function_exists('edde_lang_path') ? edde_lang_path() : '-') . "\n";
     echo 'edde_lang(): ' . (function_exists('edde_lang') ? edde_lang() : 'FUNKSIYA YOXDUR (edde-lang.php yüklənməyib)') . "\n";
     echo 'edde_template_for_route: ' . (function_exists('edde_template_for_route') ? 'var' : 'YOXDUR (functions.php köhnədir)') . "\n";
     echo 'edde_lang_filter: ' . (function_exists('edde_lang_filter') ? 'var' : 'YOXDUR') . "\n";
