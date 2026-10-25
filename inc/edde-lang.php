@@ -46,19 +46,17 @@ if (!function_exists('edde_lang')) {
     if ($base !== '' && strpos($path, $base) === 0) { $path = substr($path, strlen($base)); }
     $path = '/' . ltrim(strtolower($path), '/');
     if ($path === '/en' || strpos($path, '/en/') === 0) { return 'en'; }
-    // Polylang və s. dili öz üsulu ilə təyin edibsə
-    if (function_exists('pll_current_language') && pll_current_language('slug') === 'en') { return 'en'; }
-    return 'az';
+    return 'az'; // dil yalnız ünvandan (/en/ və ya ?lang=) təyin olunur; plaginin cookie yaddaşı nəzərə alınmır
   }
 }
 
 if (!function_exists('edde_lang_url')) {
-  /** Daxili ünvana ?lang=en əlavə edir (# hissəsini qoruyaraq). */
-  function edde_lang_url($url) {
+  /** Daxili ünvana ?lang=<dil> əlavə edir (# hissəsini qoruyaraq). */
+  function edde_lang_url($url, $lang = 'en') {
     if (preg_match('~[?&]lang=~', $url)) { return $url; }
     $hash = '';
     if (($i = strpos($url, '#')) !== false) { $hash = substr($url, $i); $url = substr($url, 0, $i); }
-    return $url . (strpos($url, '?') === false ? '?' : '&') . 'lang=en' . $hash;
+    return $url . (strpos($url, '?') === false ? '?' : '&') . 'lang=' . $lang . $hash;
   }
 }
 
@@ -80,7 +78,8 @@ if (!function_exists('edde_lang_urls')) {
   function edde_lang_urls() {
     $p = edde_lang_path();
     $root = edde_home_root();
-    return ['az' => $root . $p, 'en' => edde_lang_url($root . $p)];
+    // AZ keçidi də açıq dil parametri daşıyır: dil plagini əvvəlki dil seçimini yadda saxlayıb geri qaytarmasın
+    return ['az' => edde_lang_url($root . $p, 'az'), 'en' => edde_lang_url($root . $p, 'en')];
   }
 }
 
