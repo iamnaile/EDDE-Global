@@ -253,3 +253,16 @@ document.querySelectorAll('.hero-form').forEach(form => {
 
   items.forEach(item => observer.observe(item));
 })();
+
+// ===== Giriş ekranı (preloader) ilişib qalmasın: normal halda tema özü gizlədir; xəta olarsa 10 san. sonra gizlədilir =====
+(function () {
+  const pre = document.querySelector('.preloader');
+  if (!pre) return;
+  setTimeout(function () {
+    if (!document.body.contains(pre)) return;
+    pre.style.transition = 'opacity .5s ease';
+    pre.style.opacity = '0';
+    pre.style.pointerEvents = 'none';
+    setTimeout(function () { pre.style.display = 'none'; }, 600);
+  }, 10000);
+})();

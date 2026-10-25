@@ -25,13 +25,15 @@ function edde_template_for_route($route) {
     if ($route !== '' && edde_route_page($route)) {
         return get_stylesheet_directory() . '/edde-page.php';
     }
-    if (edde_lang() === 'en') {
-        if ($route === '' || $route === 'edde-home') {
-            return get_stylesheet_directory() . '/edde-home.php';
-        }
-        if ($route === 'edde-xidmetler' || $route === 'edde-home/edde-xidmetler') {
-            return get_stylesheet_directory() . '/edde-xidmetler.php';
-        }
+    // Ana səhifə və Xidmətlər: WordPress-də ayrıca səhifə yaratmaq/şablon seçmək lazım deyil
+    if ($route === 'edde-home' && edde_lang() === 'en') {
+        return get_stylesheet_directory() . '/edde-home.php';
+    }
+    if ($route === '' && edde_lang() === 'en') {
+        return get_stylesheet_directory() . '/edde-home.php';
+    }
+    if ($route === 'edde-xidmetler' || $route === 'edde-home/edde-xidmetler') {
+        return get_stylesheet_directory() . '/edde-xidmetler.php';
     }
     return null;
 }

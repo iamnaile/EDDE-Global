@@ -252,6 +252,7 @@ $crumb_group  = $is_article
 <?php endif; ?>
 </head>
 <body <?php body_class('edde-page edde-content-page'); ?>>
+<?php include get_stylesheet_directory() . '/parts/edde-preloader.php'; ?>
   <div class="page-bg" style="background-image:url('<?php echo esc_url($theme_uri); ?>/assets/bg-home.jpg');"></div>
 <div class="page-bg-overlay"></div>
 <div class="page-content">

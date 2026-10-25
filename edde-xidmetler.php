@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/edde-styles.css">
 </head>
 <body <?php body_class('edde-page'); ?>>
+<?php include get_stylesheet_directory() . '/parts/edde-preloader.php'; ?>
   <div class="page-bg" style="background-image:url('<?php echo get_stylesheet_directory_uri(); ?>/assets/bg-xidmetler.webp');"></div>
 <div class="page-bg-overlay"></div>
 <div class="page-content">
