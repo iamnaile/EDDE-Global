@@ -51,15 +51,25 @@ if (!function_exists('edde_news_all')) {
     if (function_exists('get_posts')) {
       foreach (get_posts(['post_type' => 'edde_news', 'post_status' => 'publish', 'numberposts' => -1, 'orderby' => 'date', 'order' => 'DESC']) as $p) {
         $plang = get_post_meta($p->ID, '_edde_lang', true) === 'en' ? 'en' : 'az';
-        if ($plang !== $lang) { continue; } // hər yazı yalnız öz dilindəki saytda görünür
-        $type = get_post_meta($p->ID, '_edde_type', true) === 'media' ? 'media' : 'meqale';
-        $img  = get_the_post_thumbnail_url($p->ID, 'large');
-        $html = $p->post_content;
+        $type  = get_post_meta($p->ID, '_edde_type', true) === 'media' ? 'media' : 'meqale';
+        $img   = get_the_post_thumbnail_url($p->ID, 'large');
+        $title = get_the_title($p);
+        $html  = $p->post_content;
+        $exc   = $p->post_excerpt;
+        if ($lang === 'en' && $plang === 'az') {
+          // Azərbaycan məqaləsinin bağlanmış İngilis tərcüməsi (doldurulmayıbsa EN saytda göstərilmir)
+          $enT = (string) get_post_meta($p->ID, '_edde_en_title', true);
+          $enC = (string) get_post_meta($p->ID, '_edde_en_content', true);
+          if ($enT === '' || trim(strip_tags($enC)) === '') { continue; }
+          $title = $enT; $html = $enC; $exc = (string) get_post_meta($p->ID, '_edde_en_excerpt', true);
+        } elseif ($plang !== $lang) {
+          continue; // yalnız öz dilindəki saytda görünür
+        }
         $slug = $p->post_name ?: 'yazi-' . $p->ID;
         $out[$slug] = [
-          'slug' => $slug, 'title' => get_the_title($p), 'date' => mysql2date('d.m.Y', $p->post_date), 'ts' => strtotime($p->post_date),
+          'slug' => $slug, 'title' => $title, 'date' => mysql2date('d.m.Y', $p->post_date), 'ts' => strtotime($p->post_date),
           'type' => $type, 'blocks' => [['html', $html]], 'image' => $img ? $img : '',
-          'excerpt' => $p->post_excerpt !== '' ? $p->post_excerpt : wp_trim_words(wp_strip_all_tags($html), 32, '…'),
+          'excerpt' => $exc !== '' ? $exc : wp_trim_words(wp_strip_all_tags($html), 32, '…'),
           'source' => (string) get_post_meta($p->ID, '_edde_source', true),
           'words' => str_word_count(strip_tags($html), 0, 'əıöüçşğƏİÖÜÇŞĞ'),
         ];

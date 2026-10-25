@@ -261,3 +261,14 @@ if (!function_exists('edde_docx_detect_lang')) {
     return ($special / $letters) > 0.012 ? 'az' : 'en';
   }
 }
+
+if (!function_exists('edde_docx_key')) {
+  /** Fayl adından cütləşdirmə açarı: "Məqalə 1.docx" və "Məqalə 1 - EN.docx" eyni açar verir. */
+  function edde_docx_key($filename, $stripLang = false) {
+    $n = pathinfo($filename, PATHINFO_FILENAME);
+    $n = mb_strtolower($n, 'UTF-8');
+    if ($stripLang) { $n = preg_replace('~[\s_\-\.\(\)\[\]]+(en|eng|english|ingilis|ingiliscə|ingilisce)[\s_\-\.\(\)\[\]]*$~u', '', $n); }
+    $n = edde_docx_translit($n);
+    return trim(preg_replace('~[^a-z0-9]+~', '-', $n), '-');
+  }
+}
