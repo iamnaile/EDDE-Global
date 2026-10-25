@@ -125,5 +125,25 @@ add_action('template_redirect', function () {
     foreach ($files as $f) {
         echo '  ' . (is_readable($dir . '/' . $f) ? 'VAR   ' : 'YOXDUR') . ' ' . $f . "\n";
     }
+    // Footer faylı: sayt həqiqətən hansı versiyanı oxuyur?
+    $ff = $dir . '/parts/edde-footer.php';
+    echo "\nFooter faylı (parts/edde-footer.php):\n";
+    if (is_readable($ff)) {
+        $src = file_get_contents($ff);
+        echo '  ölçü: ' . strlen($src) . ' bayt, dəyişdirilib: ' . date('Y-m-d H:i:s', filemtime($ff)) . "\n";
+        echo '  "icefFallback" var: ' . (strpos($src, 'icefFallback') !== false ? 'BƏLİ (yeni versiya)' : 'XEYR (köhnə versiya!)') . "\n";
+        echo '  "icef-badge" var: ' . (strpos($src, 'icef-badge') !== false ? 'bəli' : 'xeyr') . "\n";
+        echo '  assets/icef-badge.* faylı: ' . (glob($dir . '/assets/icef-badge.*') ? implode(', ', array_map('basename', glob($dir . '/assets/icef-badge.*'))) : 'yoxdur') . "\n";
+        echo '  assets/logos/06-icef.png: ' . (is_readable($dir . '/assets/logos/06-icef.png') ? 'var' : 'YOXDUR') . "\n";
+    } else {
+        echo "  OXUNMUR\n";
+    }
+    echo '  PHP opcache: ' . (function_exists('opcache_get_status') && @opcache_get_status(false) ? 'aktiv (revalidate_freq=' . ini_get('opcache.revalidate_freq') . ')' : 'söndürülüb') . "\n";
+    echo '  Footer HTML-də ICEF hissəsi:' . "\n";
+    ob_start();
+    include $ff;
+    $html = ob_get_clean();
+    $i = strpos($html, 'footer__icef');
+    echo '  ' . ($i === false ? 'footer__icef HTML-də TAPILMADI' : preg_replace('~\s+~', ' ', substr($html, $i - 20, 700))) . "\n";
     exit;
 }, 0);
