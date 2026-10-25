@@ -2,7 +2,7 @@
 /**
  * İki dilli sayt: Azərbaycan (əsas, "/") və İngilis ("/en/").
  *
- * - Ünvan: /en/... — marşrut eynidir, yalnız "en/" prefiksi var (məs. /en/shirket-haqqinda/).
+ * - Ünvan: eyni marşrut + ?lang=en (məs. /shirket-haqqinda/?lang=en). /en/shirket-haqqinda/ da tanınır.
  * - Məzmun səhifələri, FAQ, məqalələr, ölkələr: inc/data/en/*.php (eyni quruluşlu İngilis fayllar).
  * - Şablonlardakı sabit mətnlər (menyu, footer, ana səhifə, düymələr): inc/lang/en.php lüğəti
  *   (Azərbaycan mətni => İngilis mətni). Lüğətdə olmayan mətn Azərbaycanca qalır.
@@ -11,10 +11,17 @@
  */
 
 if (!function_exists('edde_lang')) {
-  /** Cari dil: 'az' və ya 'en' (ünvanın əvvəlindəki /en/ prefiksinə görə). */
+  /**
+   * Cari dil: 'az' və ya 'en'.
+   * İngilis dili iki üsulla tanınır: ?lang=en parametri (əsas, hər yerdə işləyir) və ya /en/ ünvan prefiksi.
+   */
   function edde_lang() {
     static $lang = null;
     if ($lang !== null) { return $lang; }
+    if (isset($_GET['lang'])) {
+      $q = strtolower((string) $_GET['lang']);
+      if ($q === 'en' || $q === 'az') { return $lang = $q; }
+    }
     $uri  = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
     $path = (string) parse_url($uri, PHP_URL_PATH);
     $base = function_exists('home_url') ? (string) parse_url(home_url('/'), PHP_URL_PATH) : '/';
@@ -22,6 +29,16 @@ if (!function_exists('edde_lang')) {
     $path = '/' . ltrim(strtolower($path), '/');
     $lang = ($path === '/en' || strpos($path, '/en/') === 0) ? 'en' : 'az';
     return $lang;
+  }
+}
+
+if (!function_exists('edde_lang_url')) {
+  /** Daxili ünvana ?lang=en əlavə edir (# hissəsini qoruyaraq). */
+  function edde_lang_url($url) {
+    if (preg_match('~[?&]lang=~', $url)) { return $url; }
+    $hash = '';
+    if (($i = strpos($url, '#')) !== false) { $hash = substr($url, $i); $url = substr($url, 0, $i); }
+    return $url . (strpos($url, '?') === false ? '?' : '&') . 'lang=en' . $hash;
   }
 }
 
@@ -42,7 +59,7 @@ if (!function_exists('edde_lang_urls')) {
   /** Dil keçidi üçün: ['az' => ünvan, 'en' => ünvan] (hazırkı səhifənin qarşı dildəki ekvivalenti). */
   function edde_lang_urls() {
     $p = edde_lang_path();
-    return ['az' => home_url($p), 'en' => home_url('/en' . ($p === '/' ? '/' : $p))];
+    return ['az' => home_url($p), 'en' => edde_lang_url(home_url($p))];
   }
 }
 
@@ -96,15 +113,16 @@ if (!function_exists('edde_lang_filter')) {
       return $t === null ? $m[0] : $m[1] . '="' . htmlspecialchars($t, ENT_COMPAT, 'UTF-8') . '"';
     }, $html);
 
-    // daxili keçidlərə /en/ prefiksi (dil keçidi data-lang ilə işarələnib, toxunulmur)
+    // daxili səhifə keçidlərinə ?lang=en (dil keçidi data-lang ilə işarələnib, toxunulmur)
     $home = rtrim(home_url('/'), '/');
-    $pat  = '~^(' . preg_quote($home, '~') . ')/(?!en(?:/|$|#|\?)|wp-|assets|theme)~';
-    $html = preg_replace_callback('~<a\s[^>]*>~i', function ($m) use ($pat) {
+    $pat  = '~^' . preg_quote($home, '~') . '(/|$|\?|#)~';
+    $skip = '~^' . preg_quote($home, '~') . '/(wp-|assets|theme|feed)~';
+    $html = preg_replace_callback('~<a\s[^>]*>~i', function ($m) use ($pat, $skip) {
       if (stripos($m[0], 'data-lang') !== false) { return $m[0]; }
-      return preg_replace_callback('~\bhref="([^"]*)"~', function ($h) use ($pat) {
+      return preg_replace_callback('~\bhref="([^"]*)"~', function ($h) use ($pat, $skip) {
         $u = html_entity_decode($h[1]);
-        $n = preg_replace($pat, '$1/en/', $u, 1, $c);
-        return $c ? 'href="' . htmlspecialchars($n) . '"' : $h[0];
+        if (!preg_match($pat, $u) || preg_match($skip, $u)) { return $h[0]; }
+        return 'href="' . htmlspecialchars(edde_lang_url($u)) . '"';
       }, $m[0]);
     }, $html);
 
