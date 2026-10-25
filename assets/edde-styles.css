@@ -380,7 +380,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 .footer__social a { font-size: 13px; margin: 0; }
 .footer__bottom { display: flex; justify-content: space-between; padding: 22px 24px; font-size: 10px; color: var(--text-muted); flex-wrap: wrap; gap: 10px; }
 .footer__bottom-right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
-.footer__icef { max-width: 110px; display: block; }
+.footer__icef { max-width: 120px; display: block; }
 .footer__icef--img img { width: 100%; height: auto; display: block; }
 .footer__icef img, .footer__icef svg { width: 100%; height: auto; display: block; }
 
