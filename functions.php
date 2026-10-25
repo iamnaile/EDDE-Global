@@ -94,3 +94,28 @@ add_action('template_redirect', function () {
         exit;
     }
 });
+
+/* Diaqnostika: admin kimi daxil olub ünvanın sonuna ?edde_debug=1 əlavə edin (məs. /?lang=en&edde_debug=1). */
+add_action('template_redirect', function () {
+    if (!isset($_GET['edde_debug']) || !current_user_can('manage_options')) {
+        return;
+    }
+    $dir = get_stylesheet_directory();
+    $files = ['functions.php', 'inc/edde-lang.php', 'inc/edde-content.php', 'inc/edde-nav.php', 'inc/edde-contact.php', 'inc/lang/en.php',
+              'inc/data/en/pages.php', 'inc/data/en/articles.php', 'inc/data/en/faq.php', 'inc/data/en/countries.php', 'parts/edde-header.php', 'parts/edde-footer.php'];
+    header('Content-Type: text/plain; charset=utf-8');
+    echo "EDDE diaqnostika\n----------------\n";
+    echo 'Tema qovluğu: ' . $dir . "\n";
+    echo 'REQUEST_URI: ' . (isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '-') . "\n";
+    echo '$_GET: ' . json_encode($_GET) . "\n";
+    echo 'edde_lang(): ' . (function_exists('edde_lang') ? edde_lang() : 'FUNKSIYA YOXDUR (edde-lang.php yüklənməyib)') . "\n";
+    echo 'edde_template_for_route: ' . (function_exists('edde_template_for_route') ? 'var' : 'YOXDUR (functions.php köhnədir)') . "\n";
+    echo 'edde_lang_filter: ' . (function_exists('edde_lang_filter') ? 'var' : 'YOXDUR') . "\n";
+    echo 'Lüğət sətirlərinin sayı: ' . (function_exists('edde_lang_dict') ? count(edde_lang_dict()) : '-') . "\n";
+    echo 'is_front_page: ' . (is_front_page() ? 'bəli' : 'xeyr') . ', is_404: ' . (is_404() ? 'bəli' : 'xeyr') . "\n";
+    echo 'ob səviyyəsi: ' . ob_get_level() . "\n\nFayllar:\n";
+    foreach ($files as $f) {
+        echo '  ' . (is_readable($dir . '/' . $f) ? 'VAR   ' : 'YOXDUR') . ' ' . $f . "\n";
+    }
+    exit;
+}, 0);
