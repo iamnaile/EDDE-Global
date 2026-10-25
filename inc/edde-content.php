@@ -27,6 +27,30 @@ if (!function_exists('edde_data')) {
   }
 }
 
+if (!function_exists('edde_news_fallback_image')) {
+  /**
+   * Üz qabığı şəkli olmayan yazılar üçün avtomatik şəkil. assets/news/ qovluğuna atılan şəkillərdən (jpg/png/webp),
+   * qovluq boşdursa saytın hero şəkillərindən seçilir. Seçim yazının slug-ına görə sabitdir (hər dəfə eyni şəkil).
+   */
+  function edde_news_fallback_image($slug) {
+    static $pool = null;
+    if ($pool === null) {
+      $dir = get_stylesheet_directory() . '/assets/news/';
+      $uri = get_stylesheet_directory_uri() . '/assets/news/';
+      $pool = [];
+      foreach ((array) glob($dir . '*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', GLOB_BRACE) as $f) { $pool[] = $uri . rawurlencode(basename($f)); }
+      if (!$pool) {
+        $base = get_stylesheet_directory() . '/assets/';
+        foreach (['hero-xaricde-tehsil.jpg', 'hero-edde-academy.jpg', 'hero-edde-corporate.jpg'] as $f) {
+          if (is_readable($base . $f)) { $pool[] = get_stylesheet_directory_uri() . '/assets/' . $f; }
+        }
+      }
+      sort($pool);
+    }
+    return $pool ? $pool[abs(crc32($slug)) % count($pool)] : '';
+  }
+}
+
 if (!function_exists('edde_news_all')) {
   /**
    * Bütün yazılar (yeni → köhnə): inc/data/articles.php-dəki hazır yazılar + WordPress admin-də "Məqalələr (EDDE)" bölməsindən
@@ -75,6 +99,10 @@ if (!function_exists('edde_news_all')) {
         ];
       }
     }
+    foreach ($out as $slug => &$it) {
+      if ($it['image'] === '') { $it['image'] = edde_news_fallback_image($slug); $it['cover_fallback'] = true; }
+    }
+    unset($it);
     uasort($out, function ($x, $y) { return $y['ts'] <=> $x['ts']; });
     return $cache[$lang] = $out;
   }

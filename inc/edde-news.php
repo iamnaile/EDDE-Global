@@ -75,7 +75,9 @@ function edde_import_page() {
       <table class="form-table" role="presentation">
         <tr><th>Nə yükləyirsiniz?</th><td><select id="edMode">
             <option value="new">Yeni məqalələr</option>
-            <option value="en">Mövcud məqalələrin İNGİLİS tərcümələri</option></select>
+            <option value="en">Mövcud məqalələrin İNGİLİS tərcümələri</option>
+            <option value="cover">Məqalələrin ÜZ QABIĞI şəkilləri (jpg/png)</option></select>
+          <p class="description" id="edCoverHelp" style="display:none">Şəklin adı Azərbaycanca Word faylının adı ilə eyni olmalıdır (məs. <code>Viza məsləhətləri.docx</code> ↔ <code>Viza məsləhətləri.jpg</code>). Şəkil həmin məqalənin üz qabığı olur. Şəkli olmayan məqalələrə sayt özü dizayna uyğun hazır şəkil seçir.</p>
           <p class="description" id="edModeHelp" style="display:none">Hər ingilis faylın adı Azərbaycanca faylın adı ilə eyni olmalıdır, sonuna istəyə görə <strong>EN</strong> əlavə edilə bilər. Məsələn: <code>Viza məsləhətləri.docx</code> ↔ <code>Viza məsləhətləri EN.docx</code> (və ya <code>-en</code>, <code>_en</code>, <code>(English)</code>). Tərcümə həmin məqaləyə bağlanır və EN saytda görünür. Cütü tapılmayan fayl ayrıca İngilis məqalə kimi əlavə olunur.</p></td></tr>
         <tr class="ed-new"><th>Bölmə</th><td><select id="edType"><option value="meqale">Məqalələr</option><option value="media">Mediada biz</option></select></td></tr>
         <tr class="ed-new"><th>Fayllar hansı dildədir?</th><td><select id="edLang"><option value="auto">Avtomatik təyin et (hər fayl üçün ayrıca)</option><option value="az">Hamısı Azərbaycanca</option><option value="en">Hamısı İngiliscə</option></select>
@@ -96,8 +98,11 @@ function edde_import_page() {
       var modeSel = document.getElementById('edMode');
       modeSel.addEventListener('change', function () {
         var en = modeSel.value === 'en';
+        var cover = modeSel.value === 'cover', isNew = modeSel.value === 'new';
         document.getElementById('edModeHelp').style.display = en ? 'block' : 'none';
-        document.querySelectorAll('.ed-new').forEach(function (r) { r.style.display = en ? 'none' : ''; });
+        document.getElementById('edCoverHelp').style.display = cover ? 'block' : 'none';
+        document.querySelectorAll('.ed-new').forEach(function (r) { r.style.display = isNew ? '' : 'none'; });
+        files.accept = cover ? '.jpg,.jpeg,.png,.webp' : '.docx';
       });
       go.addEventListener('click', async function () {
         if (!files.files.length) { alert('Əvvəlcə .docx faylları seçin.'); return; }
@@ -117,7 +122,8 @@ function edde_import_page() {
           try {
             var r = await fetch(ajaxurl, { method: 'POST', body: fd, credentials: 'same-origin' });
             var j = await r.json();
-            if (j.success && j.data.status === 'paired') { ok++; li.innerHTML = '🔗 <strong>' + j.data.title + '</strong> → ingilis versiya bağlandı: <em>' + j.data.en_title + '</em>'; }
+            if (j.success && j.data.status === 'cover') { ok++; li.innerHTML = '🖼️ <strong>' + j.data.title + '</strong> — üz qabığı təyin olundu'; }
+            else if (j.success && j.data.status === 'paired') { ok++; li.innerHTML = '🔗 <strong>' + j.data.title + '</strong> → ingilis versiya bağlandı: <em>' + j.data.en_title + '</em>'; }
             else if (j.success && j.data.status === 'created') { ok++; li.innerHTML = '✅ <strong>' + j.data.title + '</strong>' + (j.data.images ? ' (' + j.data.images + ' şəkil)' : ''); }
             else if (j.success) { skip++; li.innerHTML = '⏭️ ' + f.name + ' — artıq var, keçildi: <em>' + j.data.title + '</em>'; }
             else { fail++; li.innerHTML = '❌ ' + f.name + ' — ' + (j.data && j.data.message ? j.data.message : 'xəta'); }
@@ -139,7 +145,22 @@ add_action('wp_ajax_edde_import_docx', function () {
     }
     $rawName = (string) $_FILES['file']['name']; // cütləşdirmə açarı üçün orijinal ad (Azərbaycan hərfləri ilə)
     $name = sanitize_file_name($rawName);
-    if (strtolower(pathinfo($name, PATHINFO_EXTENSION)) !== 'docx') { wp_send_json_error(['message' => 'Yalnız .docx qəbul olunur.']); }
+    $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
+    if (isset($_POST['mode']) && $_POST['mode'] === 'cover') {
+        if (!in_array($ext, ['jpg', 'jpeg', 'png', 'webp'], true)) { wp_send_json_error(['message' => 'Yalnız jpg/png/webp şəkil qəbul olunur.']); }
+        $hit = get_posts(['post_type' => 'edde_news', 'post_status' => 'any', 'numberposts' => 1, 'fields' => 'ids',
+                          'meta_query' => [['key' => '_edde_file', 'value' => edde_docx_key($rawName, false)]]]);
+        if (!$hit) { wp_send_json_error(['message' => 'uyğun adlı məqalə tapılmadı (şəklin adı Word faylının adı ilə eyni olmalıdır)']); }
+        require_once ABSPATH . 'wp-admin/includes/image.php';
+        $up = wp_upload_bits('edde-' . wp_generate_password(6, false) . '-' . $name, null, file_get_contents($_FILES['file']['tmp_name']));
+        if (!empty($up['error'])) { wp_send_json_error(['message' => $up['error']]); }
+        $ft  = wp_check_filetype($up['file']);
+        $aid = wp_insert_attachment(['post_mime_type' => $ft['type'], 'post_title' => preg_replace('~\.[^.]+$~', '', $name), 'post_status' => 'inherit', 'guid' => $up['url']], $up['file'], (int) $hit[0]);
+        wp_update_attachment_metadata($aid, wp_generate_attachment_metadata($aid, $up['file']));
+        set_post_thumbnail((int) $hit[0], $aid);
+        wp_send_json_success(['status' => 'cover', 'title' => get_the_title((int) $hit[0])]);
+    }
+    if ($ext !== 'docx') { wp_send_json_error(['message' => 'Yalnız .docx qəbul olunur.']); }
     $tmp = $_FILES['file']['tmp_name'];
     @set_time_limit(120);
 
