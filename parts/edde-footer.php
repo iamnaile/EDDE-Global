@@ -64,14 +64,15 @@ $edde_c = edde_contact();
         <script async defer crossorigin="anonymous" src="https://www-cdn.icef.com/scripts/iasbadgeid.js"></script>
         <script>
           /* ICEF skripti nişanı göstərmirsə (domen qeydiyyatsızdır, bloklanıb), ehtiyat loqo göstərilir */
-          window.addEventListener('load', function () {
-            setTimeout(function () {
-              var b = document.getElementById('iasBadge');
-              if (b && (b.offsetHeight < 24 || b.offsetWidth < 24)) {
-                b.innerHTML = '<a href="https://www.icef.com/agency/0016M00002HWsLdQAL" target="_blank" rel="noopener"><img src="<?php echo esc_url($edde_theme_uri); ?>/assets/logos/06-icef.png" alt="ICEF Accredited Agency #5105"></a>';
-              }
-            }, 3500);
-          });
+          /* "load" hadisəsini gözləmirik: xarici skript ilişərsə o heç vaxt gəlməyə bilər */
+          function eddeIcefFallback() {
+            var b = document.getElementById('iasBadge');
+            if (b && !b.querySelector('a') && (b.offsetHeight < 24 || b.offsetWidth < 24)) {
+              b.innerHTML = '<a href="https://www.icef.com/agency/0016M00002HWsLdQAL" target="_blank" rel="noopener"><img src="<?php echo esc_url($edde_theme_uri); ?>/assets/logos/06-icef.png" alt="ICEF Accredited Agency #5105"></a>';
+            }
+          }
+          setTimeout(eddeIcefFallback, 3000);
+          setTimeout(eddeIcefFallback, 9000);
         </script>
       </div>
       <?php endif; ?>
