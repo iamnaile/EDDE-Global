@@ -195,6 +195,9 @@ $render_blocks = function ($blocks) use ($e, $render_list_item, $theme_uri, $wa_
           </section>
         <?php endforeach;
         break;
+      case 'html':
+        echo wp_kses_post($b[1]);
+        break;
       case 'partners':
         echo '<div class="epage-partners">';
         foreach (edde_partner_logos() as $lg) {
@@ -218,6 +221,8 @@ if ($is_article) {
 }
 
 $edde_current = $edde_route;
+require_once get_stylesheet_directory() . '/inc/edde-news-ui.php';
+$edde_news_mode = $is_article ? 'article' : (in_array($edde_route, ['meqaleler', 'mediada-biz'], true) ? 'index' : '');
 $page_title   = $edde_pg['title'] . ' — EDDE Global';
 $crumb_group  = $is_article
   ? [$article['type'] === 'media' ? 'Mediada biz' : 'Məqalələr', '/' . edde_article_base($article['type']) . '/']
@@ -235,6 +240,7 @@ $crumb_group  = $is_article
 <?php wp_head(); ?>
 <link rel="stylesheet" href="<?php echo esc_url($theme_uri); ?>/assets/edde-styles.css">
 <link rel="stylesheet" href="<?php echo esc_url($theme_uri); ?>/assets/edde-pages.css">
+<link rel="stylesheet" href="<?php echo esc_url($theme_uri); ?>/assets/edde-news.css">
 <?php if ($edde_route === 'faq') : ?>
 <script type="application/ld+json"><?php
   $ld = ['@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => []];
@@ -265,6 +271,9 @@ $crumb_group  = $is_article
   </div>
 </div>
 
+<?php if ($edde_news_mode === 'index') : edde_news_include('index', compact('edde_route')); ?>
+<?php elseif ($edde_news_mode === 'article') : edde_news_include('article', compact('article', 'render_blocks', 'edde_pg', 'e')); ?>
+<?php else : ?>
 <!-- ============ HERO ============ -->
 <section class="epage-hero">
   <div class="container epage-hero__inner">
@@ -320,6 +329,7 @@ $crumb_group  = $is_article
     </aside>
   </div>
 </section>
+<?php endif; ?>
 
 <!-- ============ MÜRACİƏT FORMASI ============ -->
 <section class="svc-form-section" id="epage-form">

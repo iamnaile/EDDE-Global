@@ -492,6 +492,18 @@ return [
   'Proqrama B2 səviyyəsindən başlamanız tövsiyə olunur.' => 'We recommend starting the program at B2 level.',
   'Dil və imtahan' => 'Language & exams',
   'Dil kursları və beynəlxalq imtahan hazırlığı: İngilis, Çin, Koreya, İspan, Rus, Alman, Ərəb, Türk dilləri; IELTS, TOEFL, SAT, GMAT və s.' => 'Language courses and international exam preparation: English, Chinese, Korean, Spanish, Russian, German, Arabic and Turkish; IELTS, TOEFL, SAT, GMAT and more.',
+  // Yazılar (xəbər) bölməsi
+  'Yazılar və xəbərlər' => 'Articles & news',
+  'Xaricdə təhsil, viza, təqaüd və dil imtahanları barədə məqalələr, habelə mediada çıxışlarımız.' => 'Articles on studying abroad, visas, scholarships and language exams, plus our appearances in the media.',
+  'Hamısı' => 'All',
+  'Yazılarda axtar' => 'Search articles',
+  'Axtar' => 'Search',
+  'Heç bir yazı tapılmadı.' => 'No articles found.',
+  'Son yazılar' => 'Latest articles',
+  'Bölmələr' => 'Sections',
+  'Səhifələr' => 'Pages',
+  'Məqalə' => 'Article',
+  'Mənbə:' => 'Source:',
   // Kodda (PHP) yazılmış sabit mətnlər
   'Suallarınız var?' => 'Have questions?',
 ];

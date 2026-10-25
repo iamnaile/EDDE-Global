@@ -15,6 +15,7 @@ add_action('wp_enqueue_scripts', 'edde_child_enqueue_styles');
    ========================================================================== */
 require_once get_stylesheet_directory() . '/inc/edde-contact.php';
 require_once get_stylesheet_directory() . '/inc/edde-content.php';
+require_once get_stylesheet_directory() . '/inc/edde-news.php';
 
 /**
  * Marşrutun hansı şablonla göstəriləcəyi. null — WordPress özü həll etsin.

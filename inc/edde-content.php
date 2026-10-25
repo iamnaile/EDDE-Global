@@ -27,19 +27,51 @@ if (!function_exists('edde_data')) {
   }
 }
 
+if (!function_exists('edde_news_all')) {
+  /**
+   * Bütün yazılar (yeni → köhnə): inc/data/articles.php-dəki hazır yazılar + WordPress admin-də "Məqalələr (EDDE)" bölməsindən
+   * (məs. Word-dən import olunanlar) gələnlər. Hər yazı: slug, title, date (d.m.Y), ts, type (meqale|media), blocks, image, excerpt, source, words.
+   * İngilis versiyada yalnız inc/data/en/articles.php-dəki tərcümə olunmuş yazılar göstərilir.
+   */
+  function edde_news_all() {
+    static $cache = [];
+    $lang = edde_lang();
+    if (isset($cache[$lang])) { return $cache[$lang]; }
+    $out = [];
+    foreach (edde_data('articles') as $slug => $a) {
+      $dt = DateTime::createFromFormat('d.m.Y', $a['date']);
+      $a['slug']    = $slug;
+      $a['ts']      = $dt ? $dt->getTimestamp() : 0;
+      $a['image']   = isset($a['image']) ? $a['image'] : '';
+      $a['excerpt'] = edde_excerpt($a['blocks'], 200);
+      $words = 0; foreach ($a['blocks'] as $b) { if (is_string($b[1] ?? null)) { $words += str_word_count(strip_tags($b[1]), 0, 'əıöüçşğƏİÖÜÇŞĞ'); } }
+      $a['words']   = $words;
+      $out[$slug] = $a;
+    }
+    if ($lang !== 'en' && function_exists('get_posts')) {
+      foreach (get_posts(['post_type' => 'edde_news', 'post_status' => 'publish', 'numberposts' => -1, 'orderby' => 'date', 'order' => 'DESC']) as $p) {
+        $type = get_post_meta($p->ID, '_edde_type', true) === 'media' ? 'media' : 'meqale';
+        $img  = get_the_post_thumbnail_url($p->ID, 'large');
+        $html = $p->post_content;
+        $slug = $p->post_name ?: 'yazi-' . $p->ID;
+        $out[$slug] = [
+          'slug' => $slug, 'title' => get_the_title($p), 'date' => mysql2date('d.m.Y', $p->post_date), 'ts' => strtotime($p->post_date),
+          'type' => $type, 'blocks' => [['html', $html]], 'image' => $img ? $img : '',
+          'excerpt' => $p->post_excerpt !== '' ? $p->post_excerpt : wp_trim_words(wp_strip_all_tags($html), 32, '…'),
+          'source' => (string) get_post_meta($p->ID, '_edde_source', true),
+          'words' => str_word_count(strip_tags($html), 0, 'əıöüçşğƏİÖÜÇŞĞ'),
+        ];
+      }
+    }
+    uasort($out, function ($x, $y) { return $y['ts'] <=> $x['ts']; });
+    return $cache[$lang] = $out;
+  }
+}
+
 if (!function_exists('edde_articles_by_type')) {
   /** type = 'meqale' | 'media'. Yeni → köhnə sıralanır. */
   function edde_articles_by_type($type) {
-    $out = [];
-    foreach (edde_data('articles') as $slug => $a) {
-      if ($a['type'] === $type) { $a['slug'] = $slug; $out[$slug] = $a; }
-    }
-    uasort($out, function ($x, $y) {
-      $dx = DateTime::createFromFormat('d.m.Y', $x['date']);
-      $dy = DateTime::createFromFormat('d.m.Y', $y['date']);
-      return $dy <=> $dx;
-    });
-    return $out;
+    return array_filter(edde_news_all(), function ($a) use ($type) { return $a['type'] === $type; });
   }
 }
 
@@ -65,14 +97,14 @@ if (!function_exists('edde_route_page')) {
     }
     if (strpos($route, '/') !== false) {
       list($base, $slug) = array_pad(explode('/', $route, 2), 2, '');
-      $articles = edde_data('articles');
+      $articles = edde_news_all();
       if (isset($articles[$slug])) {
         $a = $articles[$slug];
         if (edde_article_base($a['type']) === $base) {
           return [
             'route' => $route, 'kind' => 'article', 'article' => $a + ['slug' => $slug],
             'title' => $a['title'], 'group' => 'Yazılar', 'icon' => '📰',
-            'meta'  => edde_excerpt($a['blocks'], 160),
+            'meta'  => $a['excerpt'] !== '' ? mb_substr($a['excerpt'], 0, 160) : edde_excerpt($a['blocks'], 160),
             'lead'  => '', 'blocks' => $a['blocks'],
             'cta'   => 'Suallarınız var?', 'cta_course' => $a['type'] === 'media' ? 'Mediada biz' : 'Məqalə',
           ];
