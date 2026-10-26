@@ -18,7 +18,7 @@ if (!$edde_pg) {
     'lead'  => 'Axtardığınız səhifə tapılmadı və ya köçürülüb. Aşağıdakı bölmələrdən birinə keçə bilərsiniz.',
     'blocks' => [['links', [
       ['Xaricdə təhsil', '/xaricde-tehsil/', 'Foundation-dan doktoranturaya qədər bütün proqramlar.'],
-      ['EDDE Academy', '/edde-home/edde-xidmetler/', 'Dil kursları və beynəlxalq imtahan hazırlığı.'],
+      ['EDDE Academy', '/edde-xidmetler/', 'Dil kursları və beynəlxalq imtahan hazırlığı.'],
       ['Əlaqə', '/elaqe/', 'Pulsuz konsultasiya üçün bizimlə əlaqə saxlayın.'],
     ]]],
     'cta' => 'Bizimlə əlaqə saxlayın', 'cta_course' => '404',
@@ -262,7 +262,7 @@ $crumb_group  = $is_article
 <!-- ============ BREADCRUMB ============ -->
 <div class="svc-breadcrumb">
   <div class="container">
-    <a href="<?php echo esc_url(home_url('/edde-home/')); ?>">Ana səhifə</a> /
+    <a href="<?php echo esc_url(home_url('/')); ?>">Ana səhifə</a> /
     <?php if ($crumb_group) : ?>
       <a href="<?php echo esc_url(home_url($crumb_group[1])); ?>"><?php $e($crumb_group[0]); ?></a> /
     <?php elseif (!empty($edde_pg['group']) && $edde_pg['group'] !== $edde_pg['title']) : ?>

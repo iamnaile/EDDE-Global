@@ -98,7 +98,7 @@ $edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
           <p>İngilis, Çin, Koreya, İspan, Rus, Alman, Ərəb və Türk dili kursları, habelə IELTS, Duolingo, TOEFL, PET / PTE, CSCA, SAT və GRE / GMAT hazırlığı — qrup dərsləri, speaking praktikası və conversation klubları ilə.</p>
           <div class="hero-slide__actions">
             <button class="btn btn--primary" data-open-modal="modalAcademy">Müraciət et</button>
-            <a href="<?php echo home_url('/edde-home/edde-xidmetler/'); ?>" class="btn btn--outline">Ətraflı məlumat</a>
+            <a href="<?php echo home_url('/edde-xidmetler/'); ?>" class="btn btn--outline">Ətraflı məlumat</a>
           </div>
         </div>
       </div>
@@ -411,7 +411,7 @@ $edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
         </div>
       </a>
 
-      <a href="<?php echo home_url('/edde-home/edde-xidmetler/'); ?>" class="atl-card reveal">
+      <a href="<?php echo home_url('/edde-xidmetler/'); ?>" class="atl-card reveal">
         <div class="atl-card__top">
           <div class="atl-card__icon">📖</div>
           <span class="atl-card__badge">Dil və imtahan</span>

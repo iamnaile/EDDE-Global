@@ -25,11 +25,8 @@ function edde_template_for_route($route) {
     if ($route !== '' && edde_route_page($route)) {
         return get_stylesheet_directory() . '/edde-page.php';
     }
-    // Ana səhifə və Xidmətlər: WordPress-də ayrıca səhifə yaratmaq/şablon seçmək lazım deyil
-    if ($route === 'edde-home' && edde_lang() === 'en') {
-        return get_stylesheet_directory() . '/edde-home.php';
-    }
-    if ($route === '' && edde_lang() === 'en') {
+    // Ana səhifə və Xidmətlər: WordPress-də ayrıca səhifə yaratmaq/şablon seçmək lazım deyil (canlı saytda "edde-home" səhifəsi yoxdur)
+    if ($route === 'edde-home' || ($route === '' && edde_lang() === 'en')) {
         return get_stylesheet_directory() . '/edde-home.php';
     }
     if ($route === 'edde-xidmetler' || $route === 'edde-home/edde-xidmetler') {
@@ -55,6 +52,19 @@ add_filter('template_include', function ($template) {
     }
     return $tpl;
 }, 99);
+
+/* Tapılmayan səhifələr (404): köhnə temanın "404 ERROR" səhifəsi əvəzinə saytın yeni dizaynında "Səhifə tapılmadı". */
+add_filter('template_include', function ($template) {
+    if (is_admin() || is_embed() || !is_404()) {
+        return $template;
+    }
+    $path = (string) parse_url(isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '', PHP_URL_PATH);
+    if (preg_match('~\.(css|js|map|png|jpe?g|gif|webp|svg|ico|woff2?|ttf|xml|txt|json)$~i', $path) || strpos($path, '/wp-') !== false) {
+        return $template; // fayl sorğularına toxunma
+    }
+    $GLOBALS['edde_route'] = '';
+    return get_stylesheet_directory() . '/edde-page.php';
+}, 100);
 
 /* Ana səhifə (eddeglobal.az) — edde-home.php şablonu avtomatik göstərilir.
    WordPress-də "Parametrlər → Oxu" bölməsi nəyə qurulubsa (son yazılar və ya statik səhifə) fərq etmir. */

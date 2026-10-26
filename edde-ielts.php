@@ -50,8 +50,8 @@ $svc_stages = [
 <!-- ============ BREADCRUMB ============ -->
 <div class="svc-breadcrumb">
   <div class="container">
-    <a href="<?php echo home_url('/edde-home/'); ?>">Ana səhifə</a> /
-    <a href="<?php echo home_url('/edde-home/edde-xidmetler/'); ?>">Xidmətlər</a> /
+    <a href="<?php echo home_url('/'); ?>">Ana səhifə</a> /
+    <a href="<?php echo home_url('/edde-xidmetler/'); ?>">Xidmətlər</a> /
     <span><?php echo esc_html($svc_title); ?></span>
   </div>
 </div>

@@ -39,7 +39,7 @@ if (!function_exists('edde_nav_items')) {
       ],
       [
         'title' => 'Xaricdə təhsil',
-        'url'   => '/edde-home/#programs',
+        'url'   => '/#programs',
         'mega'  => [
           'heading' => 'Xaricdə Təhsil',
           'text'    => 'Foundation-dan doktoranturaya qədər — hər mərhələ üçün uyğun proqram və tam dəstək.',
@@ -61,7 +61,7 @@ if (!function_exists('edde_nav_items')) {
       ],
       [
         'title' => 'EDDE Academy',
-        'url'   => '/edde-home/edde-xidmetler/',
+        'url'   => '/edde-xidmetler/',
         'mega'  => [
           'heading' => 'EDDE Academy',
           'text'    => 'Beynəlxalq imtahanlara hazırlıq və dil kursları ilə hədəflərinizə çatın.',
@@ -95,7 +95,7 @@ if (!function_exists('edde_nav_items')) {
       ['title' => 'FAQ', 'url' => '/faq/'],
       [
         'title' => 'Əlaqə',
-        'url'   => '/edde-home/#contact',
+        'url'   => '/#contact',
         'mega'  => edde_nav_contact(),
       ],
     ];
@@ -108,7 +108,7 @@ if (!function_exists('edde_nav_contact')) {
     $links = [];
     foreach ($c['phones'] as $p) { $links[] = [$p[0], 'tel:' . $p[1]]; }
     $links[] = [$c['email'], 'mailto:' . $c['email']];
-    $links[] = [$c['address'], '/edde-home/#contact'];
+    $links[] = [$c['address'], '#map'];
     return [
       'heading' => 'Bizimlə əlaqə',
       'text'    => 'Suallarınız var? Məsləhətçilərimiz sizinlə əlaqə saxlamağa hazırdır.',
@@ -116,6 +116,7 @@ if (!function_exists('edde_nav_contact')) {
       'cta_url' => edde_wa_url(),
       'label'   => 'Əlaqə məlumatları',
       'visual'  => ['📍', 'Bakı', 'Baş ofis'],
+      'map'     => true, // "Bakı / Baş ofis" qutusuna basanda xəritə açılır
       'links'   => $links,
     ];
   }

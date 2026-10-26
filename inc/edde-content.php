@@ -254,7 +254,7 @@ if (!function_exists('edde_aside_links')) {
     }
     return ['Faydalı keçidlər', [
       ['Xaricdə təhsil', '/xaricde-tehsil/', false],
-      ['EDDE Academy', '/edde-home/edde-xidmetler/', false],
+      ['EDDE Academy', '/edde-xidmetler/', false],
       ['Ölkələr və universitetlər', '/olkeler/', false],
       ['Məqalələr', '/meqaleler/', false],
       ['FAQ', '/faq/', false],

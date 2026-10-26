@@ -21,7 +21,7 @@
 <div class="page-bg-overlay"></div>
 <div class="page-content">
 <!-- ============ HEADER (vahid naviqasiya: inc/edde-nav.php) ============ -->
-<?php $edde_current = 'edde-home/edde-xidmetler'; include get_stylesheet_directory() . '/parts/edde-header.php'; ?>
+<?php $edde_current = 'edde-xidmetler'; include get_stylesheet_directory() . '/parts/edde-header.php'; ?>
 
 <!-- ============ PAGE HERO ============ -->
 <section class="svc-hero">

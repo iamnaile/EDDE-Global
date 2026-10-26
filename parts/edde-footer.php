@@ -8,7 +8,7 @@ $edde_c = edde_contact();
 <footer class="site-footer" id="contact">
   <div class="container footer__grid">
     <div class="footer__col footer__col--brand">
-      <a href="<?php echo esc_url(home_url('/edde-home/')); ?>" class="logo logo--light"><img src="<?php echo esc_url($edde_theme_uri); ?>/assets/logo.png" alt="EDDE Global" class="logo-img"></a>
+      <a href="<?php echo esc_url(home_url('/')); ?>" class="logo logo--light"><img src="<?php echo esc_url($edde_theme_uri); ?>/assets/logo.png" alt="EDDE Global" class="logo-img"></a>
       <p>2018-ci ildən bəri tələbələrin xaricdə təhsil arzularını gerçəkləşdirməsinə kömək edən etibarlı təhsil şirkəti.</p>
       <div class="footer__social">
         <a href="https://www.facebook.com/eddeglobalaz">Facebook</a>
@@ -80,6 +80,22 @@ $edde_c = edde_contact();
     </div>
   </div>
 </footer>
+
+<!-- ============ XƏRİTƏ MODALI ============ -->
+<div class="modal-overlay" id="mapModal">
+  <div class="modal modal--map">
+    <button class="modal__close" data-close-modal aria-label="Bağla">✕</button>
+    <h3>Ofisimiz</h3>
+    <p><?php echo esc_html($edde_c['address']); ?></p>
+    <div class="map-frame">
+      <iframe title="EDDE Global ofisi" data-src="https://www.google.com/maps?q=<?php echo rawurlencode($edde_c['map_query']); ?>&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+    <div class="map-actions">
+      <a class="btn btn--primary btn--sm" href="https://www.google.com/maps/search/?api=1&amp;query=<?php echo rawurlencode($edde_c['map_query']); ?>" target="_blank" rel="noopener">Google Maps-də aç</a>
+      <a class="btn btn--outline-dark btn--sm" href="https://www.google.com/maps/dir/?api=1&amp;destination=<?php echo rawurlencode($edde_c['map_query']); ?>" target="_blank" rel="noopener">Marşrut qur</a>
+    </div>
+  </div>
+</div>
 
 <a href="<?php echo esc_url(edde_wa_url()); ?>" target="_blank" rel="noopener" class="floating-btn whatsapp" aria-label="WhatsApp ilə yazın">💬</a>
 

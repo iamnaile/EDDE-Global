@@ -504,6 +504,13 @@ return [
   'Səhifələr' => 'Pages',
   'Məqalə' => 'Article',
   'Mənbə:' => 'Source:',
+  // Mobil menyu və xəritə
+  'Xəritədə bax →' => 'View on map →',
+  'Xəritədə bax' => 'View on map',
+  'Ofisimiz' => 'Our office',
+  'Google Maps-də aç' => 'Open in Google Maps',
+  'Marşrut qur' => 'Get directions',
+  'Bağla' => 'Close',
   // Kodda (PHP) yazılmış sabit mətnlər
   'Suallarınız var?' => 'Have questions?',
 ];

@@ -1,9 +1,49 @@
-// ===== Mobile nav toggle =====
-const navToggle = document.getElementById('navToggle');
-const mainNav = document.getElementById('mainNav');
-navToggle.addEventListener('click', () => mainNav.classList.toggle('open'));
-document.querySelectorAll('.main-nav a').forEach(link => {
-  link.addEventListener('click', () => mainNav.classList.remove('open'));
+// ===== Mobil menyu (sürüşən panel) =====
+(function () {
+  const drawer = document.getElementById('mDrawer');
+  const toggle = document.getElementById('navToggle');
+  if (!drawer || !toggle) return;
+  const setOpen = (open) => {
+    drawer.classList.toggle('open', open);
+    drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.classList.toggle('is-open', open);
+    document.documentElement.classList.toggle('no-scroll', open);
+  };
+  toggle.addEventListener('click', () => setOpen(!drawer.classList.contains('open')));
+  drawer.querySelectorAll('[data-drawer-close]').forEach(b => b.addEventListener('click', () => setOpen(false)));
+  // alt menyular (akkordeon)
+  drawer.querySelectorAll('.m-acc__btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const acc = btn.parentElement, on = !acc.classList.contains('open');
+      drawer.querySelectorAll('.m-acc.open').forEach(o => { o.classList.remove('open'); o.querySelector('.m-acc__btn').setAttribute('aria-expanded', 'false'); });
+      acc.classList.toggle('open', on);
+      btn.setAttribute('aria-expanded', on ? 'true' : 'false');
+    });
+  });
+  // keçidə basanda menyu bağlansın (xəritə/zəng düymələri öz işini görür)
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 1230) setOpen(false); });
+  window.eddeCloseDrawer = () => setOpen(false);
+})();
+
+// ===== Xəritə modalı (Əlaqə menyusundakı "Bakı" qutusu, ünvan keçidi, mobil menyu) =====
+(function () {
+  const mapModal = document.getElementById('mapModal');
+  if (!mapModal) return;
+  const open = (e) => {
+    if (e) e.preventDefault();
+    const f = mapModal.querySelector('iframe');
+    if (f && !f.getAttribute('src')) f.setAttribute('src', f.dataset.src);
+    mapModal.classList.add('open');
+  };
+  document.querySelectorAll('[data-open-map], a[href="#map"]').forEach(el => el.addEventListener('click', open));
+})();
+
+// ===== "Zəng istə" modalını açan əlavə düymələr (mobil menyu) =====
+document.querySelectorAll('[data-open-consult]').forEach(btn => {
+  btn.addEventListener('click', () => { const m = document.getElementById('consultModal'); if (m) m.classList.add('open'); });
 });
 
 // ===== FAQ accordion =====
@@ -116,15 +156,6 @@ if (academyCarousel && academyPrev && academyNext) {
   academyNext.addEventListener('click', () => academyCarousel.scrollBy({ left: 280, behavior: 'smooth' }));
 }
 
-// ===== Mega menu on mobile (tap to open instead of hover) =====
-document.querySelectorAll('.has-mega > a').forEach(link => {
-  link.addEventListener('click', (e) => {
-    if (window.innerWidth <= 1230) {
-      e.preventDefault();
-      link.parentElement.classList.toggle('mega-open');
-    }
-  });
-});
 // ===== HERO SLIDER =====
 (function () {
   const track = document.getElementById('heroTrack');
@@ -156,6 +187,14 @@ document.querySelectorAll('.has-mega > a').forEach(link => {
   const heroSection = document.querySelector('.hero-slider');
   heroSection.addEventListener('mouseenter', stopAuto);
   heroSection.addEventListener('mouseleave', startAuto);
+
+  // telefonda barmaqla sürüşdürmə
+  let sx = null;
+  heroSection.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; stopAuto(); }, { passive: true });
+  heroSection.addEventListener('touchend', (e) => {
+    if (sx !== null) { const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); } }
+    sx = null; startAuto();
+  }, { passive: true });
 
   startAuto();
 })();
