@@ -332,6 +332,7 @@ $crumb_group  = $is_article
     </aside>
   </div>
 </section>
+<?php if ($edde_route === 'akkreditasiya') { include get_stylesheet_directory() . '/parts/edde-logo-strip.php'; } ?>
 <?php endif; ?>
 
 <!-- ============ MÜRACİƏT FORMASI ============ -->

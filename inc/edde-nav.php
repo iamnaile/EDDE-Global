@@ -52,6 +52,7 @@ if (!function_exists('edde_nav_items')) {
             ['Doktorantura Təhsili',        '/doktorantura/'],
             ['Transfer Proqramları',        '/transfer/'],
             ['Təqaüd Proqramları',          '/teqaud/'],
+            ['Ölkələr və universitetlər',   '/olkeler/'],
             ['Yay Məktəbləri',              '/yay-mektebleri/'],
             ['Beynəlxalq Məktəblər',        '/beynelxalq-mektebler/'],
             ['Xaricdə Yataqxana',           '/yataqxana/'],
