@@ -635,7 +635,8 @@ html.no-scroll { overflow: hidden; }
 .main-nav .mega-menu .btn--primary { color: #fff; }
 
 /* ==================== TELEFON: rahat interfeys ==================== */
-:root { color-scheme: light; }
+:root { color-scheme: light dark; }
+input, select, textarea { color-scheme: light; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: rgba(120, 23, 182, .15); }
 a, button { touch-action: manipulation; }
 .m-bar { display: none; }
@@ -772,4 +773,16 @@ html, body { overflow-x: clip; max-width: 100%; }
   .footer__col--brand p { display: none; }
   .site-footer .footer__col h4 { display: none !important; }
   .footer__col--links + .footer__col--links { margin-top: 0; }
+}
+
+/* Proses: telefonda sürüşdürmə */
+@media (max-width: 720px) {
+  .process-steps { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; margin: 0 -18px; padding: 4px 18px 10px; scrollbar-width: none; }
+  .process-steps::-webkit-scrollbar { display: none; }
+  .process-steps::before { display: none; }
+  .process-step { flex: 0 0 78%; scroll-snap-align: center; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 18px; box-shadow: 0 4px 16px rgba(100,39,143,.06); }
+  .process-step.reveal { opacity: 1; transform: none; }
+  .process-step h3 { font-size: 17px; }
+  .process-step p { font-size: 14px; }
+  .footer__col--brand .logo-img { height: 84px; }
 }

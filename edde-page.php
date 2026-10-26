@@ -233,7 +233,7 @@ $crumb_group  = $is_article
 <head>
 <meta charset="<?php bloginfo('charset'); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="light only">
+<meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#7817B6">
 <title><?php echo esc_html($page_title); ?></title>
 <meta name="description" content="<?php echo esc_attr($edde_pg['meta']); ?>">

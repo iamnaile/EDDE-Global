@@ -8,7 +8,7 @@
 <head>
 <meta charset="<?php bloginfo('charset'); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="light only">
+<meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#7817B6">
 <title>EDDE Global — Xaricdə Təhsil Yolunda Birlikdə Addımlayırıq</title>
 <meta name="description" content="EDDE Global — 2018-ci ildən 400-dən çox universitetlə əməkdaşlıq edən etibarlı xaricdə təhsil şirkəti.">

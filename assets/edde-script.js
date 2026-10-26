@@ -307,11 +307,10 @@ document.querySelectorAll('.hero-form').forEach(form => {
 })();
 
 
-// ===== Proqramlar: telefonda oxlarla keçid =====
-(function () {
-  var g = document.querySelector('.programs .atl-grid');
+// ===== Telefonda oxlarla keçid (Proqramlar, Proses) =====
+function eddeCarousel(g, itemSel) {
   if (!g) return;
-  var cards = g.querySelectorAll('.atl-card');
+  var cards = g.querySelectorAll(itemSel);
   var nav = document.createElement('div');
   nav.className = 'atl-nav';
   nav.innerHTML = '<button type="button" aria-label="‹" data-d="-1">‹</button><span class="atl-nav__count"></span><button type="button" aria-label="›" data-d="1">›</button>';
@@ -326,4 +325,6 @@ document.querySelectorAll('.hero-form').forEach(form => {
   });
   g.addEventListener('scroll', upd, { passive: true });
   upd();
-})();
+}
+eddeCarousel(document.querySelector('.programs .atl-grid'), '.atl-card');
+eddeCarousel(document.querySelector('.process-steps'), '.process-step');

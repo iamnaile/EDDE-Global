@@ -33,7 +33,7 @@ $svc_stages = [
 <head>
 <meta charset="<?php bloginfo('charset'); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="light only">
+<meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#7817B6">
 <title><?php echo esc_html($svc_title); ?> hazırlığı — EDDE Academy | EDDE Global</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
