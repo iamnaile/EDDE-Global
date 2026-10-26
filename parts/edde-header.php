@@ -93,7 +93,7 @@ $edde_cm = edde_contact(); ?>
             <button type="button" class="m-acc__btn" aria-expanded="false"><span><?php echo esc_html($item['title']); ?></span><i aria-hidden="true"></i></button>
             <div class="m-acc__panel">
               <?php if (strpos($item['url'], '#') !== 0 && $item['url'] !== '/#contact') : ?>
-                <a class="m-acc__main" href="<?php echo edde_href($item['url']); ?>"><?php echo esc_html($item['title']); ?> →</a>
+                <a class="m-acc__main" href="<?php echo edde_href($item['url']); ?>"><?php echo esc_html($item['title']); ?> <span aria-hidden="true">→</span></a>
               <?php endif; ?>
               <?php foreach ($item['mega']['links'] as $l) : ?>
                 <a href="<?php echo edde_href($l[1]); ?>"<?php echo $l[1] === '#map' ? ' data-open-map' : ''; ?>><?php echo esc_html($l[0]); ?></a>
@@ -106,8 +106,8 @@ $edde_cm = edde_contact(); ?>
     <div class="m-drawer__actions">
       <button type="button" class="btn btn--primary btn--block" data-open-consult>Zəng istə</button>
       <a class="btn btn--wa btn--block" href="<?php echo esc_url(edde_wa_url()); ?>" target="_blank" rel="noopener">WhatsApp-da yazın</a>
-      <a class="m-drawer__phone" href="tel:<?php echo esc_attr($edde_cm['phones'][0][1]); ?>">📞 <?php echo esc_html($edde_cm['phones'][0][0]); ?></a>
-      <a class="m-drawer__phone" href="#map" data-open-map>📍 Xəritədə bax</a>
+      <a class="m-drawer__phone" href="tel:<?php echo esc_attr($edde_cm['phones'][0][1]); ?>"><span aria-hidden="true">📞</span> <?php echo esc_html($edde_cm['phones'][0][0]); ?></a>
+      <a class="m-drawer__phone" href="#map" data-open-map><span aria-hidden="true">📍</span> Xəritədə bax</a>
       <?php if (!empty($edde_lu)) : ?>
       <div class="lang-switch lang-switch--lg" role="group" aria-label="Language">
         <a href="<?php echo esc_url($edde_lu['az']); ?>" data-lang="az" hreflang="az"<?php echo $edde_cl === 'az' ? ' class="is-current" aria-current="true"' : ''; ?>>AZ</a>

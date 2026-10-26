@@ -12,6 +12,14 @@
 require_once __DIR__ . '/edde-lang.php';
 require_once __DIR__ . '/edde-nav.php';
 
+if (!function_exists('edde_asset')) {
+  /** assets/ faylının ünvanı + dəyişmə vaxtı (?v=...): fayl yenilənəndə brauzer/keş köhnəsini göstərməsin. */
+  function edde_asset($rel) {
+    $f = get_stylesheet_directory() . '/assets/' . $rel;
+    return get_stylesheet_directory_uri() . '/assets/' . $rel . '?v=' . (is_readable($f) ? filemtime($f) : time());
+  }
+}
+
 if (!function_exists('edde_data')) {
   /** inc/data/<ad>.php faylını bir dəfə oxuyub yadda saxlayır. */
   function edde_data($name) {

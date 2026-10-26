@@ -37,7 +37,7 @@ $svc_stages = [
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <?php wp_head(); ?>
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/edde-styles.css">
+<link rel="stylesheet" href="<?php echo esc_url(edde_asset('edde-styles.css')); ?>">
 </head>
 <body <?php body_class('edde-page'); ?>>
 <?php include get_stylesheet_directory() . '/parts/edde-preloader.php'; ?>
@@ -150,7 +150,7 @@ $svc_stages = [
 <!-- ============ FOOTER (vahid: parts/edde-footer.php) ============ -->
 <?php include get_stylesheet_directory() . '/parts/edde-footer.php'; ?>
 
-<script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/edde-script.js"></script>
+<script src="<?php echo esc_url(edde_asset('edde-script.js')); ?>"></script>
 <script>
 document.getElementById('svcForm').addEventListener('submit', function(e){
   e.preventDefault();
