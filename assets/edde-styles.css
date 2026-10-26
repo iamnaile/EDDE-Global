@@ -633,3 +633,97 @@ html.no-scroll { overflow: hidden; }
 
 /* Mega-menyudakı düymənin mətni oxunaqlı olsun */
 .main-nav .mega-menu .btn--primary { color: #fff; }
+
+/* ==================== TELEFON: rahat interfeys ==================== */
+:root { color-scheme: light; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: rgba(120, 23, 182, .15); }
+a, button { touch-action: manipulation; }
+.m-bar { display: none; }
+
+@media (max-width: 720px) {
+  body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
+  /* ölçülər və boşluqlar */
+  .container { padding: 0 18px; }
+  .eyebrow { font-size: 22px; letter-spacing: .6px; margin-bottom: 6px; }
+  .section-head { margin-bottom: 28px; }
+  .section-head h2, .why h2, .faq h2 { font-size: 24px; line-height: 1.2; }
+  .why, .programs, .process, .academy, .reviews, .faq, .logo-strip, .svc-section, .svc-form-section { padding-top: 46px; padding-bottom: 46px; }
+  .consult-banner { padding: 36px 0; }
+  .consult-banner h2 { font-size: 21px; }
+  .btn { padding: 14px 24px; min-height: 48px; }
+  .hero-slider { min-height: 0; }
+  .hero-slide { padding: 54px 0 62px; }
+  .hero-slide__text p { font-size: 15px; }
+  .hero-slide__actions { flex-direction: column; align-items: stretch; width: 100%; max-width: 320px; margin-left: auto; margin-right: auto; }
+  .hero-slide__actions .btn { width: 100%; justify-content: center; }
+  .why__stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .counter-card { padding: 16px 10px; }
+  .counter-card strong { font-size: 26px; }
+  .atl-grid, .programs__grid { gap: 14px; }
+  .atl-card { padding: 20px; }
+  .academy-card { flex: 0 0 78%; min-height: 250px; }
+  .academy-carousel-nav { display: none; }
+  .reviews__wrap { padding: 20px 16px; }
+  .reviews__cols { height: 360px; }
+  .accordion-trigger { padding: 18px 28px 18px 0; font-size: 15px; min-height: 52px; }
+  /* alt blok (footer) */
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 26px 18px; padding-bottom: 30px; }
+  .footer__col--brand, .footer__col--links:last-child { grid-column: 1 / -1; }
+  .footer__col--brand .logo-img { height: 90px; }
+  .footer__col--brand .logo { margin-bottom: 14px; }
+  .footer__col--brand p { max-width: none; }
+  .footer__bottom { padding: 18px; gap: 16px; align-items: flex-end; }
+  .footer__bottom-right { align-items: flex-end; }
+  /* formalar: iOS zoom etməsin, barmaqla rahat */
+  input, select, textarea { font-size: 16px !important; min-height: 48px; }
+  textarea { min-height: 96px; }
+  .modal-overlay { align-items: flex-end; padding: 0; }
+  .modal { max-width: none; width: 100%; max-height: 92vh; overflow-y: auto; border-radius: 22px 22px 0 0; padding: 26px 20px 30px; }
+  .modal--map { max-width: none; }
+  .svc-form { padding: 22px 18px; }
+  .svc-form__row { grid-template-columns: 1fr; gap: 0; }
+  /* dekorativ təyyarə mətnin üstünü örtməsin */
+  #airplane-container { display: none; }
+  /* sürətli əlaqə paneli */
+  .floating-btn { display: none; }
+  .m-bar { display: grid; grid-template-columns: repeat(3, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 900; background: rgba(255,255,255,.97); border-top: 1px solid var(--border); box-shadow: 0 -8px 24px rgba(40, 20, 70, .12); padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); gap: 8px; backdrop-filter: blur(8px); }
+  .m-bar__item { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 48px; border: 0; border-radius: 12px; background: var(--bg); color: var(--brand-600); font: 700 12px/1.1 var(--font-display); cursor: pointer; }
+  .m-bar__item span { font-size: 18px; line-height: 1; }
+  .m-bar__item--wa { background: #25D366; color: #fff; }
+  .m-bar__item:active { transform: scale(.97); }
+}
+/* məzmun səhifələri */
+@media (max-width: 720px) {
+  .epage-hero { padding: 36px 0 22px; }
+  .epage-hero h1 { font-size: 28px; }
+  .epage-hero__actions { flex-direction: column; align-items: stretch; }
+  .epage-hero__actions .btn { width: 100%; justify-content: center; }
+  .epage-layout { gap: 22px; }
+  .epage-content { padding: 22px 18px; }
+  .svc-hero { padding: 40px 0 22px; }
+  .svc-breadcrumb { padding: 12px 0; font-size: 12.5px; overflow-x: auto; white-space: nowrap; }
+  .news-head h1 { font-size: 32px; }
+  .news-tabs { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 6px; max-width: 100%; }
+  .news-tabs a { white-space: nowrap; }
+}
+@media (max-width: 380px) {
+  .footer__grid { grid-template-columns: 1fr; }
+  .eyebrow { font-size: 19px; }
+}
+
+/* telefon: loqolar və footer daha xırda */
+@media (max-width: 720px) {
+  .logo-strip { padding-top: 28px; padding-bottom: 28px; }
+  .logo-strip__track { zoom: .6; }
+  .footer { font-size: 12px; }
+  .footer__grid { gap: 18px 14px; padding-top: 26px; padding-bottom: 18px; }
+  .footer__col a, .footer__col span { font-size: 12px; margin-bottom: 6px; }
+  .footer__col--links h4 { font-size: 12.5px; margin-bottom: 8px; }
+  .footer__col--brand .logo-img { height: 54px; }
+  .footer__col--brand .logo { margin-bottom: 8px; }
+  .footer__col--brand p { font-size: 12px; margin-bottom: 8px; }
+  .footer__social { gap: 10px; margin-top: 8px; }
+  .footer__social a { font-size: 11.5px; }
+  .footer__bottom { padding: 12px 18px; font-size: 10px; gap: 8px; }
+  .footer__icef { max-width: 68px; }
+}

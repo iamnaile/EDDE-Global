@@ -7,7 +7,9 @@
 <html lang="az" <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo('charset'); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#7817B6">
 <title>Xidmətlər — EDDE Academy | EDDE Global</title>
 <meta name="description" content="EDDE Academy-nin bütün xidmətləri: dil kursları (İngilis, Çin, Koreya, İspan, Rus, Alman, Ərəb, Türk) və beynəlxalq imtahan hazırlıqları (IELTS, Duolingo, TOEFL, PET / PTE, CSCA, SAT, GRE / GMAT).">
 <link rel="preconnect" href="https://fonts.googleapis.com">

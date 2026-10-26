@@ -81,6 +81,13 @@ $edde_c = edde_contact();
   </div>
 </footer>
 
+<!-- ============ MOBİL ALT PANEL (yalnız telefonda) ============ -->
+<nav class="m-bar" aria-label="Sürətli əlaqə">
+  <a href="tel:<?php echo esc_attr($edde_c['phones'][0][1]); ?>" class="m-bar__item"><span aria-hidden="true">📞</span>Zəng et</a>
+  <a href="<?php echo esc_url(edde_wa_url()); ?>" target="_blank" rel="noopener" class="m-bar__item m-bar__item--wa"><span aria-hidden="true">💬</span>WhatsApp</a>
+  <button type="button" class="m-bar__item" data-open-consult><span aria-hidden="true">✍️</span>Müraciət</button>
+</nav>
+
 <!-- ============ XƏRİTƏ MODALI ============ -->
 <div class="modal-overlay" id="mapModal">
   <div class="modal modal--map">

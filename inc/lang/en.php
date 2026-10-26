@@ -511,6 +511,10 @@ return [
   'Google Maps-də aç' => 'Open in Google Maps',
   'Marşrut qur' => 'Get directions',
   'Bağla' => 'Close',
+  // Mobil alt panel
+  'Zəng et' => 'Call',
+  'WhatsApp' => 'WhatsApp',
+  'Müraciət' => 'Apply',
   // Kodda (PHP) yazılmış sabit mətnlər
   'Suallarınız var?' => 'Have questions?',
 ];
