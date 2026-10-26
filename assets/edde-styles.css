@@ -641,7 +641,6 @@ a, button { touch-action: manipulation; }
 .m-bar { display: none; }
 
 @media (max-width: 720px) {
-  body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
   /* ölçülər və boşluqlar */
   .container { padding: 0 18px; }
   .eyebrow { font-size: 22px; letter-spacing: .6px; margin-bottom: 6px; }
@@ -685,8 +684,7 @@ a, button { touch-action: manipulation; }
   /* dekorativ təyyarə mətnin üstünü örtməsin */
   #airplane-container { display: none; }
   /* sürətli əlaqə paneli */
-  .floating-btn { display: none; }
-  .m-bar { display: grid; grid-template-columns: repeat(3, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 900; background: rgba(255,255,255,.97); border-top: 1px solid var(--border); box-shadow: 0 -8px 24px rgba(40, 20, 70, .12); padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); gap: 8px; backdrop-filter: blur(8px); }
+  .m-bar { display: none !important; grid-template-columns: repeat(3, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 900; background: rgba(255,255,255,.97); border-top: 1px solid var(--border); box-shadow: 0 -8px 24px rgba(40, 20, 70, .12); padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); gap: 8px; backdrop-filter: blur(8px); }
   .m-bar__item { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 48px; border: 0; border-radius: 12px; background: var(--bg); color: var(--brand-600); font: 700 12px/1.1 var(--font-display); cursor: pointer; }
   .m-bar__item span { font-size: 18px; line-height: 1; }
   .m-bar__item--wa { background: #25D366; color: #fff; }
@@ -741,3 +739,28 @@ a, button { touch-action: manipulation; }
   .footer__bottom { padding: 10px 18px; font-size: 9px; gap: 6px; }
   .footer__icef { max-width: 54px; }
 }
+
+/* ==================== TELEFON v3 ==================== */
+html, body { overflow-x: clip; max-width: 100%; }
+.m-drawer { overflow: hidden; }
+.m-bar { display: none !important; }
+@media (max-width: 720px) {
+  body { padding-bottom: 0 !important; }
+  .page-bg { transform: none; filter: blur(8px) saturate(1.1); }
+  .floating-btn { display: flex !important; right: 14px; bottom: 16px; width: 52px; height: 52px; }
+  /* footer: loqo yoxdur, başlıqlar kiçik */
+  .footer__col--brand .logo { display: none; }
+  .site-footer h4, .site-footer .footer__col h4 { font-size: 12px !important; letter-spacing: .6px; text-transform: uppercase; margin: 0 0 6px; color: var(--brand-600); }
+  .footer__col--brand p { margin-top: 0; }
+  /* Proqramlar: bir kart görünür, oxla / sürüşdürərək baxılır */
+  .atl-grid { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; margin: 0 -18px; padding: 4px 18px 10px; scrollbar-width: none; }
+  .atl-grid::-webkit-scrollbar { display: none; }
+  .atl-grid > .atl-card { flex: 0 0 84%; scroll-snap-align: center; }
+  .atl-grid > .atl-card.reveal { opacity: 1; transform: none; }
+  .atl-nav { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 8px; }
+  .atl-nav button { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--border); background: var(--surface); color: var(--brand-600); font-size: 20px; line-height: 1; cursor: pointer; box-shadow: 0 4px 12px rgba(100,39,143,.12); }
+  .atl-nav button:active { background: var(--brand-500); color: #fff; }
+  .atl-nav__count { font: 700 13px var(--font-display); color: var(--text-muted); min-width: 44px; text-align: center; }
+}
+@media (min-width: 721px) { .atl-nav { display: none; } }
+@media (max-width: 720px) { .site-footer { padding-top: 14px !important; margin-top: 0; } .footer__grid { padding-top: 8px; } }

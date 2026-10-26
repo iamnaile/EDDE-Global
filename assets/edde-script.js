@@ -305,3 +305,25 @@ document.querySelectorAll('.hero-form').forEach(form => {
     setTimeout(function () { pre.style.display = 'none'; }, 600);
   }, 10000);
 })();
+
+
+// ===== Proqramlar: telefonda oxlarla keçid =====
+(function () {
+  var g = document.querySelector('.programs .atl-grid');
+  if (!g) return;
+  var cards = g.querySelectorAll('.atl-card');
+  var nav = document.createElement('div');
+  nav.className = 'atl-nav';
+  nav.innerHTML = '<button type="button" aria-label="‹" data-d="-1">‹</button><span class="atl-nav__count"></span><button type="button" aria-label="›" data-d="1">›</button>';
+  g.parentNode.insertBefore(nav, g.nextSibling);
+  var cnt = nav.querySelector('.atl-nav__count');
+  function idx() { var c = g.scrollLeft + g.clientWidth / 2, best = 0, bd = 1e9; cards.forEach(function (e, i) { var d = Math.abs(e.offsetLeft + e.offsetWidth / 2 - c); if (d < bd) { bd = d; best = i; } }); return best; }
+  function upd() { cnt.textContent = (idx() + 1) + ' / ' + cards.length; }
+  nav.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var i = Math.max(0, Math.min(cards.length - 1, idx() + parseInt(b.dataset.d, 10)));
+    g.scrollTo({ left: cards[i].offsetLeft - (g.clientWidth - cards[i].offsetWidth) / 2, behavior: 'smooth' });
+  });
+  g.addEventListener('scroll', upd, { passive: true });
+  upd();
+})();
