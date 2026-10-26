@@ -764,3 +764,12 @@ html, body { overflow-x: clip; max-width: 100%; }
 }
 @media (min-width: 721px) { .atl-nav { display: none; } }
 @media (max-width: 720px) { .site-footer { padding-top: 14px !important; margin-top: 0; } .footer__grid { padding-top: 8px; } }
+
+/* telefon footer: loqo qalır, başlıq və təsvir yazıları yığışdırılıb */
+@media (max-width: 720px) {
+  .footer__col--brand .logo { display: block; margin: 0 0 8px; }
+  .footer__col--brand .logo-img { height: 56px; }
+  .footer__col--brand p { display: none; }
+  .site-footer .footer__col h4 { display: none !important; }
+  .footer__col--links + .footer__col--links { margin-top: 0; }
+}
