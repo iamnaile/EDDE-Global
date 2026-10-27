@@ -609,11 +609,28 @@ input:focus,select:focus,textarea:focus{border-color:var(--brand);box-shadow:0 0
 }
 .floating-btn:hover{transform:scale(1.08)}
 @media (max-width:960px){.footer__grid{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.footer__grid{grid-template-columns:1fr}}
+@media (max-width:560px){.footer__grid{grid-template-columns:1fr}.footer__bottom{padding-bottom:88px}} /* üzən WhatsApp düyməsi mətni örtməsin */
+/* --- Tərəfdaş loqoları (assets/logos) — ana səhifədəki .logo-strip ilə eyni --- */
+.logo-strip{padding:70px 0;position:relative;z-index:1}
+.logo-strip__viewport{
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)
+}
+.logo-strip__track{display:flex;align-items:center;width:max-content;animation:logoScroll 60s linear infinite}
+.logo-strip__viewport:hover .logo-strip__track{animation-play-state:paused}
+.logo-strip__item{flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-right:44px;width:130px;height:130px}
+.logo-strip__item img{width:100%;height:100%;object-fit:contain;display:block}
+.logo-strip + .site-footer{margin-top:0}
+@keyframes logoScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  .logo-strip__track{animation:none;flex-wrap:wrap;justify-content:center;width:auto;row-gap:24px}
+  .logo-strip__item[aria-hidden="true"]{display:none}
+}
 /* alt-saytların öz davranışı: test mərhələlərində və çapda altlıq gizlədilir */
-body[data-step="quiz"] .site-footer,body[data-step="form"] .site-footer{display:none}
+body[data-step="quiz"] .site-footer,body[data-step="form"] .site-footer,body[data-step="quiz"] .logo-strip,body[data-step="form"] .logo-strip{display:none}
 body[data-step="quiz"] .floating-btn,body[data-step="form"] .floating-btn{display:none}
-@media print{.site-footer,.floating-btn{display:none!important}}
+@media print{.site-footer,.floating-btn,.logo-strip{display:none!important}}
 </style>
 </head>
 <body>
@@ -682,6 +699,37 @@ body[data-step="quiz"] .floating-btn,body[data-step="form"] .floating-btn{displa
   <div class="contact"><b>Əlaqə</b><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f5c84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>+994 70 833 20 04 (WhatsApp)</span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f5c84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>info@eddeglobal.az</span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f5c84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>eddeglobal.az</span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f5c84b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#f5c84b"/></svg>@eddeglobal</span></div>
  </div>
 </div>
+<section class="logo-strip" aria-label="EDDE Global">
+  <div class="logo-strip__viewport">
+    <div class="logo-strip__track" style="animation-duration:60s;">
+      <div class="logo-strip__item"><img src="/edde-assets/logos/01-pier.png" alt="Pier" loading="lazy"></div>
+      <div class="logo-strip__item"><img src="/edde-assets/logos/02-yedab.png" alt="Yedab" loading="lazy"></div>
+      <div class="logo-strip__item"><img src="/edde-assets/logos/03-net.png" alt="Net" loading="lazy"></div>
+      <div class="logo-strip__item"><img src="/edde-assets/logos/04-alpha.png" alt="Alpha" loading="lazy"></div>
+      <div class="logo-strip__item"><img src="/edde-assets/logos/05-asac.png" alt="Asac" loading="lazy"></div>
+      <div class="logo-strip__item"><img src="/edde-assets/logos/06-icef.png" alt="Icef" loading="lazy"></div>
+      <div class="logo-strip__item"><img src="/edde-assets/logos/08-sttravel.png" alt="Sttravel" loading="lazy"></div>
+      <div class="logo-strip__item"><img src="/edde-assets/logos/09-link.png" alt="Link" loading="lazy"></div>
+      <div class="logo-strip__item"><img src="/edde-assets/logos/10-marsol.png" alt="Marsol" loading="lazy"></div>
+      <div class="logo-strip__item"><img src="/edde-assets/logos/11-akiab.png" alt="Akiab" loading="lazy"></div>
+      <div class="logo-strip__item"><img src="/edde-assets/logos/12-caspian.png" alt="Caspian" loading="lazy"></div>
+      <div class="logo-strip__item"><img src="/edde-assets/logos/14-166.png" alt="166" loading="lazy"></div>
+      <div class="logo-strip__item" aria-hidden="true"><img src="/edde-assets/logos/01-pier.png" alt="" loading="lazy"></div>
+      <div class="logo-strip__item" aria-hidden="true"><img src="/edde-assets/logos/02-yedab.png" alt="" loading="lazy"></div>
+      <div class="logo-strip__item" aria-hidden="true"><img src="/edde-assets/logos/03-net.png" alt="" loading="lazy"></div>
+      <div class="logo-strip__item" aria-hidden="true"><img src="/edde-assets/logos/04-alpha.png" alt="" loading="lazy"></div>
+      <div class="logo-strip__item" aria-hidden="true"><img src="/edde-assets/logos/05-asac.png" alt="" loading="lazy"></div>
+      <div class="logo-strip__item" aria-hidden="true"><img src="/edde-assets/logos/06-icef.png" alt="" loading="lazy"></div>
+      <div class="logo-strip__item" aria-hidden="true"><img src="/edde-assets/logos/08-sttravel.png" alt="" loading="lazy"></div>
+      <div class="logo-strip__item" aria-hidden="true"><img src="/edde-assets/logos/09-link.png" alt="" loading="lazy"></div>
+      <div class="logo-strip__item" aria-hidden="true"><img src="/edde-assets/logos/10-marsol.png" alt="" loading="lazy"></div>
+      <div class="logo-strip__item" aria-hidden="true"><img src="/edde-assets/logos/11-akiab.png" alt="" loading="lazy"></div>
+      <div class="logo-strip__item" aria-hidden="true"><img src="/edde-assets/logos/12-caspian.png" alt="" loading="lazy"></div>
+      <div class="logo-strip__item" aria-hidden="true"><img src="/edde-assets/logos/14-166.png" alt="" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
 <footer class="site-footer" id="contact">
   <div class="container footer__grid">
     <div class="footer__col footer__col--brand">

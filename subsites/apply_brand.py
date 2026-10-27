@@ -8,10 +8,11 @@ Nə edir:
   0) mənbədə qırıq </head> varsa ("</script>head>") düzəldir;
   1b) köhnə <footer class="site-foot"> blokunu eddeglobal.az altlığı ilə (az/en/ru) əvəz edir (edde_footer.py);
   1c) faylın sonundakı qırıq "</script>/body>" / "body>" / "dy>" / çatışmayan "</body></html>" düzəldir;
+  1d) tərəfdaş loqo zolağını (assets/logos) altlığın üstünə qoyur; şəkilləri <çıxış>/edde-assets/-ə kopyalayır;
   2) </head>-dən əvvəl  <style id="edde-brand">…edde-brand.css…</style>  əlavə edir.
 Başqa heç nəyə (JS, SRI, forma, honeypot, Clarity) toxunmur.
 """
-import re, sys, pathlib
+import re, sys, shutil, pathlib
 from edde_footer import footer_html
 
 FONTS = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
@@ -41,6 +42,7 @@ def main(src, dst):
     here = pathlib.Path(__file__).parent
     css = ''.join((here / n).read_text(encoding='utf8') for n in ('edde-brand.css', 'edde-footer.css'))
     src, dst = pathlib.Path(src), pathlib.Path(dst)
+    shutil.copytree(here / 'edde-assets', dst / 'edde-assets', dirs_exist_ok=True)  # loqolar: <sayt-kökü>/edde-assets/logos/
     for f in sorted(src.rglob('*.html')):
         out = dst / f.relative_to(src)
         out.parent.mkdir(parents=True, exist_ok=True)
