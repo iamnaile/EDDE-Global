@@ -115,19 +115,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--brand);box-shadow:0 0
 .snav a.on,.snav a[aria-current],.snav a.act{background:linear-gradient(135deg,var(--brand),var(--e-brand-600))}
 .mnav{background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-color:var(--line)}
 
-/* ---------- 8. Footer: əsas saytdakı kimi açıq (bg-alt), bənövşəyi başlıqlar ---------- */
-.site-foot{background:var(--brand-soft);color:var(--fg);border-top:1px solid var(--line);margin-top:56px}
-.site-foot::before{display:none}
-.site-foot .fb img{height:64px;
-  filter:brightness(0) saturate(100%) invert(39%) sepia(100%) saturate(4648%) hue-rotate(261deg) brightness(56%) contrast(95%)}
-.site-foot .fb p{color:var(--muted);opacity:1}
-.site-foot h4{color:var(--fg);font-family:var(--f-display);font-size:.9rem;letter-spacing:0;text-transform:none;font-weight:800}
-.site-foot a{color:var(--muted);opacity:1;font-weight:500}
-.site-foot a:hover{color:var(--brand);text-decoration:none}
-.site-foot a:focus-visible{outline-color:var(--brand)}
-.site-foot li svg,.site-foot .acc svg{color:var(--brand)}
-.site-foot .acc span{background:#fff;border-color:var(--line);color:var(--fg)}
-.site-foot .fl{border-top-color:var(--line);color:var(--muted);opacity:1}
+/* ---------- 8. Footer: edde-footer.css (əsas saytın altlığı) ---------- */
 
 /* ---------- 9. Mobil ---------- */
 @media (max-width:620px){
@@ -136,4 +124,4 @@ input:focus,select:focus,textarea:focus{border-color:var(--brand);box-shadow:0 0
 }
 
 /* ---------- 10. Çap / PDF rejimi: öz rəngləri ilə qalır ---------- */
-@media print{.top,.site-foot{display:none!important}}
+@media print{.top,.site-footer{display:none!important}}
