@@ -78,6 +78,7 @@ if (!function_exists('edde_nav_items')) {
         ],
       ],
       ['title' => 'EDDE Corporate', 'url' => '/korporativ/'],
+      ['title' => 'Dövlət Proqramı', 'url' => 'https://dp.eddeglobal.az'],
       ['title' => 'İxtisas seçimi testi', 'url' => edde_contact()['test_url']],
       [
         'title' => 'Yazılar',

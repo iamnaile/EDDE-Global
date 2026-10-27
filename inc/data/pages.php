@@ -13,7 +13,7 @@ return [
         [
           ['2018', 'İldən fəaliyyətdəyik'],
           ['400+', 'Tərəfdaş universitet'],
-          ['18+', 'Tərəfdaş ölkə'],
+          ['20+', 'Tərəfdaş ölkə'],
           ['62', 'Ölkədə yataqxana şəbəkəsi'],
         ],
       ],
@@ -826,7 +826,7 @@ return [
         'stats',
         [
           ['400+', 'Tərəfdaş universitet'],
-          ['18+', 'Tərəfdaş ölkə'],
+          ['20+', 'Tərəfdaş ölkə'],
           ['62', 'Ölkədə yataqxana şəbəkəsi'],
           ['2018', 'İldən təcrübə'],
         ],

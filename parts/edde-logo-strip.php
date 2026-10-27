@@ -9,6 +9,11 @@ $logo_url   = get_stylesheet_directory_uri() . '/assets/logos/';
 $logo_files = glob($logo_dir . '*.{png,jpg,jpeg,webp,svg,PNG,JPG,JPEG,WEBP,SVG}', GLOB_BRACE);
 $logo_files = $logo_files ? array_map('basename', $logo_files) : [];
 sort($logo_files, SORT_NATURAL | SORT_FLAG_CASE);
+// Eyni adlı köhnə (png/jpg) və yeni (webp) fayl yan-yana qalıbsa yalnız webp götürülür
+$__seen = [];
+foreach ($logo_files as $__f) { $__k = pathinfo($__f, PATHINFO_FILENAME); if (!isset($__seen[$__k]) || strtolower(pathinfo($__f, PATHINFO_EXTENSION)) === 'webp') { $__seen[$__k] = $__f; } }
+$logo_files = array_values($__seen);
+
 
 // Hər loqonun nisbətinə görə eyni "vizual çəki" (sahə) verən ölçü hesablanır
 $logo_area = 22000;  // ümumi böyüklük: artırsanız hamısı böyüyür
@@ -53,7 +58,7 @@ while ($logo_set && count($logo_set) < 12) {
         foreach ($logo_set as $item) :
           $alt = function_exists('edde_partner_name') ? edde_partner_name($item['file']) : pathinfo($item['file'], PATHINFO_FILENAME); ?>
           <div class="logo-strip__item" style="width: <?php echo (int) $item['w']; ?>px; height: <?php echo (int) $item['h']; ?>px;"<?php echo $pass ? ' aria-hidden="true"' : ''; ?>>
-            <img src="<?php echo esc_url($logo_url . rawurlencode($item['file'])); ?>" alt="<?php echo $pass ? '' : esc_attr($alt); ?>" loading="lazy">
+            <img src="<?php echo esc_url($logo_url . rawurlencode($item['file'])); ?>" alt="<?php echo esc_attr($alt); ?>" loading="lazy">
           </div>
       <?php endforeach; endfor; ?>
     </div>

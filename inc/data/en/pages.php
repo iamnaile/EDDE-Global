@@ -13,7 +13,7 @@ return [
         [
           ['2018', 'Operating since'],
           ['400+', 'Partner universities'],
-          ['18+', 'Partner countries'],
+          ['20+', 'Partner countries'],
           ['62', 'Countries with a dormitory network'],
         ],
       ],
@@ -826,7 +826,7 @@ return [
         'stats',
         [
           ['400+', 'Partner universities'],
-          ['18+', 'Partner countries'],
+          ['20+', 'Partner countries'],
           ['62', 'Countries in our dormitory network'],
           ['2018', 'Years of experience'],
         ],

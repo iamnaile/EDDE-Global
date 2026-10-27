@@ -101,6 +101,8 @@ add_action('template_redirect', function () {
     $map = [
         'turkiyede-tehsil'     => home_url('/xaricde-tehsil/'),
         'alman-dili-kurslari'  => home_url('/dil-kurslari/'),
+        'haqqimizda'           => home_url('/shirket-haqqinda/'),
+        'haqqinda'             => home_url('/shirket-haqqinda/'),
     ];
     $route = edde_request_route();
     if (isset($map[$route])) {
@@ -145,7 +147,7 @@ add_action('template_redirect', function () {
         echo '  "icefFallback" var: ' . (strpos($src, 'icefFallback') !== false ? 'BƏLİ (yeni versiya)' : 'XEYR (köhnə versiya!)') . "\n";
         echo '  "icef-badge" var: ' . (strpos($src, 'icef-badge') !== false ? 'bəli' : 'xeyr') . "\n";
         echo '  assets/icef-badge.* faylı: ' . (glob($dir . '/assets/icef-badge.*') ? implode(', ', array_map('basename', glob($dir . '/assets/icef-badge.*'))) : 'yoxdur') . "\n";
-        echo '  assets/logos/06-icef.png: ' . (is_readable($dir . '/assets/logos/06-icef.png') ? 'var' : 'YOXDUR') . "\n";
+        echo '  assets/logos/06-icef.webp: ' . (is_readable($dir . '/assets/logos/06-icef.webp') ? 'var' : 'YOXDUR') . "\n";
     } else {
         echo "  OXUNMUR\n";
     }
@@ -158,3 +160,41 @@ add_action('template_redirect', function () {
     echo '  ' . ($i === false ? 'footer__icef HTML-də TAPILMADI' : preg_replace('~\s+~', ' ', substr($html, $i - 20, 700))) . "\n";
     exit;
 }, 0);
+
+
+/* ==========================================================================
+   Başlıq (<title>) — hər səhifədə bir dəfə. Şablonlar edde_title_tag() çağırır, WordPress özü çap edir.
+   ========================================================================== */
+add_action('after_setup_theme', function () { add_theme_support('title-tag'); }, 20);
+if (!function_exists('edde_title_tag')) {
+    function edde_title_tag($title) {
+        $GLOBALS['edde_page_title'] = (string) $title;
+        if (!current_theme_supports('title-tag')) {
+            echo '<title>' . esc_html($title) . '</title>' . "\n";
+        }
+    }
+}
+add_filter('pre_get_document_title', function ($t) {
+    return !empty($GLOBALS['edde_page_title']) ? $GLOBALS['edde_page_title'] : $t;
+}, 98);
+
+/* ==========================================================================
+   Keş: giriş etməyən ziyarətçilər üçün ictimai səhifələr "no-store" ilə gəlməsin ki, Cloudflare/brauzer keşləyə bilsin.
+   (Cloudflare-də "Cache Rules" ilə HTML keşləməsi də açılmalıdır — bax: izah.)
+   ========================================================================== */
+add_filter('nocache_headers', function ($headers) {
+    if (!is_admin() && !is_user_logged_in() && !is_404() && ($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'GET' && empty($_GET['edde_debug'])) {
+        $headers['Cache-Control'] = 'public, max-age=300, s-maxage=3600, stale-while-revalidate=86400';
+        unset($headers['Pragma'], $headers['Expires']);
+    }
+    return $headers;
+}, 99);
+add_action('send_headers', function () {
+    if (is_admin() || is_user_logged_in() || ($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'GET' || !empty($_GET['edde_debug'])) { return; }
+    if (headers_sent()) { return; }
+    $tpl = isset($GLOBALS['edde_route']) || is_front_page();
+    if ($tpl) {
+        header_remove('Pragma'); header_remove('Expires');
+        header('Cache-Control: public, max-age=300, s-maxage=3600, stale-while-revalidate=86400', true);
+    }
+}, 99);

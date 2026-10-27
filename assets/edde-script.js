@@ -64,20 +64,7 @@ document.querySelectorAll('.accordion-trigger').forEach(trigger => {
 });
 
 // ===== Animated counters (hər sayğac öz görünəndə başlayır; data-count olan bütün elementlər) =====
-function animateCounter(el) {
-  if (el.dataset.counted) return;
-  el.dataset.counted = '1';
-  const target = parseInt(el.dataset.count, 10);
-  const duration = 1400;
-  const start = performance.now();
-  function tick(now) {
-    const progress = Math.min((now - start) / duration, 1);
-    el.textContent = Math.floor(progress * target);
-    if (progress < 1) requestAnimationFrame(tick);
-    else el.textContent = target + '+';
-  }
-  requestAnimationFrame(tick);
-}
+function animateCounter(el) { /* rəqəmlər HTML-də hazır yazılıb; animasiya yoxdur ki, yavaş yüklənmədə yanlış rəqəm görünməsin */ el.dataset.counted = '1'; }
 
 const counterEls = document.querySelectorAll('[data-count]');
 if (counterEls.length) {

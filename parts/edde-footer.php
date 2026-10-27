@@ -62,7 +62,7 @@ $edde_c = edde_contact();
       <div class="footer__icef">
         <?php /* ehtiyat loqo HƏMİŞƏ görünür; ICEF-in öz nişanı həqiqətən çıxarsa, ehtiyat gizlədilir */ ?>
         <a class="footer__icef-fallback" id="icefFallback" href="https://www.icef.com/agency/0016M00002HWsLdQAL" target="_blank" rel="noopener" title="ICEF Accredited Agency #5105">
-          <img src="<?php echo esc_url($edde_theme_uri); ?>/assets/logos/06-icef.png" alt="ICEF Accredited Agency #5105">
+          <img src="<?php echo esc_url($edde_theme_uri); ?>/assets/logos/06-icef.webp" alt="ICEF Accredited Agency #5105">
         </a>
         <span id="iasBadge" data-account-id="5105"></span>
         <script async defer crossorigin="anonymous" src="https://www-cdn.icef.com/scripts/iasbadgeid.js"></script>

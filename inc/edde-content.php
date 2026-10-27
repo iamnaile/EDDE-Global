@@ -49,7 +49,7 @@ if (!function_exists('edde_news_fallback_image')) {
       foreach ((array) glob($dir . '*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', GLOB_BRACE) as $f) { $pool[] = $uri . rawurlencode(basename($f)); }
       if (!$pool) {
         $base = get_stylesheet_directory() . '/assets/';
-        foreach (['hero-xaricde-tehsil.jpg', 'hero-edde-academy.jpg', 'hero-edde-corporate.jpg'] as $f) {
+        foreach (['hero-xaricde-tehsil.webp', 'hero-edde-academy.webp', 'hero-edde-corporate.webp'] as $f) {
           if (is_readable($base . $f)) { $pool[] = get_stylesheet_directory_uri() . '/assets/' . $f; }
         }
       }
@@ -231,6 +231,11 @@ if (!function_exists('edde_partner_logos')) {
     $files = glob($dir . '*.{png,jpg,jpeg,webp,svg,PNG,JPG,JPEG,WEBP,SVG}', GLOB_BRACE);
     $files = $files ? array_map('basename', $files) : [];
     sort($files, SORT_NATURAL | SORT_FLAG_CASE);
+    // Eyni adlı köhnə (png/jpg) və yeni (webp) fayl yan-yana qalıbsa yalnız webp götürülür
+    $__seen = [];
+    foreach ($files as $__f) { $__k = pathinfo($__f, PATHINFO_FILENAME); if (!isset($__seen[$__k]) || strtolower(pathinfo($__f, PATHINFO_EXTENSION)) === 'webp') { $__seen[$__k] = $__f; } }
+    $files = array_values($__seen);
+    
     $out = [];
     foreach ($files as $f) {
       $out[] = ['file' => $f, 'url' => $url . rawurlencode($f), 'name' => edde_partner_name($f)];

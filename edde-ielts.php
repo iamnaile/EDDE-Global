@@ -35,7 +35,7 @@ $svc_stages = [
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#7817B6">
-<title><?php echo esc_html($svc_title); ?> hazırlığı — EDDE Academy | EDDE Global</title>
+<?php edde_title_tag($svc_title . ' hazırlığı — EDDE Academy | EDDE Global'); ?>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <?php wp_head(); ?>
@@ -43,7 +43,7 @@ $svc_stages = [
 </head>
 <body <?php body_class('edde-page'); ?>>
 <?php include get_stylesheet_directory() . '/parts/edde-preloader.php'; ?>
-  <div class="page-bg" style="background-image:url('<?php echo get_stylesheet_directory_uri(); ?>/assets/bg-ielts.jpg');"></div>
+  <div class="page-bg" style="background-image:url('<?php echo get_stylesheet_directory_uri(); ?>/assets/bg-ielts.webp');"></div>
 <div class="page-bg-overlay"></div>
 <div class="page-content">
 <!-- ============ HEADER (vahid naviqasiya: inc/edde-nav.php) ============ -->

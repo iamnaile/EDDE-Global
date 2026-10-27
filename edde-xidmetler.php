@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#7817B6">
-<title>Xidmətlər — EDDE Academy | EDDE Global</title>
+<?php edde_title_tag('Xidmətlər — EDDE Academy | EDDE Global'); ?>
 <meta name="description" content="EDDE Academy-nin bütün xidmətləri: dil kursları (İngilis, Çin, Koreya, İspan, Rus, Alman, Ərəb, Türk) və beynəlxalq imtahan hazırlıqları (IELTS, Duolingo, TOEFL, PET / PTE, CSCA, SAT, GRE / GMAT).">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">

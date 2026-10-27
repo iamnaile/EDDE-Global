@@ -10,16 +10,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#7817B6">
-<title>EDDE Global — Xaricdə Təhsil Yolunda Birlikdə Addımlayırıq</title>
+<?php edde_title_tag('EDDE Global — Xaricdə Təhsil Yolunda Birlikdə Addımlayırıq'); ?>
 <meta name="description" content="EDDE Global — 2018-ci ildən 400-dən çox universitetlə əməkdaşlıq edən etibarlı xaricdə təhsil şirkəti.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/hero-xaricde-tehsil.webp'); ?>" type="image/webp">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <?php wp_head(); ?>
 <link rel="stylesheet" href="<?php echo esc_url(edde_asset('edde-styles.css')); ?>">
 </head>
 <body <?php body_class('edde-page'); ?>>
 <?php include get_stylesheet_directory() . '/parts/edde-preloader.php'; ?>
-  <div class="page-bg" style="background-image:url('<?php echo get_stylesheet_directory_uri(); ?>/assets/bg-home.jpg');"></div>
+  <div class="page-bg" style="background-image:url('<?php echo get_stylesheet_directory_uri(); ?>/assets/bg-home.webp');"></div>
 <div class="page-bg-overlay"></div>
 <div class="page-content">
   
@@ -61,9 +63,9 @@
 // Şəkli assets/ qovluğuna atın və faylın adını müvafiq slaydın qarşısına yazın (məs. 'hero-academy.jpg').
 // Boş ('') qalan slayd öz rəngli gradient fonunda qalır.
 $edde_hero_bg = [
-  's1' => 'hero-xaricde-tehsil.jpg', // Xaricdə təhsil
-  's2' => 'hero-edde-academy.jpg',   // EDDE Academy
-  's4' => 'hero-edde-corporate.jpg', // EDDE Corporate
+  's1' => 'hero-xaricde-tehsil.webp', // Xaricdə təhsil
+  's2' => 'hero-edde-academy.webp',   // EDDE Academy
+  's4' => 'hero-edde-corporate.webp', // EDDE Corporate
 ];
 $edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
   if (empty($edde_hero_bg[$slide]) || !is_readable(get_stylesheet_directory() . '/assets/' . $edde_hero_bg[$slide])) return '';
@@ -82,7 +84,7 @@ $edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
         <div class="hero-slide__text">
           <p class="eyebrow">Xaricdə Təhsil</p>
           <h1>Dünyanın aparıcı universitetlərinə açılan qapınız</h1>
-          <p>2018-ci ildən bəri EDDE Global tələbələrin xaricdə təhsil arzusunu reallığa çevirir. Dünyanın 20-dən çox ölkəsində, 400-ə yaxın nüfuzlu universitetlə birbaşa əməkdaşlıq edirik.</p>
+          <p>2018-ci ildən bəri EDDE Global tələbələrin xaricdə təhsil arzusunu reallığa çevirir. Dünyanın 20-dən çox ölkəsində, 400-dən çox nüfuzlu universitetlə birbaşa əməkdaşlıq edirik.</p>
           <div class="hero-slide__actions">
             <button class="btn btn--primary" data-open-modal="modalTehsil">Müraciət et</button>
             <a href="<?php echo home_url('/xaricde-tehsil/'); ?>" class="btn btn--outline">Ətraflı məlumat</a>
@@ -96,7 +98,7 @@ $edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
       <div class="container hero-slide__inner">
         <div class="hero-slide__text">
           <p class="eyebrow">EDDE Academy</p>
-          <h1>Dil və imtahan hazırlığı mərkəzi</h1>
+          <h2 class="hero-h">Dil və imtahan hazırlığı mərkəzi</h2>
           <p>İngilis, Çin, Koreya, İspan, Rus, Alman, Ərəb və Türk dili kursları, habelə IELTS, Duolingo, TOEFL, PET / PTE, CSCA, SAT və GRE / GMAT hazırlığı — qrup dərsləri, speaking praktikası və conversation klubları ilə.</p>
           <div class="hero-slide__actions">
             <button class="btn btn--primary" data-open-modal="modalAcademy">Müraciət et</button>
@@ -110,7 +112,7 @@ $edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
       <div class="container hero-slide__inner">
         <div class="hero-slide__text">
           <p class="eyebrow">EDDE Corporate</p>
-          <h1>Şirkətlər üçün korporativ təlim və dil həlləri</h1>
+          <h2 class="hero-h">Şirkətlər üçün korporativ təlim və dil həlləri</h2>
           <p>Komandanızın peşəkar inkişafı üçün korporativ xarici dil kursları və ixtisaslaşmış təlim proqramları təşkil edirik — ofisinizdə, bizim mərkəzdə və ya onlayn.</p>
           <div class="hero-slide__actions">
             <button class="btn btn--primary" data-open-modal="modalCorporate">Müraciət et</button>
@@ -142,11 +144,11 @@ $edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
       <p>Bu gün tələbələrə işəgötürənlərin və beynəlxalq universitetlərin gözlədiyi hazırlığı təmin edirik — düzgün sənədləşmə, güclü motivasiya məktubu və uyğun proqram seçimi ilə.</p>
     </div>
     <div class="why__stats reveal-group">
-      <div class="counter-card reveal"><strong data-count="20">0</strong><span>Ölkə</span></div>
-      <div class="counter-card reveal"><strong data-count="400">0</strong><span>Universitet</span></div>
-      <div class="counter-card reveal"><strong data-count="1000">0</strong><span>Tələbə</span></div>
-      <div class="counter-card reveal"><strong data-count="15">0</strong><span>Məsləhətçi</span></div>
-      <div class="counter-card reveal"><strong data-count="7">0</strong><span>İl təcrübə</span></div>
+      <div class="counter-card reveal"><strong data-count="20">20+</strong><span>Ölkə</span></div>
+      <div class="counter-card reveal"><strong data-count="400">400+</strong><span>Universitet</span></div>
+      <div class="counter-card reveal"><strong data-count="1000">1000+</strong><span>Tələbə</span></div>
+      <div class="counter-card reveal"><strong data-count="15">15+</strong><span>Məsləhətçi</span></div>
+      <div class="counter-card reveal"><strong data-count="<?php echo (int) date('Y') - 2018; ?>"><?php echo (int) date('Y') - 2018; ?>+</strong><span>İl təcrübə</span></div>
     </div>
   </div>
 </section>
@@ -319,6 +321,10 @@ $edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
       <div class="country-card"><span class="country-card__icon">🎎</span><strong>Cənubi Koreya</strong><img src="https://flagcdn.com/w80/kr.png" alt="Cənubi Koreya bayrağı"></div>
       <div class="country-card"><span class="country-card__icon">🐉</span><strong>Çin</strong><img src="https://flagcdn.com/w80/cn.png" alt="Çin bayrağı"></div>
       <div class="country-card"><span class="country-card__icon">🏙️</span><strong>Dubay</strong><img src="https://flagcdn.com/w80/ae.png" alt="BƏƏ bayrağı"></div>
+      <div class="country-card"><span class="country-card__icon">🦘</span><strong>Avstraliya</strong><img src="https://flagcdn.com/w80/au.png" alt="Avstraliya bayrağı"></div>
+      <div class="country-card"><span class="country-card__icon">🍕</span><strong>İtaliya</strong><img src="https://flagcdn.com/w80/it.png" alt="İtaliya bayrağı"></div>
+      <div class="country-card"><span class="country-card__icon">🌴</span><strong>Malayziya</strong><img src="https://flagcdn.com/w80/my.png" alt="Malayziya bayrağı"></div>
+      <div class="country-card"><span class="country-card__icon">🏝️</span><strong>Malta</strong><img src="https://flagcdn.com/w80/mt.png" alt="Malta bayrağı"></div>
 
       <!-- Fasiləsiz dövr üçün siyahı təkrarlanır -->
       <div class="country-card"><span class="country-card__icon">🕌</span><strong>Türkiyə</strong><img src="https://flagcdn.com/w80/tr.png" alt="Türkiyə bayrağı"></div>
@@ -338,6 +344,10 @@ $edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
       <div class="country-card"><span class="country-card__icon">🎎</span><strong>Cənubi Koreya</strong><img src="https://flagcdn.com/w80/kr.png" alt="Cənubi Koreya bayrağı"></div>
       <div class="country-card"><span class="country-card__icon">🐉</span><strong>Çin</strong><img src="https://flagcdn.com/w80/cn.png" alt="Çin bayrağı"></div>
       <div class="country-card"><span class="country-card__icon">🏙️</span><strong>Dubay</strong><img src="https://flagcdn.com/w80/ae.png" alt="BƏƏ bayrağı"></div>
+      <div class="country-card"><span class="country-card__icon">🦘</span><strong>Avstraliya</strong><img src="https://flagcdn.com/w80/au.png" alt="Avstraliya bayrağı"></div>
+      <div class="country-card"><span class="country-card__icon">🍕</span><strong>İtaliya</strong><img src="https://flagcdn.com/w80/it.png" alt="İtaliya bayrağı"></div>
+      <div class="country-card"><span class="country-card__icon">🌴</span><strong>Malayziya</strong><img src="https://flagcdn.com/w80/my.png" alt="Malayziya bayrağı"></div>
+      <div class="country-card"><span class="country-card__icon">🏝️</span><strong>Malta</strong><img src="https://flagcdn.com/w80/mt.png" alt="Malta bayrağı"></div>
 
     </div>
   </div>
@@ -429,6 +439,32 @@ $edde_hero_bg_layer = function ($slide) use ($edde_hero_bg) {
   </div>
 </section>
 
+<!-- ============ DÖVLƏT PROQRAMI + TEST + KONSULTASİYA ============ -->
+<section class="home-cta" id="dovlet-proqrami">
+  <div class="container">
+    <div class="home-cta__grid reveal-group">
+      <a class="home-cta__card home-cta__card--state reveal" href="https://dp.eddeglobal.az" target="_blank" rel="noopener">
+        <span class="home-cta__tag">Dövlət Proqramı</span>
+        <h3>Dövlət Proqramı üzrə xaricdə təhsil</h3>
+        <p>Şərtlər, müraciət addımları və hazırlıq barədə ətraflı məlumat xüsusi səhifəmizdədir.</p>
+        <span class="home-cta__go">Ətraflı bax <span>→</span></span>
+      </a>
+      <a class="home-cta__card reveal" href="<?php echo esc_url(edde_contact()['test_url']); ?>" target="_blank" rel="noopener">
+        <span class="home-cta__tag">Pulsuz test</span>
+        <h3>Sizə hansı ixtisas uyğundur?</h3>
+        <p>İxtisas seçimi testini cavablandırın və maraqlarınıza uyğun istiqaməti öyrənin.</p>
+        <span class="home-cta__go">Testi başla <span>→</span></span>
+      </a>
+      <button type="button" class="home-cta__card home-cta__card--btn reveal" data-open-consult>
+        <span class="home-cta__tag">Pulsuz konsultasiya</span>
+        <h3>Məsləhətçimizlə danışın</h3>
+        <p>Nömrənizi buraxın — sizə zəng edib bütün suallarınızı cavablandıraq.</p>
+        <span class="home-cta__go">Müraciət et <span>→</span></span>
+      </button>
+    </div>
+  </div>
+</section>
+
 <!-- ============ STUDENT STORIES ============ -->
 <?php
 // Rəy əlavə etmək üçün bu siyahıya yeni sətir əlavə edin: [ad, vəzifə/təşkilat, mətn]
@@ -470,8 +506,52 @@ foreach ($edde_reviews as $i => $r) { $edde_cols[$i % 2][] = $r; }
 </section>
 
 
+<!-- ============ AKKREDİTASİYALAR ============ -->
+<section class="accred" id="accreditations">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Akkreditasiyalar</p>
+      <h2>Beynəlxalq akkreditasiya və sertifikatlarımız</h2>
+    </div>
+    <div class="accred__row reveal">
+      <?php foreach ([['06-icef.webp', 'ICEF'], ['01-pier.webp', 'PIER'], ['08-sttravel.webp', 'StudyTravel (ST)']] as $edde_ac) : ?>
+        <span class="accred__item"><img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/logos/' . $edde_ac[0]); ?>" alt="<?php echo esc_attr($edde_ac[1]); ?>" loading="lazy"></span>
+      <?php endforeach; ?>
+      <span class="accred__item accred__item--text">British Council</span>
+      <span class="accred__item accred__item--text">ISO 29994</span>
+    </div>
+    <p class="accred__more reveal"><a href="<?php echo esc_url(edde_href('/akkreditasiya/')); ?>">Akkreditasiyalarımız haqqında ətraflı <span>→</span></a></p>
+  </div>
+</section>
+
 <!-- ============ TƏRƏFDAŞ LOQOLARI ============ -->
 <?php include get_stylesheet_directory() . '/parts/edde-logo-strip.php'; ?>
+
+<!-- ============ YAZILAR (son məqalələr) ============ -->
+<?php $edde_home_news = array_slice(edde_articles_by_type('meqale'), 0, 3, true); ?>
+<?php if ($edde_home_news) : ?>
+<section class="home-news" id="yazilar">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Yazılar</p>
+      <h2>Xaricdə təhsil haqqında son məqalələr</h2>
+    </div>
+    <div class="home-news__grid reveal-group">
+      <?php foreach ($edde_home_news as $edde_hn_slug => $edde_hn) : ?>
+        <a class="hn-card reveal" href="<?php echo esc_url(edde_href('/meqaleler/' . $edde_hn_slug . '/')); ?>">
+          <span class="hn-card__img" style="background-image:url('<?php echo esc_url($edde_hn['image']); ?>');" role="img" aria-label="<?php echo esc_attr($edde_hn['title']); ?>"></span>
+          <span class="hn-card__body">
+            <time><?php echo esc_html($edde_hn['date']); ?></time>
+            <strong><?php echo esc_html($edde_hn['title']); ?></strong>
+            <em><?php echo esc_html(mb_substr($edde_hn['excerpt'], 0, 110)); ?></em>
+          </span>
+        </a>
+      <?php endforeach; ?>
+    </div>
+    <p class="accred__more reveal"><a href="<?php echo esc_url(edde_href('/meqaleler/')); ?>">Bütün yazılara bax <span>→</span></a></p>
+  </div>
+</section>
+<?php endif; ?>
 
 <!-- ============ FAQ ============ -->
 <section class="faq" id="faq">
@@ -487,7 +567,7 @@ foreach ($edde_reviews as $i => $r) { $edde_cols[$i % 2][] = $r; }
       </div>
       <div class="accordion-item">
         <button class="accordion-trigger">Xaricdə təhsil almaq üçün hansı ölkələrdə universitetlər təklif edirsiniz?</button>
-        <div class="accordion-panel"><p>Bizim təklif etdiyimiz ölkələr arasında ABŞ, Kanada, İngiltərə, Avstraliya, Almaniya, Polşa, Macarıstan, Latviya, İtaliya, Türkiyə, Litva, Cənubi Koreya, Malayziya, Malta və s. var.</p></div>
+        <div class="accordion-panel"><p>Bizim təklif etdiyimiz ölkələr arasında ABŞ, Kanada, İngiltərə, Avstraliya, Almaniya, Fransa, İtaliya, İspaniya, Polşa, Macarıstan, Slovakiya, Latviya, Litva, Estoniya, Türkiyə, Cənubi Koreya, Yaponiya, Çin, Dubay (BƏƏ), Malayziya, Malta və s. var.</p></div>
       </div>
       <div class="accordion-item">
         <button class="accordion-trigger">Xaricdə imtahansız təhsil almaq mümkündürmü?</button>
@@ -500,6 +580,22 @@ foreach ($edde_reviews as $i => $r) { $edde_cols[$i % 2][] = $r; }
       <div class="accordion-item">
         <button class="accordion-trigger">Xaricdə tibb təhsili almaq üçün hansı şərtlər tələb olunur?</button>
         <div class="accordion-panel"><p>Yüksək GPA, IELTS/TOEFL kimi dil sertifikatı, motivasiya məktubu və bəzi hallarda giriş imtahanı tələb olunur. Bizim vasitəmizlə müxtəlif ölkələrdə tibb üzrə təhsil ala bilərsiniz.</p></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger">Dövlət Proqramı nədir və ona necə müraciət etmək olar?</button>
+        <div class="accordion-panel"><p>Dövlət Proqramı üzrə xaricdə təhsil, şərtlər və müraciət addımları haqqında ətraflı məlumatı dp.eddeglobal.az səhifəmizdə tapa bilərsiniz. Məsləhətçilərimiz sənədlərin hazırlanmasında sizə kömək edir.</p></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger">Xaricdə təhsil nə qədər başa gəlir və təqaüd almaq mümkündürmü?</button>
+        <div class="accordion-panel"><p>Xərclər ölkədən, universitetdən və proqramdan asılı olaraq dəyişir. Bir çox universitetdə qismən və ya tam təqaüd, endirim və maliyyə dəstəyi proqramları mövcuddur. Sizin üçün uyğun seçimləri konsultasiya zamanı hesablayıb təqdim edirik.</p></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger">Viza imtinası olarsa nə etməliyəm?</button>
+        <div class="accordion-panel"><p>İmtina səbəbi sənədlər əsasında təhlil olunur, çatışmazlıqlar düzəldilir və uyğun olduqda yenidən müraciət hazırlanır. Hər halda qərarı konsulluq verir, biz isə müraciətin düzgün və tam hazırlanmasına kömək edirik.</p></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger">İlkin konsultasiya niyə pulsuzdur?</button>
+        <div class="accordion-panel"><p>İlkin görüşün məqsədi vəziyyətinizi qiymətləndirmək və sizə uyğun istiqaməti göstərməkdir. Bu mərhələ sizi heç nəyə məcbur etmir; xidmət şərtləri isə müqavilədə açıq göstərilir.</p></div>
       </div>
       <div class="accordion-item">
         <button class="accordion-trigger">Referans məktubu nədir?</button>

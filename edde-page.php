@@ -176,7 +176,7 @@ $render_blocks = function ($blocks) use ($e, $render_list_item, $theme_uri, $wa_
         <div class="epage-ctabs" role="tablist" aria-label="Ölkələr">
           <?php foreach ($countries as $i => $c) : ?>
             <button type="button" class="epage-ctab<?php echo $i === 0 ? ' is-on' : ''; ?>" role="tab" data-target="<?php echo esc_attr($c['slug']); ?>">
-              <img src="https://flagcdn.com/w40/<?php echo esc_attr($c['flag']); ?>.png" alt="" width="22" height="16" loading="lazy"><?php $e($c['name']); ?>
+              <img src="https://flagcdn.com/w40/<?php echo esc_attr($c['flag']); ?>.png" alt="<?php echo esc_attr($c['name']); ?> bayrağı" width="22" height="16" loading="lazy"><?php $e($c['name']); ?>
             </button>
           <?php endforeach; ?>
         </div>
@@ -235,7 +235,7 @@ $crumb_group  = $is_article
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#7817B6">
-<title><?php echo esc_html($page_title); ?></title>
+<?php edde_title_tag($page_title); ?>
 <meta name="description" content="<?php echo esc_attr($edde_pg['meta']); ?>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -255,7 +255,7 @@ $crumb_group  = $is_article
 </head>
 <body <?php body_class('edde-page edde-content-page'); ?>>
 <?php include get_stylesheet_directory() . '/parts/edde-preloader.php'; ?>
-  <div class="page-bg" style="background-image:url('<?php echo esc_url($theme_uri); ?>/assets/bg-home.jpg');"></div>
+  <div class="page-bg" style="background-image:url('<?php echo esc_url($theme_uri); ?>/assets/bg-home.webp');"></div>
 <div class="page-bg-overlay"></div>
 <div class="page-content">
 
