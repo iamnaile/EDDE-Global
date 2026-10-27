@@ -576,7 +576,7 @@ return [
     'meta' => 'EDDE Global international partnerships and memberships: ICEF, PIER, ST, Partners Link, YEDAB, NET24.',
     'lead' => 'At EDDE Global, our various memberships and international partnerships demonstrate our reliability, transparency and close ties with the world. These memberships have enabled us to provide our clients with high-quality services and to build strong partnerships.',
     'blocks' => [
-      ['h', 'Our Memberships in Azerbaijan'],
+      ['h', 'Our Memberships'],
       ['h3', 'International Partnerships'],
       [
         'ul',
@@ -588,6 +588,28 @@ return [
           [
             'Partners Link, YEDAB, NET24',
             'Cooperation with foreign universities and collaboration events.',
+          ],
+        ],
+      ],
+      ['h3', 'Our Memberships and Partnerships in Azerbaijan'],
+      [
+        'ul',
+        [
+          [
+            'AKİAB',
+            'A business association operating in Azerbaijan: connections with local companies and joint events.',
+          ],
+          [
+            'Marsol Group',
+            'Partnership and cooperation with one of Azerbaijan\'s leading company groups.',
+          ],
+          [
+            '166 Freight and Logistics',
+            'Cooperation with a local company operating in freight transport and logistics.',
+          ],
+          [
+            'Caspian Energy Group',
+            'Cooperation and mutual support with a group of companies in the energy sector.',
           ],
         ],
       ],

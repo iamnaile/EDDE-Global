@@ -827,3 +827,29 @@ html { overflow-x: clip; }
   [id] { scroll-margin-top: 76px; }
 }
 @media (min-width: 783px) and (max-width: 1230px) { .admin-bar .emb { top: 32px; } }
+
+/* Üzvlüklər: sadə kiçik loqolar */
+.mem-logos { padding: 8px 0 40px; }
+.mem-logos__row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 34px; }
+.mem-logos__row img { width: 84px; height: 84px; object-fit: contain; opacity: .9; }
+@media (max-width: 720px) { .mem-logos__row { gap: 8px 20px; } .mem-logos__row img { width: 64px; height: 64px; } }
+
+/* ==================== TELEFON: boşluq yoxdur, Kiçik Şahzadə görünür ==================== */
+@media (max-width: 1230px) {
+  html body.edde-page { padding-top: 64px !important; margin-top: 0 !important; }
+  body.edde-page .page-content, body.edde-page .page-content > section:first-of-type, body.edde-page .hero-slider { margin-top: 0 !important; padding-top: 0 !important; }
+  body.edde-page .svc-breadcrumb { margin-top: 0 !important; }
+}
+@media (max-width: 720px) {
+  .hero-slider { height: auto !important; }
+  .hero-slider__track { height: auto; align-items: stretch; }
+  .hero-slide { flex-direction: column; align-items: stretch; justify-content: flex-start; height: auto; padding: 0 0 46px; background: linear-gradient(180deg, rgb(var(--tint-a)) 0%, rgb(var(--tint-b)) 100%); }
+  /* illüstrasiya bulanıqlıq və pərdəsiz, yuxarıda tam eni ilə */
+  .hero-slide__bg { position: relative; inset: auto; z-index: 0; width: 100%; aspect-ratio: 2000 / 857; order: -1; flex: 0 0 auto; margin-bottom: 26px; }
+  .hero-slide__bg::before { inset: 0; filter: none; background-position: center; background-size: cover; }
+  .hero-slide__bg::after { display: none; }
+  .hero-slide__inner { position: relative; z-index: 1; }
+  .hero-slide__text .eyebrow { margin-bottom: 14px; }
+  .hero-slide__text h1 { font-size: 27px; max-width: none; }
+}
+@media (max-width: 720px) { .hero-slide__actions .btn--primary, .hero-slide__actions .btn:first-child { background: #fff; color: var(--brand-600); border-color: #fff; } }

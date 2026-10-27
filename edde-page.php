@@ -332,7 +332,18 @@ $crumb_group  = $is_article
     </aside>
   </div>
 </section>
-<?php if ($edde_route === 'akkreditasiya') { include get_stylesheet_directory() . '/parts/edde-logo-strip.php'; } ?>
+<?php if ($edde_route === 'uzvlukler') :
+  $edde_mem = ['11-akiab.png' => 'AKİAB', '10-marsol.png' => 'Marsol Group', '14-166.png' => '166 Yükdaşıma və Logistika', '12-caspian.png' => 'Caspian Energy Group']; ?>
+<section class="mem-logos">
+  <div class="container">
+    <div class="mem-logos__row">
+      <?php foreach ($edde_mem as $f => $n) : ?>
+        <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/logos/' . $f); ?>" alt="<?php echo esc_attr($n); ?>" title="<?php echo esc_attr($n); ?>" loading="lazy">
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
+<?php endif; ?>
 <?php endif; ?>
 
 <!-- ============ MÜRACİƏT FORMASI ============ -->

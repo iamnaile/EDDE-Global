@@ -576,7 +576,7 @@ return [
     'meta' => 'EDDE Global-ın beynəlxalq əməkdaşlıqları və üzvlükləri: ICEF, PIER, ST, Partners Link, YEDAB, NET24.',
     'lead' => 'EDDE Global olaraq, müxtəlif üzvlüklərimiz və beynəlxalq əməkdaşlıqlarımız sayəsində etibarlılığımızı, şəffaflığımızı və dünyası ilə yaxın əlaqələrimizi nümayiş etdiririk. Bu üzvlüklər, müştərilərimizə yüksək keyfiyyətli xidmətlər göstərməyimizə və güclü tərəfdaşlıq əlaqələri qurmağımıza imkan yaradıb.',
     'blocks' => [
-      ['h', 'Azərbaycanda Üzvlüklərimiz'],
+      ['h', 'Üzvlüklərimiz'],
       ['h3', 'Beynəlxalq Əməkdaşlıqlar'],
       [
         'ul',
@@ -588,6 +588,28 @@ return [
           [
             'Partners Link, YEDAB, NET24',
             'Xarici universitetlərlə əməkdaşlıq və iş birliyi tədbirləri.',
+          ],
+        ],
+      ],
+      ['h3', 'Azərbaycanda üzvlük və əməkdaşlıqlarımız'],
+      [
+        'ul',
+        [
+          [
+            'AKİAB',
+            'Azərbaycanda fəaliyyət göstərən biznes birliyi: yerli şirkətlərlə əlaqələr və birgə tədbirlər.',
+          ],
+          [
+            'Marsol Group',
+            'Azərbaycanın aparıcı şirkət qruplarından biri ilə tərəfdaşlıq və əməkdaşlıq.',
+          ],
+          [
+            '166 Yükdaşıma və Logistika',
+            'Yükdaşıma və logistika sahəsində fəaliyyət göstərən yerli şirkətlə əməkdaşlıq.',
+          ],
+          [
+            'Caspian Energy Group',
+            'Enerji sektorunda fəaliyyət göstərən şirkətlər qrupu ilə əməkdaşlıq və qarşılıqlı dəstək.',
           ],
         ],
       ],
