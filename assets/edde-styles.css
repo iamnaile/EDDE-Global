@@ -742,7 +742,7 @@ a, button { touch-action: manipulation; }
 }
 
 /* ==================== TELEFON v3 ==================== */
-html, body { overflow-x: clip; max-width: 100%; }
+html { overflow-x: clip; }
 .m-drawer { overflow: hidden; }
 .m-bar { display: none !important; }
 @media (max-width: 720px) {
@@ -786,3 +786,12 @@ html, body { overflow-x: clip; max-width: 100%; }
   .process-step p { font-size: 14px; }
   .footer__col--brand .logo-img { height: 84px; }
 }
+
+/* ==================== NAVBAR TELEFONDA HƏMİŞƏ GÖRÜNSÜN (iOS/Android) ==================== */
+@media (max-width: 1230px) {
+  .site-header { position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 1500; -webkit-transform: translateZ(0); transform: translateZ(0); }
+  body.edde-page { padding-top: 71px; }
+  .admin-bar .site-header { top: 46px; }
+  [id] { scroll-margin-top: 84px; }
+}
+@media (min-width: 783px) and (max-width: 1230px) { .admin-bar .site-header { top: 32px; } }

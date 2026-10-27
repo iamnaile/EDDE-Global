@@ -7,7 +7,7 @@
 <html lang="az" <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo('charset'); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#7817B6">
 <title>EDDE Global — Xaricdə Təhsil Yolunda Birlikdə Addımlayırıq</title>
