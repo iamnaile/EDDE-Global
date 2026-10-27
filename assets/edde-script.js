@@ -350,3 +350,19 @@ eddeCarousel(document.querySelector('.process-steps'), '.process-step');
   window.addEventListener('resize', fit);
   setTimeout(fit, 400);
 })();
+
+// ===== Hero: bütün slaydlar eyni hündürlükdə olsun (mətn uzunluğundan asılı olmayaraq) =====
+(function () {
+  const slides = Array.from(document.querySelectorAll('.hero-slider .hero-slide'));
+  if (slides.length < 2) return;
+  function equalize() {
+    slides.forEach(s => { s.style.minHeight = ''; });
+    if (window.innerWidth > 900) return;
+    const h = Math.max.apply(null, slides.map(s => s.offsetHeight));
+    slides.forEach(s => { s.style.minHeight = h + 'px'; });
+  }
+  window.addEventListener('load', equalize);
+  window.addEventListener('resize', equalize);
+  setTimeout(equalize, 600);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(equalize);
+})();

@@ -887,3 +887,15 @@ html { overflow-x: clip; }
   input, select, textarea { min-height: 44px; }
   .footer__col a, .footer__col span { font-size: 11.5px; }
 }
+@media (max-width: 900px) {
+  .hero-slider__track { align-items: stretch; }
+  .hero-slide { min-height: 540px; justify-content: center; }
+  .hero-slide__bg::before { background-position: center center; }
+}
+@media (max-width: 900px) {
+  .hero-slide { align-items: stretch; }
+  .hero-slide__inner { display: flex; }
+  .hero-slide__text { display: flex; flex-direction: column; align-items: center; width: 100%; }
+  .hero-slide__text .eyebrow { align-self: center; }
+  .hero-slide__actions { margin-top: auto; padding-top: 22px; }
+}
