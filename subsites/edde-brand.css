@@ -1,0 +1,139 @@
+/* =====================================================================
+   EDDE Global — dp / test / konsultasiya alt-saytları üçün vahid brend qatı
+   eddeglobal.az dizayn sisteminə uyğunlaşdırma (assets/edde-styles.css ilə eyni token-lər).
+
+   Necə işləyir: saytların öz stillərindən SONRA yüklənir və yalnız
+   (1) rəng/şrift dəyişənlərini dəyişir, (2) görünüşü (header, hero, düymə, footer) əsas sayta çəkir.
+   Məzmuna, HTML-ə, JS-ə, formalara, SRI/honeypot/Clarity-yə toxunmur.
+   Şriftlər: Manrope (başlıq) + Inter (mətn) — <head>-də Google Fonts link-i lazımdır.
+   ===================================================================== */
+
+/* ---------- 1. Token-lər (açıq tema; əsas saytda tünd tema yoxdur) ---------- */
+:root,
+:root:not([data-theme="light"]),
+:root[data-theme="dark"]{
+  --bg:#F7F0FC; --surface:#FFFFFF; --fg:#2B1742; --muted:#7D6690; --line:#DEC4EC;
+  --brand:#7817B6; --brand-ink:#5E1D89; --brand-soft:#EEDCF4;
+  --vault:#40197D; --vault-2:#5E1D89; --on-vault:#F7F0FC;
+  --gold:#E0A62E; --err:#B3261E; --ok:#2E8B62;
+  --e-brand-600:#64278F; --e-glow:rgba(120,23,182,.22); --e-radius:16px;
+  --f-body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --f-display:'Manrope','Inter',system-ui,sans-serif;
+  --shadow:0 1px 2px rgba(64,25,125,.05),0 10px 28px rgba(64,25,125,.08);
+  color-scheme:light;
+}
+
+/* ---------- 2. Əsas ---------- */
+body{background:var(--bg);background-image:none;color:var(--fg);font-family:var(--f-body)}
+h1,h2,h3,h4,.brand b,.mrow b,.big{font-family:var(--f-display)}
+h1,h2,h3{letter-spacing:-.01em}
+h2{font-weight:800}
+p{color:inherit}
+a{color:var(--brand-ink)}
+.note,.card p,.disc{color:var(--muted)}
+.eyebrow{font-family:var(--f-display);font-weight:700;color:var(--brand)}
+.card{border-radius:var(--e-radius);border-color:var(--line)}
+
+/* Uşaq/kosmos ornamentləri çıxarılır (əsas saytda yoxdur) */
+.sky,.space,.konst,.rocket,.top .hst,.site-foot .fdeco{display:none!important}
+
+/* ---------- 3. Header: əsas saytdakı kimi açıq, şüşə effektli ---------- */
+.top{
+  background:rgba(247,240,252,.92);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  color:var(--fg);border-bottom:1px solid var(--line);
+}
+.top-in{padding-block:10px;max-width:1180px}
+.brand{gap:16px}
+.brand img{height:58px;
+  /* ağ siluet logo → brend bənövşəyisi (#64278F) */
+  filter:brightness(0) saturate(100%) invert(39%) sepia(100%) saturate(4648%) hue-rotate(261deg) brightness(56%) contrast(95%)}
+.brand b{color:var(--fg);font-weight:800;font-size:1.1rem}
+.brand span{color:var(--muted);opacity:1}
+.brand .sep{background:var(--line)}
+.lang{border:1px solid var(--line);background:#fff;border-radius:999px}
+.lang a{color:var(--muted);font-weight:600}
+.lang a:hover{background:var(--brand-soft);color:var(--brand-ink)}
+.lang span,.lang [aria-current]{background:linear-gradient(135deg,var(--brand),var(--e-brand-600))!important;color:#fff!important;opacity:1!important;font-weight:700}
+.tbtn{
+  background:linear-gradient(135deg,var(--brand),var(--e-brand-600));color:#fff;
+  font-family:var(--f-display);font-weight:700;font-size:.9rem;padding:10px 20px;
+  box-shadow:0 8px 24px var(--e-glow);transition:transform .15s,box-shadow .15s}
+.tbtn:hover{filter:none;transform:translateY(-2px);box-shadow:0 12px 30px var(--e-glow)}
+.top a:focus-visible{outline-color:var(--brand)}
+
+/* ---------- 4. Düymələr: pill + gradient (əsas saytın .btn--primary / --light / --outline) ---------- */
+.btn{
+  font-family:var(--f-display);font-weight:700;border-radius:999px;padding:13px 26px;
+  background:linear-gradient(135deg,var(--brand),var(--e-brand-600));color:#fff;
+  box-shadow:0 8px 24px var(--e-glow);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px var(--e-glow)}
+.btn:disabled{box-shadow:none;transform:none}
+.btn.ghost{background:transparent;color:var(--brand-ink);border:1.5px solid var(--brand);box-shadow:none}
+.btn.ghost:hover{background:var(--brand);color:#fff}
+.btn:focus-visible,input:focus-visible,select:focus-visible,button:focus-visible,
+.opt input:focus-visible+span,.chip input:focus-visible+span{outline-color:var(--brand)}
+
+/* ---------- 5. Hero / nəticə / CTA bloklari: bənövşəyi gradient, ulduzsuz ---------- */
+.hero,.rhero,.pa-head{background:linear-gradient(135deg,var(--vault) 0%,var(--vault-2) 55%,var(--brand) 100%)}
+.hero{padding:40px 36px;border-radius:24px}
+.hero::after{background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%)}
+.hero h1{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em}
+.hero .eyebrow,.hero .disc a{color:#EBD6F8}
+.hero .lead,.hero p{color:rgba(247,240,252,.9)}
+.hero .disc{color:rgba(247,240,252,.78)}
+.pills span{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28);font-weight:500}
+.pills b{color:#fff;font-family:var(--f-display)}
+.hero .quote{border-left-color:#EBD6F8}
+.hero .disc a{color:#fff!important;text-decoration:underline}
+/* hero içindəki düymələr: ağ (btn--light), ikinci dərəcəli — ağ çərçivəli (btn--outline) */
+.hero .btn,.hero .btn.gold,.cta .btn{background:#fff;color:var(--e-brand-600);box-shadow:0 4px 14px rgba(40,20,70,.18)}
+.hero .btn.ghost,.cta .btn.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.55);box-shadow:none}
+.hero .btn.ghost:hover,.cta .btn.ghost:hover{background:rgba(255,255,255,.12);border-color:#fff;color:#fff}
+.cta{background:linear-gradient(135deg,var(--vault) 0%,var(--vault-2) 100%)}
+.cta h2,.rhero h2,.rhero .note{font-family:var(--f-display)}
+
+/* ---------- 6. Seçimlər, addımlar, formalar ---------- */
+.track-btn{border-radius:var(--e-radius);border-width:1.5px}
+.track-btn:hover{box-shadow:0 12px 30px var(--e-glow)}
+.steps i,.flow li::before{background:linear-gradient(135deg,var(--brand),var(--e-brand-600));color:#fff}
+.flow li::before{background:var(--brand-soft);color:var(--brand-ink)}
+.prog .bar i{background:linear-gradient(90deg,var(--brand),var(--e-brand-600))}
+.alert{border-left-color:var(--brand)}
+.opt input:checked+span{background:linear-gradient(135deg,var(--brand),var(--e-brand-600))}
+.chip input:checked+span{background:var(--brand-soft)}
+input[type=text],input[type=email],input[type=tel],input[type=number],select,textarea{
+  background:#fff;border-radius:12px;border-color:var(--line);font-family:var(--f-body)}
+input:focus,select:focus,textarea:focus{border-color:var(--brand);box-shadow:0 0 0 3px var(--e-glow);outline:0}
+.consent input{accent-color:var(--brand)}
+.tags span{background:var(--brand-soft)}
+
+/* ---------- 7. dp.eddeglobal.az-a xas elementlər ---------- */
+.snav,.nav-cards a{border-radius:var(--e-radius)}
+.snav .cta{background:linear-gradient(135deg,var(--brand),var(--e-brand-600));color:#fff;
+  font-family:var(--f-display);border-radius:999px;box-shadow:0 8px 24px var(--e-glow)}
+.snav a.on,.snav a[aria-current],.snav a.act{background:linear-gradient(135deg,var(--brand),var(--e-brand-600))}
+.mnav{background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-color:var(--line)}
+
+/* ---------- 8. Footer: əsas saytdakı kimi açıq (bg-alt), bənövşəyi başlıqlar ---------- */
+.site-foot{background:var(--brand-soft);color:var(--fg);border-top:1px solid var(--line);margin-top:56px}
+.site-foot::before{display:none}
+.site-foot .fb img{height:64px;
+  filter:brightness(0) saturate(100%) invert(39%) sepia(100%) saturate(4648%) hue-rotate(261deg) brightness(56%) contrast(95%)}
+.site-foot .fb p{color:var(--muted);opacity:1}
+.site-foot h4{color:var(--fg);font-family:var(--f-display);font-size:.9rem;letter-spacing:0;text-transform:none;font-weight:800}
+.site-foot a{color:var(--muted);opacity:1;font-weight:500}
+.site-foot a:hover{color:var(--brand);text-decoration:none}
+.site-foot a:focus-visible{outline-color:var(--brand)}
+.site-foot li svg,.site-foot .acc svg{color:var(--brand)}
+.site-foot .acc span{background:#fff;border-color:var(--line);color:var(--fg)}
+.site-foot .fl{border-top-color:var(--line);color:var(--muted);opacity:1}
+
+/* ---------- 9. Mobil ---------- */
+@media (max-width:620px){
+  .brand img{height:46px}
+  .hero{padding:28px 20px;border-radius:20px}
+}
+
+/* ---------- 10. Çap / PDF rejimi: öz rəngləri ilə qalır ---------- */
+@media print{.top,.site-foot{display:none!important}}
