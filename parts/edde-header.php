@@ -8,8 +8,8 @@ $edde_is_here = function ($url) use ($edde_current) {
   return $edde_current !== '' && trim($url, '/') === $edde_current;
 };
 ?>
-<header class="site-header" id="siteHeader">
-  <div class="container header__inner">
+<div class="edde-hdr" id="siteHeader" role="banner">
+  <div class="container edde-hdr__inner">
     <a href="<?php echo esc_url(home_url('/')); ?>" class="logo"><img src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/assets/logo.png" alt="EDDE Global" class="logo-img"></a>
 
     <nav class="main-nav" id="mainNav">
@@ -61,7 +61,7 @@ $edde_is_here = function ($url) use ($edde_current) {
       </ul>
     </nav>
 
-    <div class="header__right">
+    <div class="edde-hdr__right">
       <?php if (function_exists('edde_lang_urls')) : $edde_lu = edde_lang_urls(); $edde_cl = edde_lang(); ?>
       <div class="lang-switch" role="group" aria-label="Language">
         <a href="<?php echo esc_url($edde_lu['az']); ?>" data-lang="az" hreflang="az"<?php echo $edde_cl === 'az' ? ' class="is-current" aria-current="true"' : ''; ?>>AZ</a>
@@ -71,9 +71,20 @@ $edde_is_here = function ($url) use ($edde_current) {
       <button class="btn btn--primary" id="openConsult">Zəng istə</button>
     </div>
 
-    <button class="nav-toggle" id="navToggle" aria-label="Menyu" aria-expanded="false" aria-controls="mDrawer"><span></span><span></span><span></span></button>
   </div>
-</header>
+</div><!-- /.edde-hdr -->
+
+<!-- Telefon üçün ayrıca üst panel (unikal adlar: ana temanın CSS-i toxuna bilməsin) -->
+<div class="emb" id="emb" role="navigation" aria-label="Menyu">
+  <a href="<?php echo esc_url(home_url('/')); ?>" class="emb__logo"><img src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/assets/logo.png" alt="EDDE Global"></a>
+  <div class="emb__right">
+    <?php if (function_exists('edde_lang_urls')) : ?>
+    <span class="emb__lang"><a href="<?php echo esc_url($edde_lu['az']); ?>" data-lang="az"<?php echo $edde_cl === 'az' ? ' class="is-current"' : ''; ?>>AZ</a><a href="<?php echo esc_url($edde_lu['en']); ?>" data-lang="en"<?php echo $edde_cl === 'en' ? ' class="is-current"' : ''; ?>>EN</a></span>
+    <?php endif; ?>
+    <button type="button" class="emb__burger edde-burger" id="navToggle" aria-label="Menyu" aria-expanded="false" aria-controls="mDrawer"><span></span><span></span><span></span></button>
+  </div>
+</div>
+
 
 <?php /* Mobil menyu: başlıqdan (backdrop-filter) KƏNARDA olmalıdır, yoxsa position:fixed başlığın içində qalıb görünmür */
 $edde_cm = edde_contact(); ?>

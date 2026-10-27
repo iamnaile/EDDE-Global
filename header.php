@@ -299,7 +299,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					<div class="preloader_img"><img src="<?php echo esc_url($preloader_img['background-image']) ?>" alt="<?php echo get_bloginfo( 'name' ) ?>"></div>
 				</div>
 			<?php } if($header_style == 'default') { ?>
-				<header class="site-header<?php echo esc_attr(yprm_header_class()) ?> main-row">
+				<header class="edde-hdr<?php echo esc_attr(yprm_header_class()) ?> main-row">
 					<div class="<?php echo esc_attr(yprm_get_theme_setting('header_container')) ?>">
 						<?php if(is_active_sidebar('sidebar')) { ?>
 							<div class="side-bar-button multimedia-icon-list"></div>
