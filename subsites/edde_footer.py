@@ -34,24 +34,10 @@ T = {
     privacy='Политика конфиденциальности', wa='Написать в WhatsApp', path=''),
 }
 
-LOGO_DIR = pathlib.Path(__file__).with_name('edde-assets') / 'logos'
-
-def logo_strip():
-    """Ana səhifədəki tərəfdaş loqo zolağı: assets/logos-dakı bütün şəkillər, 2 dəfə təkrar (fasiləsiz hərəkət üçün)."""
-    files = sorted(p.name for p in LOGO_DIR.glob('*.png'))
-    def items(hidden):
-        return '\n'.join(
-            f'      <div class="logo-strip__item"{" aria-hidden=\"true\"" if hidden else ""}>'
-            f'<img src="/edde-assets/logos/{n}" alt="{"" if hidden else n[3:-4].replace("-", " ").title()}" loading="lazy"></div>'
-            for n in files)
-    return (f'<section class="logo-strip" aria-label="EDDE Global">\n  <div class="logo-strip__viewport">\n'
-            f'    <div class="logo-strip__track" style="animation-duration:{len(files) * 5}s;">\n{items(False)}\n{items(True)}\n'
-            f'    </div>\n  </div>\n</section>\n\n')
-
 def footer_html(lang):
     t = T.get(lang, T['az'])
     links = lambda items: '\n'.join(f'      <a href="{SITE}/{p}/">{n}</a>' for n, p in items)
-    return logo_strip() + f'''<footer class="site-footer" id="contact">
+    return f'''<footer class="site-footer" id="contact">
   <div class="container footer__grid">
     <div class="footer__col footer__col--brand">
       <a href="{SITE}/" class="logo logo--light"><img src="data:image/png;base64,{_LOGO}" alt="EDDE Global" class="logo-img"></a>

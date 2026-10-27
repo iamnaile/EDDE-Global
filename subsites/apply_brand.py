@@ -8,7 +8,7 @@ Nə edir:
   0) mənbədə qırıq </head> varsa ("</script>head>") düzəldir;
   1b) köhnə <footer class="site-foot"> blokunu eddeglobal.az altlığı ilə (az/en/ru) əvəz edir (edde_footer.py);
   1c) faylın sonundakı qırıq "</script>/body>" / "body>" / "dy>" / çatışmayan "</body></html>" düzəldir;
-  1d) tərəfdaş loqo zolağını (assets/logos) altlığın üstünə qoyur; şəkilləri <çıxış>/edde-assets/-ə kopyalayır;
+  1d) <body>-nin əvvəlinə bulanıq fon (.page-bg + overlay) qoyur; fon şəklini <çıxış>/edde-assets/bg-home.jpg kimi kopyalayır;
   2) </head>-dən əvvəl  <style id="edde-brand">…edde-brand.css…</style>  əlavə edir.
 Başqa heç nəyə (JS, SRI, forma, honeypot, Clarity) toxunmur.
 """
@@ -19,6 +19,8 @@ FONTS = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
          'family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">')
 PLEX = re.compile(r'<link rel="stylesheet" href="https://fonts\.googleapis\.com/css2\?family=IBM\+Plex\+Sans[^"]*">')
 FOOT = re.compile(r'<footer class="site-(?:foot|footer)".*?</footer>\s*(?:<a [^>]*class="floating-btn[^>]*>.*?</a>\s*)?', re.S)
+BG = re.compile(r'<div class="page-bg"></div>\s*<div class="page-bg-overlay"></div>\s*')
+BODY = re.compile(r'<body[^>]*>')
 OLD = re.compile(r'<style id="edde-brand">.*?</style>\n?', re.S)
 
 # test/konsultasiya mənbələrində faylın sonu qırıqdır: "</script>/body>", "</script>body>", "</script>dy>" və ya heç nə
@@ -35,6 +37,8 @@ def patch(html, css):
         html, n = PLEX.subn(FONTS, html, count=1)
         if n == 0:
             html = html.replace('</head>', FONTS + '\n</head>', 1)
+    html = BG.sub('', html)
+    html = BODY.sub(lambda m: m.group(0) + '\n<div class="page-bg"></div>\n<div class="page-bg-overlay"></div>', html, count=1)
     html = FOOT.sub(lambda m: footer_html(lang), html, count=1)
     return html.replace('</head>', '<style id="edde-brand">\n' + css + '</style>\n</head>', 1)
 
@@ -42,7 +46,7 @@ def main(src, dst):
     here = pathlib.Path(__file__).parent
     css = ''.join((here / n).read_text(encoding='utf8') for n in ('edde-brand.css', 'edde-footer.css'))
     src, dst = pathlib.Path(src), pathlib.Path(dst)
-    shutil.copytree(here / 'edde-assets', dst / 'edde-assets', dirs_exist_ok=True)  # loqolar: <sayt-kökü>/edde-assets/logos/
+    shutil.copytree(here / 'edde-assets', dst / 'edde-assets', dirs_exist_ok=True)  # fon şəkli: <sayt-kökü>/edde-assets/bg-home.jpg
     for f in sorted(src.rglob('*.html')):
         out = dst / f.relative_to(src)
         out.parent.mkdir(parents=True, exist_ok=True)

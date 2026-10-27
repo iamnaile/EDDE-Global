@@ -8,8 +8,8 @@
   `python3 apply_brand.py <giriş_qovluğu> <çıxış_qovluğu>`
 - `dist/` — hazır nəticə (yoxlama üçün): `dp/` (AZ, `en/`, `ru/`), `test/` (index, en, ru), `konsultasiya/` (AZ, `en/`, `tesdiq/`).
 
-- `edde-assets/logos/` — ana saytdakı `assets/logos` şəkilləri (260×260, yüngülləşdirilmiş). Altlığın üstündəki tərəfdaş loqo zolağı (ana səhifədəki `.logo-strip` ilə eyni: 130px, 44px aralıq, 60 san. fasiləsiz hərəkət, hover-də dayanır) bunları `/edde-assets/logos/...` ünvanından çəkir.
-  **Hər saytın kök qovluğuna `edde-assets/` qovluğunu kopyalayın** (dp, test, konsultasiya). `apply_brand.py` bunu çıxış qovluğuna özü edir; `dist/` içində hazırdır.
+- `edde-assets/bg-home.jpg` — ana saytdakı bulanıq universitet fonu (`.page-bg`: blur 15px + `rgba(247,240,252,.85)` pərdə). `apply_brand.py` `<body>`-nin əvvəlinə `.page-bg` və `.page-bg-overlay` əlavə edir.
+  **Hər saytın kök qovluğuna `edde-assets/` qovluğunu kopyalayın** (dp, test, konsultasiya) — şəkil `/edde-assets/bg-home.jpg` ünvanından çəkilir. `apply_brand.py` bunu çıxış qovluğuna özü edir; `dist/` içində hazırdır.
 
 ## Öz pipeline-ınıza (edde-ops) tətbiq
 Ən təmiz yol: `edde-brand.css` məzmununu şablonun `<head>`-ində, mövcud `<style>` bloklarından **sonra** yerləşdirin və IBM Plex link-ini

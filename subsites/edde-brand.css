@@ -34,6 +34,16 @@ a{color:var(--brand-ink)}
 .eyebrow{font-family:var(--f-display);font-weight:700;color:var(--brand)}
 .card{border-radius:var(--e-radius);border-color:var(--line)}
 
+/* Fon: əsas saytdakı bulanıq universitet şəkli (.page-bg) + bənövşəyi pərdə (.page-bg-overlay) */
+.page-bg{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:url("/edde-assets/bg-home.jpg") center/cover no-repeat;
+  filter:blur(15px) saturate(1.15) brightness(1.05);
+  transform:scale(1.15) /* bulanıqlıq kənarları görünməsin */
+}
+.page-bg-overlay{position:fixed;inset:0;z-index:-1;pointer-events:none;background:rgba(247,240,252,.85)}
+@media print{.page-bg,.page-bg-overlay{display:none}}
+
 /* Uşaq/kosmos ornamentləri çıxarılır (əsas saytda yoxdur) */
 .sky,.space,.konst,.rocket,.top .hst,.site-foot .fdeco{display:none!important}
 
