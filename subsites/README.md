@@ -11,6 +11,12 @@
 - `edde-assets/bg-home.jpg` — ana saytdakı bulanıq universitet fonu (`.page-bg`: blur 15px + `rgba(247,240,252,.85)` pərdə). `apply_brand.py` `<body>`-nin əvvəlinə `.page-bg` və `.page-bg-overlay` əlavə edir.
   **Hər saytın kök qovluğuna `edde-assets/` qovluğunu kopyalayın** (dp, test, konsultasiya) — şəkil `/edde-assets/bg-home.jpg` ünvanından çəkilir. `apply_brand.py` bunu çıxış qovluğuna özü edir; `dist/` içində hazırdır.
 
+## Header və "Bölmələr" (dp)
+- Header əsas saytın `.site-header`-i ilə eyni ölçüdədir: 78px hündürlük, 1440px konteyner, 24px yan boşluq, 30px aralıq, sticky + blur. Logo əsas saytın `assets/logo.png`-idir (`edde-assets/logo.png`, hündürlük 150px).
+- dp-də "Bölmələr" sol sidebar əvəzinə header-də **sağda** durur (`.main-nav`), "Faydalı linklər" açılan siyahıdır. Mobildə hamburger (`.nav-toggle`) və tam ekran menyu (`.main-nav.open`, `top:78px`, 24px padding) — əsas saytla eyni.
+- Fərq: əsas saytda hamburger 1100px-dən başlayır, dp-də 1240px-dən (9 bölmə 1210px-dən dar ekrana sığmır).
+- `apply_brand.py` HTML-i bu qaydada dəyişir: `<nav class="snav">` header-ə köçürülür, `.mnav` çıxarılır. `data-sec`/`data-l` atributları saxlanıldığı üçün dp-nin `app.js`-i (scroll-spy, dilə görə ünvan) dəyişməyib. Orijinal ağ logo `<img>` DOM-da qalır (PDF üçün `app.js` onun `src`-ni oxuyur).
+
 ## Öz pipeline-ınıza (edde-ops) tətbiq
 Ən təmiz yol: `edde-brand.css` məzmununu şablonun `<head>`-ində, mövcud `<style>` bloklarından **sonra** yerləşdirin və IBM Plex link-ini
 `https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap` ilə əvəz edin.
