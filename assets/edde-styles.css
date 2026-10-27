@@ -683,7 +683,6 @@ a, button { touch-action: manipulation; }
   .svc-form { padding: 22px 18px; }
   .svc-form__row { grid-template-columns: 1fr; gap: 0; }
   /* dekorativ təyyarə mətnin üstünü örtməsin */
-  #airplane-container { display: none; }
   /* sürətli əlaqə paneli */
   .m-bar { display: none !important; grid-template-columns: repeat(3, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 900; background: rgba(255,255,255,.97); border-top: 1px solid var(--border); box-shadow: 0 -8px 24px rgba(40, 20, 70, .12); padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); gap: 8px; backdrop-filter: blur(8px); }
   .m-bar__item { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 48px; border: 0; border-radius: 12px; background: var(--bg); color: var(--brand-600); font: 700 12px/1.1 var(--font-display); cursor: pointer; }
@@ -840,19 +839,7 @@ html { overflow-x: clip; }
   body.edde-page .page-content, body.edde-page .page-content > section:first-of-type, body.edde-page .hero-slider { margin-top: 0 !important; padding-top: 0 !important; }
   body.edde-page .svc-breadcrumb { margin-top: 0 !important; }
 }
-@media (max-width: 720px) {
-  .hero-slider { height: auto !important; }
-  .hero-slider__track { height: auto; align-items: stretch; }
-  .hero-slide { flex-direction: column; align-items: stretch; justify-content: flex-start; height: auto; padding: 0 0 46px; background: linear-gradient(180deg, rgb(var(--tint-a)) 0%, rgb(var(--tint-b)) 100%); }
-  /* illüstrasiya bulanıqlıq və pərdəsiz, yuxarıda tam eni ilə */
-  .hero-slide__bg { position: relative; inset: auto; z-index: 0; width: 100%; aspect-ratio: 2000 / 857; order: -1; flex: 0 0 auto; margin-bottom: 26px; }
-  .hero-slide__bg::before { inset: 0; filter: none; background-position: center; background-size: cover; }
-  .hero-slide__bg::after { display: none; }
-  .hero-slide__inner { position: relative; z-index: 1; }
-  .hero-slide__text .eyebrow { margin-bottom: 14px; }
-  .hero-slide__text h1 { font-size: 27px; max-width: none; }
 }
-@media (max-width: 720px) { .hero-slide__actions .btn--primary, .hero-slide__actions .btn:first-child { background: #fff; color: var(--brand-600); border-color: #fff; } }
 
 /* ==================== TELEFON: yığcam ölçülər (göz yorulmasın, böyük görünməsin) ==================== */
 @media (max-width: 720px) {
@@ -873,8 +860,6 @@ html { overflow-x: clip; }
   .hero-slide__text .eyebrow { font-size: 11px; letter-spacing: 1.6px; padding: 6px 13px; }
   .hero-slide__text h1 { font-size: 22px; line-height: 1.22; }
   .hero-slide__text p { font-size: 13.5px; line-height: 1.6; }
-  .hero-slide { padding-bottom: 56px; }
-  .hero-slide__bg { margin-bottom: 20px; }
   .hero-slide__actions { gap: 10px; margin-top: 18px; max-width: 280px; }
   .counter-card strong { font-size: 22px; }
   .counter-card { padding: 12px 8px; }

@@ -328,3 +328,25 @@ function eddeCarousel(g, itemSel) {
 }
 eddeCarousel(document.querySelector('.programs .atl-grid'), '.atl-card');
 eddeCarousel(document.querySelector('.process-steps'), '.process-step');
+
+// ===== Telefon: üst panellə ilk bölmə arasında artıq boşluq qalmasın =====
+(function () {
+  const emb = document.getElementById('emb');
+  const root = document.querySelector('.page-content');
+  if (!emb || !root) return;
+  function fit() {
+    document.body.style.marginTop = '';
+    if (window.innerWidth > 1230) return;
+    let first = null;
+    for (const el of root.children) {
+      if (el.classList.contains('edde-hdr') || el.classList.contains('emb') || /^(SCRIPT|STYLE)$/.test(el.tagName)) continue;
+      if (el.offsetHeight > 0 && getComputedStyle(el).position !== 'fixed') { first = el; break; }
+    }
+    if (!first) return;
+    const gap = Math.round(first.getBoundingClientRect().top + window.scrollY - emb.offsetHeight);
+    if (gap > 2) document.body.style.marginTop = (-gap) + 'px';
+  }
+  window.addEventListener('load', fit);
+  window.addEventListener('resize', fit);
+  setTimeout(fit, 400);
+})();
