@@ -16,6 +16,8 @@ add_action('wp_enqueue_scripts', 'edde_child_enqueue_styles');
 require_once get_stylesheet_directory() . '/inc/edde-contact.php';
 require_once get_stylesheet_directory() . '/inc/edde-content.php';
 require_once get_stylesheet_directory() . '/inc/edde-news.php';
+/* SEO ayrıca faylda saxlanılır — functions.php dəyişsə də itmir. Bu sətri və inc/edde-seo.php faylını silməyin. */
+if (is_readable(get_stylesheet_directory() . '/inc/edde-seo.php')) { require_once get_stylesheet_directory() . '/inc/edde-seo.php'; }
 
 /**
  * Marşrutun hansı şablonla göstəriləcəyi. null — WordPress özü həll etsin.
