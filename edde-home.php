@@ -506,52 +506,8 @@ foreach ($edde_reviews as $i => $r) { $edde_cols[$i % 2][] = $r; }
 </section>
 
 
-<!-- ============ AKKREDİTASİYALAR ============ -->
-<section class="accred" id="accreditations">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">Akkreditasiyalar</p>
-      <h2>Beynəlxalq akkreditasiya və sertifikatlarımız</h2>
-    </div>
-    <div class="accred__row reveal">
-      <?php foreach ([['06-icef.webp', 'ICEF'], ['01-pier.webp', 'PIER'], ['08-sttravel.webp', 'StudyTravel (ST)']] as $edde_ac) : ?>
-        <span class="accred__item"><img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/logos/' . $edde_ac[0]); ?>" alt="<?php echo esc_attr($edde_ac[1]); ?>" loading="lazy"></span>
-      <?php endforeach; ?>
-      <span class="accred__item accred__item--text">British Council</span>
-      <span class="accred__item accred__item--text">ISO 29994</span>
-    </div>
-    <p class="accred__more reveal"><a href="<?php echo esc_url(edde_href('/akkreditasiya/')); ?>">Akkreditasiyalarımız haqqında ətraflı <span>→</span></a></p>
-  </div>
-</section>
-
 <!-- ============ TƏRƏFDAŞ LOQOLARI ============ -->
 <?php include get_stylesheet_directory() . '/parts/edde-logo-strip.php'; ?>
-
-<!-- ============ YAZILAR (son məqalələr) ============ -->
-<?php $edde_home_news = array_slice(edde_articles_by_type('meqale'), 0, 3, true); ?>
-<?php if ($edde_home_news) : ?>
-<section class="home-news" id="yazilar">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">Yazılar</p>
-      <h2>Xaricdə təhsil haqqında son məqalələr</h2>
-    </div>
-    <div class="home-news__grid reveal-group">
-      <?php foreach ($edde_home_news as $edde_hn_slug => $edde_hn) : ?>
-        <a class="hn-card reveal" href="<?php echo esc_url(edde_href('/meqaleler/' . $edde_hn_slug . '/')); ?>">
-          <span class="hn-card__img" style="background-image:url('<?php echo esc_url($edde_hn['image']); ?>');" role="img" aria-label="<?php echo esc_attr($edde_hn['title']); ?>"></span>
-          <span class="hn-card__body">
-            <time><?php echo esc_html($edde_hn['date']); ?></time>
-            <strong><?php echo esc_html($edde_hn['title']); ?></strong>
-            <em><?php echo esc_html(mb_substr($edde_hn['excerpt'], 0, 110)); ?></em>
-          </span>
-        </a>
-      <?php endforeach; ?>
-    </div>
-    <p class="accred__more reveal"><a href="<?php echo esc_url(edde_href('/meqaleler/')); ?>">Bütün yazılara bax <span>→</span></a></p>
-  </div>
-</section>
-<?php endif; ?>
 
 <!-- ============ FAQ ============ -->
 <section class="faq" id="faq">

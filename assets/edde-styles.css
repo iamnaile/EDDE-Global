@@ -712,7 +712,7 @@ a, button { touch-action: manipulation; }
 /* telefon: loqolar və footer daha xırda */
 @media (max-width: 720px) {
   .logo-strip { padding-top: 28px; padding-bottom: 28px; }
-  .logo-strip__track { zoom: .6; }
+  .logo-strip__track { zoom: .8; }
   .footer { font-size: 12px; }
   .footer__grid { gap: 18px 14px; padding-top: 26px; padding-bottom: 18px; }
   .footer__col a, .footer__col span { font-size: 12px; margin-bottom: 6px; }

@@ -201,7 +201,7 @@ $render_blocks = function ($blocks) use ($e, $render_list_item, $theme_uri, $wa_
       case 'partners':
         echo '<div class="epage-partners">';
         foreach (edde_partner_logos() as $lg) {
-          echo '<img src="' . esc_url($lg['url']) . '" alt="' . esc_attr($lg['name']) . '" title="' . esc_attr($lg['name']) . '" width="170" height="170" loading="lazy">';
+          echo '<img src="' . esc_url($lg['url']) . '" alt="' . esc_attr($lg['name']) . '" title="' . esc_attr($lg['name']) . '" width="120" height="120" loading="lazy">';
         }
         echo '</div>';
         break;

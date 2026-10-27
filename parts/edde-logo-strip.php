@@ -16,9 +16,9 @@ $logo_files = array_values($__seen);
 
 
 // Hər loqonun nisbətinə görə eyni "vizual çəki" (sahə) verən ölçü hesablanır
-$logo_area = 22000;  // ümumi böyüklük: artırsanız hamısı böyüyür
-$logo_maxw = 340;    // ən enli loqonun maksimum eni
-$logo_maxh = 130;    // ən hündür loqonun maksimum hündürlüyü
+$logo_area = 8500;  // ümumi böyüklük: artırsanız hamısı böyüyür
+$logo_maxw = 170;    // ən enli loqonun maksimum eni
+$logo_maxh = 64;    // ən hündür loqonun maksimum hündürlüyü
 $logo_items = [];
 foreach ($logo_files as $f) {
   $path  = $logo_dir . $f;
