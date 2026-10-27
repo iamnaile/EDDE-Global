@@ -76,12 +76,12 @@ $edde_is_here = function ($url) use ($edde_current) {
 
 <!-- Telefon üçün ayrıca üst panel (unikal adlar: ana temanın CSS-i toxuna bilməsin) -->
 <div class="emb" id="emb" role="navigation" aria-label="Menyu">
+  <button type="button" class="emb__burger edde-burger" id="navToggle" aria-label="Menyu" aria-expanded="false" aria-controls="mDrawer"><span></span><span></span><span></span></button>
   <a href="<?php echo esc_url(home_url('/')); ?>" class="emb__logo"><img src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/assets/logo.png" alt="EDDE Global"></a>
   <div class="emb__right">
     <?php if (function_exists('edde_lang_urls')) : ?>
     <span class="emb__lang"><a href="<?php echo esc_url($edde_lu['az']); ?>" data-lang="az"<?php echo $edde_cl === 'az' ? ' class="is-current"' : ''; ?>>AZ</a><a href="<?php echo esc_url($edde_lu['en']); ?>" data-lang="en"<?php echo $edde_cl === 'en' ? ' class="is-current"' : ''; ?>>EN</a></span>
     <?php endif; ?>
-    <button type="button" class="emb__burger edde-burger" id="navToggle" aria-label="Menyu" aria-expanded="false" aria-controls="mDrawer"><span></span><span></span><span></span></button>
   </div>
 </div>
 
