@@ -16,7 +16,7 @@
 - Panelin 3 kartı: **Bölmələr** (aktiv bölmə `.on` = əsas saytdakı `.is-current`), **Faydalı linklər**, bənövşəyi **Pulsuz konsultasiya** kartı (mətn, ağ düymə, telefon).
 - Mobil/planşet (əsas saytla eyni breakpoint-lər): ≤1000px — tək sütun, panel məzmunun altında, kartlar 2 sütun; ≤700px — kartlar 1 sütun. Köhnə üfüqi çip menyusu (`.mnav`) çıxarılıb.
 - Header dəyişməyib (logo, başlıq, dil, düymə). `data-sec` / `data-l` atributları saxlanılıb, dp-nin `app.js`-i dəyişməyib.
-- Telefon `+994 77 255 56 58` canlı saytdakı yan paneldən götürülüb. Altlıqdakı nömrələr isə repodakı `parts/edde-footer.php`-dəndir — canlı sayta uyğun olduğunu yoxlayın.
+- Telefon `+994 77 255 56 58` canlı saytdakı yan paneldən götürülüb. Altlıqda da birinci nömrə `077 255 56 58`-dir (WhatsApp düyməsi də); `070 214 10 33` çıxarılıb.
 
 ## Öz pipeline-ınıza (edde-ops) tətbiq
 Ən təmiz yol: `edde-brand.css` məzmununu şablonun `<head>`-ində, mövcud `<style>` bloklarından **sonra** yerləşdirin və IBM Plex link-ini

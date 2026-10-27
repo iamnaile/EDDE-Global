@@ -59,7 +59,7 @@ def footer_html(lang):
     </div>
     <div class="footer__col footer__col--links">
       <h4>{t['contact']}</h4>
-      <a href="tel:+994702141033">070 214 10 33</a>
+      <a href="tel:+994772555658">077 255 56 58</a>
       <a href="tel:+994708332004">070 833 20 04</a>
       <a href="tel:+994124096789">012 409 67 89</a>
       <a href="mailto:info@eddeglobal.az">info@eddeglobal.az</a>
@@ -75,5 +75,5 @@ def footer_html(lang):
   </div>
 </footer>
 
-<a href="https://wa.me/994702141033" class="floating-btn whatsapp" aria-label="{t['wa']}" target="_blank" rel="noopener">💬</a>
+<a href="https://wa.me/994772555658" class="floating-btn whatsapp" aria-label="{t['wa']}" target="_blank" rel="noopener">💬</a>
 '''
