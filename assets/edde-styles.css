@@ -853,3 +853,52 @@ html { overflow-x: clip; }
   .hero-slide__text h1 { font-size: 27px; max-width: none; }
 }
 @media (max-width: 720px) { .hero-slide__actions .btn--primary, .hero-slide__actions .btn:first-child { background: #fff; color: var(--brand-600); border-color: #fff; } }
+
+/* ==================== TELEFON: yığcam ölçülər (göz yorulmasın, böyük görünməsin) ==================== */
+@media (max-width: 720px) {
+  body { font-size: 14.5px; line-height: 1.55; }
+  .container { padding: 0 16px; }
+  .emb { height: 56px; padding: 0 12px; }
+  body.edde-page, html body.edde-page { padding-top: 56px !important; }
+  .emb__logo { height: 56px; } .emb__logo img { width: 88px; }
+  .emb__burger { width: 42px; height: 42px; }
+  .emb__lang a { font-size: 11.5px; padding: 7px 10px; }
+  [id] { scroll-margin-top: 66px; }
+  .eyebrow { font-size: 17px; letter-spacing: .4px; }
+  .section-head { margin-bottom: 20px; }
+  .section-head h2, .why h2, .faq h2, .consult-banner h2 { font-size: 21px; line-height: 1.22; }
+  .why, .programs, .process, .academy, .reviews, .faq, .logo-strip, .svc-section, .svc-form-section { padding-top: 34px; padding-bottom: 34px; }
+  p { font-size: 14px; }
+  .btn { font-size: 14px; padding: 12px 20px; min-height: 44px; }
+  .hero-slide__text .eyebrow { font-size: 11px; letter-spacing: 1.6px; padding: 6px 13px; }
+  .hero-slide__text h1 { font-size: 22px; line-height: 1.22; }
+  .hero-slide__text p { font-size: 13.5px; line-height: 1.6; }
+  .hero-slide { padding-bottom: 56px; }
+  .hero-slide__bg { margin-bottom: 20px; }
+  .hero-slide__actions { gap: 10px; margin-top: 18px; max-width: 280px; }
+  .counter-card strong { font-size: 22px; }
+  .counter-card { padding: 12px 8px; }
+  .atl-card { padding: 16px; }
+  .atl-card h3 { font-size: 16px; }
+  .atl-card p { font-size: 13px; }
+  .atl-card__badge { font-size: 9.5px; padding: 4px 8px; }
+  .process-step { padding: 18px 14px; }
+  .process-step__circle { width: 54px; height: 54px; font-size: 16px; }
+  .process-step h3 { font-size: 15.5px; } .process-step p { font-size: 13px; }
+  .academy-card { min-height: 210px; }
+  .accordion-trigger { font-size: 14px; padding: 14px 26px 14px 0; min-height: 46px; }
+  .accordion-panel p { font-size: 13.5px; }
+  .m-drawer__link, .m-acc__btn { font-size: 15.5px; padding: 14px 8px; }
+  .m-drawer__top { min-height: 60px; }
+  .m-acc__panel a { font-size: 14px; }
+  .floating-btn { width: 46px; height: 46px; right: 12px; bottom: 12px; }
+  .epage-hero h1, .svc-hero h1 { font-size: 23px; }
+  .epage-lead, .svc-hero p { font-size: 14px; }
+  .epage-content h2 { font-size: 19px; } .epage-content h3 { font-size: 16.5px; }
+  .epage-content p, .epage-content li { font-size: 14px; }
+  .epage-eyebrow { font-size: 11px; }
+  .news-head h1 { font-size: 26px; }
+  .svc-form h2, .svc-form-section h2 { font-size: 21px; }
+  input, select, textarea { min-height: 44px; }
+  .footer__col a, .footer__col span { font-size: 11.5px; }
+}
