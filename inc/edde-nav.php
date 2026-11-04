@@ -84,12 +84,12 @@ if (!function_exists('edde_nav_items')) {
         'mega'  => [
           'heading' => 'Education Guide',
           'text'    => 'İxtisas seçimi, dövlət proqramları və pulsuz konsultasiya — düzgün qərar üçün bələdçiniz.',
-          'cta'     => 'Major Selection Test',
+          'cta'     => 'İxtisas seçimi testi',
           'cta_url' => edde_contact()['test_url'],
           'visual'  => ['🧭', '3', 'Faydalı xidmət'],
           'links'   => [
-            ['Major Selection Test', edde_contact()['test_url']],
-            ['Dövlət Proqramları',   edde_contact()['dp_url']],
+            ['İxtisas seçimi testi', edde_contact()['test_url']],
+            ['Dövlət proqramları',   edde_contact()['dp_url']],
             ['Konsultasiya',         edde_contact()['consult_url']],
           ],
         ],

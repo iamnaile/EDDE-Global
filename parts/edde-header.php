@@ -29,12 +29,12 @@ $edde_is_here = function ($url) use ($edde_current) {
                   <div class="mega-menu__col mega-menu__col--intro">
                     <h3><?php echo esc_html($m['heading']); ?></h3>
                     <p><?php echo esc_html($m['text']); ?></p>
-                    <a href="<?php echo edde_href(isset($m['cta_url']) ? $m['cta_url'] : $item['url']); ?>" class="btn btn--primary btn--sm"><?php echo esc_html($m['cta']); ?></a>
+                    <a href="<?php echo edde_href(isset($m['cta_url']) ? $m['cta_url'] : $item['url']); ?>"<?php echo (isset($m['cta_url']) && preg_match('~^https?://~', $m['cta_url'])) ? ' target="_blank" rel="noopener"' : ''; ?> class="btn btn--primary btn--sm"><?php echo esc_html($m['cta']); ?></a>
                   </div>
                   <div class="mega-menu__col mega-menu__col--links<?php echo $wide ? ' is-long' : ''; ?>">
                     <span class="mega-menu__label"><?php echo esc_html(isset($m['label']) ? $m['label'] : 'Bu bölmədə'); ?></span>
                     <?php foreach ($m['links'] as $link) : ?>
-                      <a href="<?php echo edde_href($link[1]); ?>"><?php echo esc_html($link[0]); ?> <span>→</span></a>
+                      <a href="<?php echo edde_href($link[1]); ?>"<?php echo preg_match('~^https?://~', $link[1]) ? ' target="_blank" rel="noopener"' : ''; ?>><?php echo esc_html($link[0]); ?> <span>→</span></a>
                     <?php endforeach; ?>
                   </div>
                   <div class="mega-menu__col mega-menu__col--visual">
@@ -107,7 +107,7 @@ $edde_cm = edde_contact(); ?>
                 <a class="m-acc__main" href="<?php echo edde_href($item['url']); ?>"><?php echo esc_html($item['title']); ?> <span aria-hidden="true">→</span></a>
               <?php endif; ?>
               <?php foreach ($item['mega']['links'] as $l) : ?>
-                <a href="<?php echo edde_href($l[1]); ?>"<?php echo $l[1] === '#map' ? ' data-open-map' : ''; ?>><?php echo esc_html($l[0]); ?></a>
+                <a href="<?php echo edde_href($l[1]); ?>"<?php echo $l[1] === '#map' ? ' data-open-map' : ''; ?><?php echo preg_match('~^https?://~', $l[1]) ? ' target="_blank" rel="noopener"' : ''; ?>><?php echo esc_html($l[0]); ?></a>
               <?php endforeach; ?>
             </div>
           </div>

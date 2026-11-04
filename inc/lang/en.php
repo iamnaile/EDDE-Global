@@ -550,6 +550,7 @@ return [
   'İlkin görüşün məqsədi vəziyyətinizi qiymətləndirmək və sizə uyğun istiqaməti göstərməkdir. Bu mərhələ sizi heç nəyə məcbur etmir; xidmət şərtləri isə müqavilədə açıq göstərilir.' => 'The purpose of the first meeting is to assess your situation and show you the suitable direction. This stage does not oblige you to anything; the service terms are clearly stated in the contract.',
   // Education Guide menyusu
   'Dövlət Proqramları' => 'State Programs',
+  'Dövlət proqramları' => 'State Programs',
   'İxtisas seçimi, dövlət proqramları və pulsuz konsultasiya — düzgün qərar üçün bələdçiniz.' => 'Major selection, state programs and free consultation — your guide to the right decision.',
   'Faydalı xidmət' => 'Useful services',
   // Kodda (PHP) yazılmış sabit mətnlər
