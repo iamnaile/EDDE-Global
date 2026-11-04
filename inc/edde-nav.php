@@ -13,8 +13,64 @@ if (!function_exists('edde_href')) {
   }
 }
 
+if (!function_exists('edde_academy_nav_items')) {
+  /** eddeacademy.az menyusu (inc/edde-site.php-dəki kurs siyahısından qurulur). */
+  function edde_academy_nav_items() {
+    $links = [];
+    foreach (edde_academy_courses() as $c) { $links[] = [$c[2], '/' . $c[0] . '/']; }
+    return [
+      [
+        'title' => 'Kurslar',
+        'url'   => '/#kurslar',
+        'mega'  => [
+          'heading' => 'EDDE Academy kursları',
+          'text'    => 'Beynəlxalq imtahanlara hazırlıq və dil kursları ilə hədəflərinizə çatın.',
+          'cta'     => 'Bütün kurslara baxın',
+          'visual'  => ['📖', (string) count($links), 'Kurs və imtahan hazırlığı'],
+          'links'   => $links,
+        ],
+      ],
+      [
+        'title' => 'Üstünlüklər',
+        'url'   => '/ustunlukler/',
+        'mega'  => [
+          'heading' => 'Niyə EDDE Academy?',
+          'text'    => 'Rəsmi referal agent kimi ödənişsiz sınaq imtahanları və xüsusi endirimlər təqdim edirik.',
+          'cta'     => 'Üstünlüklərə baxın',
+          'visual'  => ['⭐', '6', 'Rəsmi imtahan tərəfdaşlığı'],
+          'links'   => [
+            ['Xüsusi Üstünlüklər', '/ustunlukler/'],
+            ['Niyə biz?',          '/niye-biz/'],
+          ],
+        ],
+      ],
+      ['title' => 'FAQ', 'url' => '/faq/'],
+      ['title' => 'EDDE Global ↗', 'url' => edde_global_url('/')],
+      [
+        'title' => 'Əlaqə',
+        'url'   => '/elaqe/',
+        'mega'  => [
+          'heading' => 'Bizimlə əlaqə',
+          'text'    => 'Suallarınız var? Məsləhətçilərimiz sizinlə əlaqə saxlamağa hazırdır.',
+          'cta'     => 'WhatsApp-da yazın',
+          'cta_url' => 'https://wa.me/994702141033',
+          'label'   => 'Əlaqə məlumatları',
+          'visual'  => ['📍', 'Bakı', 'Academy mərkəzi'],
+          'links'   => [
+            ['070 214 10 33',                        'tel:+994702141033'],
+            ['012 409 67 89',                        'tel:+994124096789'],
+            [edde_brand('email'),                    'mailto:' . edde_brand('email')],
+            ['Əliyar Əliyev 159, N.Nərimanov, Bakı', '/elaqe/'],
+          ],
+        ],
+      ],
+    ];
+  }
+}
+
 if (!function_exists('edde_nav_items')) {
   function edde_nav_items() {
+    if (edde_is_academy_site()) { return edde_academy_nav_items(); }
     return [
       [
         'title' => 'Haqqımızda',

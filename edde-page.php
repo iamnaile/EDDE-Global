@@ -16,7 +16,11 @@ if (!$page) {
     'route' => '', 'kind' => 'page', 'title' => 'Səhifə tapılmadı', 'group' => 'EDDE Global', 'icon' => '🔎',
     'meta'  => 'Axtardığınız səhifə tapılmadı.',
     'lead'  => 'Axtardığınız səhifə tapılmadı və ya köçürülüb. Aşağıdakı bölmələrdən birinə keçə bilərsiniz.',
-    'blocks' => [['links', [
+    'blocks' => [['links', edde_is_academy_site() ? [
+      ['Bütün kurslar', '/#kurslar', 'IELTS, TOEFL, PTE, SAT və dil kursları.'],
+      ['Xüsusi Üstünlüklər', '/ustunlukler/', 'Rəsmi referal agent endirimləri və ödənişsiz sınaq imtahanları.'],
+      ['Əlaqə', '/elaqe/', 'Pulsuz konsultasiya üçün bizimlə əlaqə saxlayın.'],
+    ] : [
       ['Xaricdə təhsil', '/xaricde-tehsil/', 'Foundation-dan doktoranturaya qədər bütün proqramlar.'],
       ['EDDE Academy', '/edde-xidmetler/', 'Dil kursları və beynəlxalq imtahan hazırlığı.'],
       ['Əlaqə', '/elaqe/', 'Pulsuz konsultasiya üçün bizimlə əlaqə saxlayın.'],
@@ -127,7 +131,7 @@ $render_blocks = function ($blocks) use ($e, $render_list_item, $theme_uri, $wa_
             <a href="https://wa.me/<?php echo esc_attr($wa_number); ?>" target="_blank" rel="noopener">WhatsApp-da yazın</a>
           </div>
           <div class="epage-contact__card"><span>✉️ E-poçt</span>
-            <a href="mailto:info@eddeglobal.az">info@eddeglobal.az</a>
+            <a href="mailto:<?php echo esc_attr(edde_brand('email')); ?>"><?php echo esc_html(edde_brand('email')); ?></a>
           </div>
           <div class="epage-contact__card"><span>📍 Ünvan</span>
             <p>Əliyar Əliyev 159, N.Nərimanov ray., Bakı, Azərbaycan, AZ1052</p>
@@ -219,7 +223,7 @@ if ($is_article) {
 }
 
 $edde_current = $edde_route;
-$page_title   = $page['title'] . ' — EDDE Global';
+$page_title   = $page['title'] . ' — ' . edde_brand('suffix');
 $crumb_group  = $is_article
   ? [$article['type'] === 'media' ? 'Mediada biz' : 'Məqalələr', '/' . edde_article_base($article['type']) . '/']
   : null;
@@ -233,6 +237,7 @@ $crumb_group  = $is_article
 <meta name="description" content="<?php echo esc_attr($page['meta']); ?>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<?php edde_canonical_tag($edde_route); ?>
 <?php wp_head(); ?>
 <link rel="stylesheet" href="<?php echo esc_url($theme_uri); ?>/assets/edde-styles.css">
 <link rel="stylesheet" href="<?php echo esc_url($theme_uri); ?>/assets/edde-pages.css">
@@ -256,7 +261,7 @@ $crumb_group  = $is_article
 <!-- ============ BREADCRUMB ============ -->
 <div class="svc-breadcrumb">
   <div class="container">
-    <a href="<?php echo esc_url(home_url('/edde-home/')); ?>">Ana səhifə</a> /
+    <a href="<?php echo esc_url(home_url(edde_brand('home_path'))); ?>">Ana səhifə</a> /
     <?php if ($crumb_group) : ?>
       <a href="<?php echo esc_url(home_url($crumb_group[1])); ?>"><?php $e($crumb_group[0]); ?></a> /
     <?php elseif (!empty($page['group']) && $page['group'] !== $page['title']) : ?>
@@ -332,7 +337,7 @@ $crumb_group  = $is_article
       <div class="svc-form__contact">
         <div>📞 <a href="tel:+994702141033">070 214 10 33</a></div>
         <div>📞 <a href="tel:+994124096789">012 409 67 89</a></div>
-        <div>✉️ <a href="mailto:info@eddeglobal.az">info@eddeglobal.az</a></div>
+        <div>✉️ <a href="mailto:<?php echo esc_attr(edde_brand('email')); ?>"><?php echo esc_html(edde_brand('email')); ?></a></div>
         <div>📍 Əliyar Əliyev 159, N.Nərimanov, Bakı</div>
       </div>
     </div>

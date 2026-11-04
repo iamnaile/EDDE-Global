@@ -32,14 +32,39 @@ add_filter('template_include', function ($template) {
     return get_stylesheet_directory() . '/edde-page.php';
 }, 99);
 
-/* Ana səhifə (eddeglobal.az) — edde-home.php şablonu avtomatik göstərilir.
+/* Ana səhifə (eddeglobal.az → edde-home.php, eddeacademy.az → edde-academy-home.php) avtomatik göstərilir.
    WordPress-də "Parametrlər → Oxu" bölməsi nəyə qurulubsa (son yazılar və ya statik səhifə) fərq etmir. */
 add_filter('template_include', function ($template) {
     if (is_admin() || is_embed() || !is_front_page()) {
         return $template;
     }
+    // eddeacademy.az — Academy ana səhifəsi
+    if (edde_is_academy_site()) {
+        return get_stylesheet_directory() . '/edde-academy-home.php';
+    }
     return get_stylesheet_directory() . '/edde-home.php';
 }, 98);
+
+/* eddeacademy.az: Academy-yə aid olmayan səhifələr (xaricdə təhsil, haqqımızda, məqalələr və s.)
+   eddeglobal.az-dakı eyni ünvana yönləndirilir. */
+add_action('template_redirect', function () {
+    if (!edde_is_academy_site() || is_admin() || is_embed() || is_front_page()) {
+        return;
+    }
+    $route = edde_request_route();
+    if ($route === '' || in_array($route, edde_academy_routes(), true)) {
+        return;
+    }
+    // Köhnə ünvan: Global saytdakı Academy bölməsi → Academy ana səhifəsi
+    if ($route === 'edde-xidmetler' || $route === 'edde-home') {
+        wp_safe_redirect(home_url('/'), 301);
+        exit;
+    }
+    if (edde_route_page($route)) {
+        wp_redirect(edde_global_url('/' . $route . '/'), 301);
+        exit;
+    }
+}, 1);
 
 // WordPress "oxşar ünvana" yönləndirməsin (məs. /olkeler/ → başqa yazı)
 add_filter('pre_redirect_guess_404_permalink', function ($pre) {

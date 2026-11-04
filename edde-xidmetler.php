@@ -178,11 +178,7 @@
       <h4>Əlaqə</h4>
       <a href="tel:+994772555658">+994 77 255 56 58</a>
       <a href="mailto:info@eddeglobal.az">info@eddeglobal.az</a>
-<<<<<<< HEAD
-      <span>Əliyar Əliyev 61, Nəriman Nərimanov</span>
-=======
       <span>Əliyar Əliyev 159, N.Nərimanov, Bakı</span>
->>>>>>> 8a0721660017a0a5f8b12dd3d8c875f300f5e95d
     </div>
   </div>
   <div class="container footer__bottom">

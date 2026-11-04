@@ -10,7 +10,7 @@ $edde_is_here = function ($url) use ($edde_current) {
 ?>
 <header class="site-header" id="siteHeader">
   <div class="container header__inner">
-    <a href="<?php echo esc_url(home_url('/edde-home/')); ?>" class="logo"><img src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/assets/logo.png" alt="EDDE Global" class="logo-img"></a>
+    <a href="<?php echo esc_url(home_url(edde_brand('home_path'))); ?>" class="logo"><img src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/assets/logo.png" alt="<?php echo esc_attr(edde_brand('name')); ?>" class="logo-img"></a>
 
     <nav class="main-nav" id="mainNav">
       <ul>

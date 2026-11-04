@@ -9,6 +9,7 @@
  *   countries.php  — ölkələr və universitetlər
  */
 
+require_once __DIR__ . '/edde-site.php';
 require_once __DIR__ . '/edde-nav.php';
 
 if (!function_exists('edde_data')) {
@@ -134,6 +135,14 @@ if (!function_exists('edde_aside_links')) {
         }
         return [$item['mega']['heading'], $rows];
       }
+    }
+    if (edde_is_academy_site()) {
+      return ['Faydalı keçidlər', [
+        ['Bütün kurslar', '/#kurslar', false],
+        ['Xüsusi Üstünlüklər', '/ustunlukler/', false],
+        ['FAQ', '/faq/', false],
+        ['Əlaqə', '/elaqe/', false],
+      ]];
     }
     return ['Faydalı keçidlər', [
       ['Xaricdə təhsil', '/xaricde-tehsil/', false],
