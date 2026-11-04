@@ -19,6 +19,8 @@ if (!function_exists('edde_contact')) {
       'address'          => 'Əliyar Əliyev 61, N.Nərimanov ray., Bakı, AZ1052',
       'map_query'        => 'Əliyar Əliyev 61, Nərimanov, Bakı',
       'test_url'         => 'https://test.eddeglobal.az',
+      'dp_url'           => 'https://dp.eddeglobal.az',
+      'consult_url'      => 'https://konsultasiya.eddeglobal.az',
     ];
   }
 }

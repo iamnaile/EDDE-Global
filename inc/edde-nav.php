@@ -78,7 +78,22 @@ if (!function_exists('edde_nav_items')) {
         ],
       ],
       ['title' => 'EDDE Corporate', 'url' => '/korporativ/'],
-      ['title' => 'İxtisas seçimi testi', 'url' => edde_contact()['test_url']],
+      [
+        'title' => 'Education Guide',
+        'url'   => '#education',
+        'mega'  => [
+          'heading' => 'Education Guide',
+          'text'    => 'İxtisas seçimi, dövlət proqramları və pulsuz konsultasiya — düzgün qərar üçün bələdçiniz.',
+          'cta'     => 'Major Selection Test',
+          'cta_url' => edde_contact()['test_url'],
+          'visual'  => ['🧭', '3', 'Faydalı xidmət'],
+          'links'   => [
+            ['Major Selection Test', edde_contact()['test_url']],
+            ['Dövlət Proqramları',   edde_contact()['dp_url']],
+            ['Konsultasiya',         edde_contact()['consult_url']],
+          ],
+        ],
+      ],
       [
         'title' => 'Yazılar',
         'url'   => '/meqaleler/',
